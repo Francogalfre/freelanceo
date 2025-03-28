@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
 import { headers } from "next/headers";
 
 import { redirect } from "next/navigation";
@@ -9,7 +10,7 @@ const DashboardPage = async () => {
     headers: await headers(),
   });
 
-  if (!session) redirect("/login");
+  /*   if (!session) redirect("/login"); */
 
   return (
     <div>

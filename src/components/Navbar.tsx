@@ -52,7 +52,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link href={"/login"} className="px-4 py-2 hover:bg-gray-100 rounded-lg transition-all">
+        <Link href={"/login"} className="px-4 py-2 hover:bg-blue-100 hover:text-blue-800 rounded-lg transition-all">
           Login
         </Link>
         <Link href={"/register"} className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-all">
