@@ -5,10 +5,18 @@ import HeroSection from "./components/heroSection";
 
 import Link from "next/link";
 
-export default function Home() {
+// Auth
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+
+export default async function Home() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <>
-      <Navbar />
+      <Navbar session={session} />
       <HeroSection />
 
       <main className="min-h-screen flex flex-col items-center">

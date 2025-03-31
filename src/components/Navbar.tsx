@@ -3,9 +3,24 @@
 import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-const Navbar = () => {
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+import { type Session } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
+
+const Navbar = ({ session }: { session: Session | null }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +34,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 flex items-center transition-[border] justify-between px-16 py-4 backdrop-blur-md bg-blue/50 z-50 ${
+      className={`fixed top-0 left-0 right-0 w-full flex items-center transition-[border] justify-between px-16 py-4 backdrop-blur-md bg-blue/50 z-50 ${
         hasScrolled ? "border-b" : "border-b-0"
       }`}
     >
@@ -52,12 +67,63 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link href={"/login"} className="px-4 py-2 hover:bg-blue-100 hover:text-blue-800 rounded-lg transition-all">
-          Login
-        </Link>
-        <Link href={"/register"} className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-all">
-          Register
-        </Link>
+        {session ? (
+          <>
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex cursor-pointer items-center gap-2 px-3 py-1.5 rounded-lg border-1 border-transparent hover:border-1 hover:border-gray-300 transition-all">
+                <span className="font-medium">{session.user.name}</span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="font-medium">{session.user.name}</p>
+                    <p className="text-sm text-gray-500">{session.user.email}</p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link href="/dashboard" className="flex items-center w-full">
+                    Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() =>
+                    authClient.signOut({
+                      fetchOptions: {
+                        onSuccess: () => router.refresh(),
+                      },
+                    })
+                  }
+                  className="text-red-600 hover:text-red-700"
+                >
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Link
+              href="/dashboard"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium shadow-sm"
+            >
+              Dashboard
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link
+              href="/login"
+              className="px-4 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-200 rounded-lg transition-all font-medium"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/register"
+              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium shadow-sm"
+            >
+              Get Started
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

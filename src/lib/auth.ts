@@ -1,4 +1,4 @@
-import { betterAuth } from "better-auth";
+import { Auth, betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 import { database } from "@/lib/database";
@@ -13,3 +13,5 @@ export const auth = betterAuth({
     schema: authSchema,
   }),
 });
+
+export type Session = typeof auth.$Infer.Session;
