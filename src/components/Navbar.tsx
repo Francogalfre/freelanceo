@@ -14,8 +14,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { type Session } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
+import type { Session } from "@/lib/auth";
 
 const Navbar = ({ session }: { session: Session | null }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
