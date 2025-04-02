@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import LogoPNG from "@/public/LogoPNG.png";
+
 // Styles
 import { outfit } from "@/styles/fonts";
 import "@/styles/globals.css";
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Freelanceo is the ultimate dashboard designed to help freelancers manage their clients, projects, and invoices efficiently. Track earnings, stay on top of tasks, and grow your freelance business effortlessly.",
   keywords:
-    "freelance, dashboard, SaaS, project management, client tracking, invoices, productivity, freelancers, task manager",
+    "freelance, dashboard, SaaS, p roject management, client tracking, invoices, productivity, freelancers, task manager",
 };
 
 export default function RootLayout({

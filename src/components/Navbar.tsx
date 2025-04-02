@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import LogoPNG from "@/public/LogoPNG.png";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import {
@@ -14,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// Auth
 import { authClient } from "@/lib/auth-client";
 import type { Session } from "@/lib/auth";
 
@@ -38,26 +41,9 @@ const Navbar = ({ session }: { session: Session | null }) => {
         hasScrolled ? "border-b" : "border-b-0"
       }`}
     >
-      <Link href="/" className="flex items-center gap-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-        </svg>
-        <span className="font-semibold text-xl">
-          Freelan<span className="text-blue-700">ceo</span>
-        </span>
+      <Link href="/" className="flex items-center gap-2 ">
+        <Image src={LogoPNG} alt="Freelanceo Logo" width={40} className="bg-blue-500 rounded-lg p-1" />
+        <span>Freelanceo</span>
       </Link>
 
       <div className="flex items-center gap-6">
