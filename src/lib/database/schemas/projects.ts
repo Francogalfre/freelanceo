@@ -1,4 +1,6 @@
 import { integer, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { user } from "./auth";
+import { relations } from "drizzle-orm";
 
 export const projectsTable = pgTable("projects", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -9,4 +11,12 @@ export const projectsTable = pgTable("projects", {
   clientId: integer().notNull(),
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),
+  userId: text("userId"),
 });
+
+export const projectRelations = relations(projectsTable, ({ one }) => ({
+  user: one(user, {
+    fields: [projectsTable.userId],
+    references: [user.id],
+  }),
+}));

@@ -1,9 +1,9 @@
 // Components
 import Navbar from "@/components/Navbar";
+import Link from "next/link";
 
 import HeroSection from "./components/heroSection";
-
-import Link from "next/link";
+import FeaturesSection from "./components/featuresSection";
 
 // Auth
 import { auth } from "@/lib/auth";
@@ -20,28 +20,7 @@ export default async function Home() {
       <HeroSection />
 
       <main className="min-h-screen flex flex-col items-center">
-        <section className="relative py-24 px-6 w-full overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]"></div>
-          <div className="max-w-7xl mx-auto text-center relative">
-            <h2 className="text-4xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400">
-              Core Features
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-blue-100 hover:border-blue-200 transition-all">
-                <h3 className="text-xl font-semibold mb-4">Smart Dashboard</h3>
-                <p className="text-gray-600">All your freelance work organized in one beautiful interface</p>
-              </div>
-              <div className="p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-blue-100 hover:border-blue-200 transition-all">
-                <h3 className="text-xl font-semibold mb-4">Project Tracking</h3>
-                <p className="text-gray-600">Monitor deadlines, milestones and progress effortlessly</p>
-              </div>
-              <div className="p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-blue-100 hover:border-blue-200 transition-all">
-                <h3 className="text-xl font-semibold mb-4">Income Analytics</h3>
-                <p className="text-gray-600">Visual insights into your earnings and financial growth</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FeaturesSection />
 
         <section className="relative py-24 px-6 w-full bg-gradient-to-b from-blue-50/50 to-transparent">
           <div className="max-w-7xl mx-auto text-center">
