@@ -36,7 +36,7 @@ const HeroSection = () => {
             📣 Announcement
           </span>
           <AnimatedShinyText className="inline-flex items-center justify-center px-2 sm:px-4 py-1 transition ease-out hover:text-blue-800 hover:duration-300 text-sm sm:text-base">
-            <span>Just Launched</span>
+            <span>Just Launched</span>1
             <ArrowRight className="size-3 sm:size-4 ml-1" />
           </AnimatedShinyText>
         </motion.div>
