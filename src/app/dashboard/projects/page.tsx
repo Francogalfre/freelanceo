@@ -1,10 +1,6 @@
-import React from "react";
-
+"use client";
 import { Plus } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@radix-ui/react-dropdown-menu";
 import {
   Drawer,
   DrawerContent,
@@ -13,6 +9,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+
+import ProjectsForm from "../components/projectsForm";
 
 const ProjectsDashboardPage = () => {
   return (
@@ -32,16 +30,7 @@ const ProjectsDashboardPage = () => {
               <DrawerTitle className="text-3xl font-semibold pt-4">Let's Add a new Project</DrawerTitle>
               <DrawerDescription className="text-lg">Put your Project Information</DrawerDescription>
             </DrawerHeader>
-            <form className="w-[750px] flex flex-col gap-6 px-4">
-              <div className="grid gap-3 text-start">
-                <Label>Project Title</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required className="h-12" />
-              </div>
-              <div className="grid gap-3 text-start">
-                <Label>Project Description</Label>
-                <Input id="email" type="email" placeholder="m@example.com" required className="h-12" />
-              </div>
-            </form>
+            <ProjectsForm />
           </DrawerContent>
         </Drawer>
       </section>

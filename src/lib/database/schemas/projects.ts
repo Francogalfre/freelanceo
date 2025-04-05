@@ -1,4 +1,4 @@
-import { integer, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, numeric, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { user } from "./auth";
 import { relations } from "drizzle-orm";
 
@@ -12,6 +12,7 @@ export const projectsTable = pgTable("projects", {
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),
   userId: text("userId"),
+  earnings: numeric("earnings", { precision: 10, scale: 2 }),
 });
 
 export const projectRelations = relations(projectsTable, ({ one }) => ({

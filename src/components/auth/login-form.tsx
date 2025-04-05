@@ -47,18 +47,23 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>Enter your email below to login to your account</CardDescription>
+          <CardTitle className="text-2xl">Login to your account</CardTitle>
+          <CardDescription className="text-md">
+            Enter your email and password below to login to your account
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin}>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-8">
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-md">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  className="h-10"
+                  placeholder="example@gmail.com"
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,
@@ -69,16 +74,16 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                 />
               </div>
               <div className="grid gap-3">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
-                    Forgot your password?
-                  </a>
-                </div>
+                <Label htmlFor="password" className="text-md">
+                  Password
+                </Label>
+
                 <Input
                   id="password"
                   type="password"
+                  placeholder="********"
                   required
+                  className="h-10"
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,
@@ -86,14 +91,21 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                     })
                   }
                 />
+                <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
+                  Forgot your password?
+                </a>
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" disabled={isLoading} className="w-full">
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-md h-12 py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg"
+                >
                   Login
                 </Button>
               </div>
             </div>
-            <div className="mt-4 text-center text-sm">
+            <div className="mt-4 text-center text-md pt-1">
               Don&apos;t have an account?{" "}
               <Link href="/register" className="underline underline-offset-4">
                 Sign up

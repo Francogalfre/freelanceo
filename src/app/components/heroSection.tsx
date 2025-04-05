@@ -68,7 +68,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95 }}
         >
           <Link
-            href="/dashboard"
+            href="/login"
             className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-black text-white rounded-lg hover:bg-gray-800 transition-all font-medium text-sm sm:text-base"
           >
             Get Started Now

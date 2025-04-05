@@ -15,6 +15,20 @@
       "when": 1743605806086,
       "tag": "0001_confused_bullseye",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1743857057949,
+      "tag": "0002_abnormal_ronan",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1743857119475,
+      "tag": "0003_bent_klaw",
+      "breakpoints": true
     }
   ]
 }

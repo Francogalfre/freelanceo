@@ -46,18 +46,21 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle>Register</CardTitle>
-          <CardDescription>Enter your email below to login to your account</CardDescription>
+          <CardTitle className="text-2xl">Register</CardTitle>
+          <CardDescription className="text-md">Enter your email below to login to your account</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleRegister}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-md">
+                  Email
+                </Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  className="h-10"
+                  placeholder="example@gmail.com"
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,
@@ -68,11 +71,14 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                 />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name" className="text-md">
+                  Name
+                </Label>
                 <Input
                   id="name"
                   type="name"
                   placeholder="Your name"
+                  className="h-10"
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,
@@ -83,16 +89,16 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                 />
               </div>
               <div className="grid gap-3">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
-                    Forgot your password?
-                  </a>
-                </div>
+                <Label htmlFor="password" className="text-md">
+                  Password
+                </Label>
+
                 <Input
                   id="password"
                   type="password"
+                  placeholder="********"
                   required
+                  className="h-10"
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,
@@ -102,15 +108,19 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                 />
               </div>
               <div className="flex flex-col gap-3">
-                <Button disabled={isLoading} type="submit" className="w-full">
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="text-md h-12 py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg"
+                >
                   Login
                 </Button>
               </div>
             </div>
-            <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
+            <div className="mt-4 text-center text-md pt-1">
+              Alredy have an account?{" "}
               <Link href="/login" className="underline underline-offset-4">
-                Sign up
+                Register
               </Link>
             </div>
           </form>
