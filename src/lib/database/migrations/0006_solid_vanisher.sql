@@ -1,0 +1,1 @@
+ALTER TABLE "clients" RENAME COLUMN "address" TO "location";

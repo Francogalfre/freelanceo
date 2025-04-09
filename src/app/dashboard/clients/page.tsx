@@ -14,8 +14,13 @@ import {
 import { Toaster } from "@/components/ui/sonner";
 
 import ClientsForm from "../components/forms/clientsForm";
+import { getClients } from "./action";
 
-const ClientsDashboardPage = () => {
+import { Mail, Phone, MapPin } from "lucide-react";
+
+const ClientsDashboardPage = async () => {
+  const clients = await getClients();
+
   return (
     <div className="w-full">
       <section className="w-full flex justify-between items-center mb-12">
@@ -44,8 +49,47 @@ const ClientsDashboardPage = () => {
           </DrawerContent>
         </Drawer>
       </section>
-      <section className="mx-auto bg-white rounded-xl p-8 border border-gray-200 text-center">
-        <p className="text-gray-500 text-lg">No projects found. Click "Create New Project" to get started.</p>
+      <section className="mx-auto">
+        {clients.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {clients.map((client) => (
+              <div key={client.id} className="bg-gray-50 border-1 border-gray-100 p-4 rounded-lg gap-4 flex flex-col">
+                <div className="flex gap-3 items-center">
+                  <p className="bg-blue-500/20 text-blue-500 px-4 py-2 text-xl font-semibold rounded-full">
+                    {client.name.split("")[0].toUpperCase()}
+                  </p>
+                  <div className="flex flex-col items-start">
+                    <h2 className="text-2xl font-semibold">{client.name}</h2>
+                    <span className="text-gray-400 font-light">{client.company}</span>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <Mail className="size-4" /> {client.email}
+                  </p>
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <Phone className="size-4" /> {client.phone}
+                  </p>
+                  <p className="text-gray-600 flex items-center gap-2">
+                    <MapPin className="size-4" /> {client.location}
+                  </p>
+                </div>
+                <div>
+                  <span>Notes:</span>
+                  <p>{client.notes ? `${client.notes.slice(0, 100)}...` : ""}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded-xl cursor-pointer">View Details</button>
+                  <button className="bg-blue-500 text-white px-4 py-2 rounded-xl cursor-pointer">Contact</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl p-8 border border-gray-200 text-center">
+            <p className="text-gray-500 text-lg">No projects found. Click "Create New Project" to get started.</p>
+          </div>
+        )}
       </section>
       <Toaster />
     </div>

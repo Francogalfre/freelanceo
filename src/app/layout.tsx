@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import LogoPNG from "@/public/LogoPNG.png";
-
 // Styles
 import { outfit } from "@/styles/fonts";
 import "@/styles/globals.css";
