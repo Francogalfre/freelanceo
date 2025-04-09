@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <div className="bg-gradient-to-b from-blue-50 to-transparent">
+    <div className="bg-gradient-to-b from-blue-50 to-transparent" id="hero">
       <section className="flex min-h-[calc(100vh-73px)] w-full px-4 sm:px-6 flex-col text-center items-center justify-center -z-10 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
         <motion.div
           initial={{ opacity: -10, y: -1 }}

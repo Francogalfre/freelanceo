@@ -18,7 +18,6 @@ export default async function Home() {
     <>
       <Navbar session={session} />
       <HeroSection />
-
       <main className="min-h-screen flex flex-col items-center">
         <FeaturesSection />
 

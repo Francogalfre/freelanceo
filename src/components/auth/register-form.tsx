@@ -72,7 +72,7 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
               </div>
               <div className="grid gap-3">
                 <Label htmlFor="name" className="text-md">
-                  Name
+                  Full Name
                 </Label>
                 <Input
                   id="name"
@@ -113,14 +113,14 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                   disabled={isLoading}
                   className="text-md h-12 py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg"
                 >
-                  Login
+                  Register
                 </Button>
               </div>
             </div>
             <div className="mt-4 text-center text-md pt-1">
               Alredy have an account?{" "}
               <Link href="/login" className="underline underline-offset-4">
-                Register
+                Login
               </Link>
             </div>
           </form>

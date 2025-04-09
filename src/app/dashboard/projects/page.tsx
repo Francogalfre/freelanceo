@@ -10,7 +10,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import ProjectsForm from "../components/projectsForm";
+import ProjectsForm from "../components/forms/projectsForm";
 
 const ProjectsDashboardPage = () => {
   return (
@@ -25,7 +25,7 @@ const ProjectsDashboardPage = () => {
             Create New Project
             <Plus className="size-5" />
           </DrawerTrigger>
-          <DrawerContent className="justify-start items-start text-start h-screen">
+          <DrawerContent className="px-2 justify-start items-start text-start h-screen">
             <DrawerHeader>
               <DrawerTitle className="text-3xl font-semibold pt-4">Let's Add a new Project</DrawerTitle>
               <DrawerDescription className="text-lg">Put your Project Information</DrawerDescription>

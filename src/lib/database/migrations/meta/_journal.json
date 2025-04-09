@@ -29,6 +29,13 @@
       "when": 1743857119475,
       "tag": "0003_bent_klaw",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1744159629503,
+      "tag": "0004_supreme_toro",
+      "breakpoints": true
     }
   ]
 }

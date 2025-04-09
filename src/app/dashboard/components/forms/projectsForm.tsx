@@ -1,13 +1,14 @@
 import React from "react";
-import DatePicker from "./datePicker";
+import DatePicker from "../datePicker";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { createProject } from "../../projects/actions";
 
 const ProjectsForm = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
 
@@ -16,7 +17,19 @@ const ProjectsForm = () => {
     const deadline = formData.get("deadline");
     const earnings = formData.get("earnings");
 
-    console.log(title, description, deadline, earnings);
+    await createProject({
+      title,
+      description,
+      deadline: new Date(deadline as string),
+      earnings: Number(earnings),
+    })
+      .then(() => {
+        // Handle success (e.g., show a success message, redirect, etc.)
+      })
+      .catch((error) => {
+        console.error("Error creating project:", error);
+        // Handle error (e.g., show an error message)
+      });
   };
 
   return (

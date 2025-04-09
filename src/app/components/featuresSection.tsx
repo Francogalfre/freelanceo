@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const FeaturesSection = () => {
   return (
-    <section className="relative py-32 px-6 w-full overflow-hidden">
+    <section className="relative py-32 px-6 w-full overflow-hidden" id="features">
       <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-300/15 rounded-full blur-3xl" />
       <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-300/15 rounded-full blur-3xl" />
 

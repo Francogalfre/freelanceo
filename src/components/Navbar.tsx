@@ -47,8 +47,12 @@ const Navbar = ({ session }: { session: Session | null }) => {
       </Link>
 
       <div className="flex items-center gap-6">
-        <a className="transition-colors hover:text-gray-600 cursor-pointer">Home</a>
-        <a className="transition-colors hover:text-gray-600 cursor-pointer">Features</a>
+        <a href="#hero" className="transition-colors hover:text-gray-600 cursor-pointer">
+          Home
+        </a>
+        <a href="#features" className="transition-colors hover:text-gray-600 cursor-pointer">
+          Features
+        </a>
         <a className="transition-colors hover:text-gray-600 cursor-pointer">About</a>
       </div>
 
