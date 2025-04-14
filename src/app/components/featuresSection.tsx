@@ -19,7 +19,8 @@ const FeaturesSection = () => {
       <div className="max-w-7xl mx-auto text-center relative">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-6xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400"
         >
@@ -28,13 +29,18 @@ const FeaturesSection = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-6 place-items-center"
         >
-          {features.map((feature: Feature) => (
-            <div
+          {features.map((feature: Feature, index) => (
+            <motion.div
               key={feature.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
               className={`flex flex-col items-center gap-4 p-6 border-2 rounded-lg hover:-translate-y-1 transition-transform ${
                 feature.premiun
                   ? "bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-300"
@@ -46,7 +52,7 @@ const FeaturesSection = () => {
               </div>
               <h3 className="text-2xl font-semibold">{feature.title}</h3>
               <p className="text-gray-600">{feature.text}</p>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

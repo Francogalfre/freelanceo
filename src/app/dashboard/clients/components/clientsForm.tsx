@@ -15,12 +15,16 @@ import { createClient } from "../../clients/action";
 import { useRouter } from "next/navigation";
 
 const clientFormSchema = z.object({
-  name: z.string().min(1, "Full Name is required").max(60, "Name must be less than 60 characters"),
+  name: z.string().min(3, "Full Name is required").max(60, "Name must be less than 60 characters"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
-  location: z.string().optional(),
-  company: z.string().optional(),
-  notes: z.string().max(400, "Notes must be less than 400 characters").optional(),
+  phone: z
+    .string()
+    .min(5, "Full Phone Number is required")
+    .max(15, "Phone number must be less than 15 characters")
+    .optional(),
+  location: z.string().max(100, "Location must be less than 100 characters").optional(),
+  company: z.string().max(30, "Company name must be less than 30 characters").optional(),
+  notes: z.string().max(3000, "Notes must be less than 3000 characters").optional(),
 });
 
 type FormErrors = {

@@ -13,11 +13,11 @@ import {
 
 import { Toaster } from "@/components/ui/sonner";
 
-import ClientsForm from "../components/forms/clientsForm";
+import ClientsForm from "./components/clientsForm";
 
 import { getClients } from "./action";
 
-import ClientsGrid from "../components/clients/clientsGrid";
+import ClientsGrid from "./components/clientsGrid";
 
 const ClientsDashboardPage = async () => {
   const clients = await getClients();

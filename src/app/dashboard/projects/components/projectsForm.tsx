@@ -1,5 +1,4 @@
 import React from "react";
-import DatePicker from "../datePicker";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -51,7 +50,6 @@ const ProjectsForm = () => {
       <div className="flex w-full justify-between gap-2 items-center">
         <div className="w-full">
           <Label className="pb-3">Project Deadline</Label>
-          <DatePicker name="deadline" />
         </div>
         <div className="w-full">
           <Label className="pb-3">Project Earnings</Label>

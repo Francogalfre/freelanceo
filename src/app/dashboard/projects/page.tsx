@@ -10,7 +10,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
-import ProjectsForm from "../components/forms/projectsForm";
+import ProjectsForm from "./components/projectsForm";
 
 const ProjectsDashboardPage = () => {
   return (
