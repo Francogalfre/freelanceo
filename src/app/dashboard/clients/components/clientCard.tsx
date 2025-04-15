@@ -8,7 +8,7 @@ const ClientCard = ({ client }: { client: Client }) => {
   return (
     <div key={client.id} className="bg-gray-50 border-1 border-blue-100 p-4 rounded-lg gap-4 flex flex-col">
       <div className="flex gap-3 items-center">
-        <p className="bg-blue-500/20 text-blue-500 px-4 py-2 text-xl font-semibold rounded-full">
+        <p className="bg-blue-500/20 text-blue-500 w-12 h-12 flex items-center justify-center text-xl font-semibold rounded-full">
           {client.name.split("")[0].toUpperCase()}
         </p>
         <div className="flex flex-col items-start">
