@@ -74,3 +74,22 @@ export const getClients = async () => {
     throw new Error("Failed to fetch clients");
   }
 };
+
+export const deleteClient = async (clientId: number) => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    await database.delete(clientsTable).where(eq(clientsTable.id, clientId)).execute();
+
+    revalidatePath("/dashboard/clients");
+  } catch (error) {
+    console.error("Error trynd to delete Client:", error);
+    throw new Error("Failed to delete client");
+  }
+};

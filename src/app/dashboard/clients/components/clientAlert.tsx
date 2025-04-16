@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Mail, Phone, MapPin, Trash, X } from "lucide-react";
+import { Mail, Phone, MapPin, Trash, X, Send } from "lucide-react";
 
 import {
   AlertDialog,
@@ -12,6 +12,8 @@ import {
 import { Button } from "@/components/ui/button";
 
 import type { Client } from "@/utils/types";
+
+import { deleteClient } from "../action";
 
 type Props = {
   isOpen: boolean;
@@ -56,10 +58,20 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
         </div>
 
         <footer className="flex gap-6 items-center justify-end">
-          <Button className="bg-red-500 hover:bg-red-600 text-md transition-colors text-white py-6 rounded-xl cursor-pointer flex items-center gap-2">
+          <Button
+            onClick={() => deleteClient(client.id)}
+            className="bg-red-500 hover:bg-red-600 text-md transition-colors text-white px-4 py-6 rounded-xl cursor-pointer flex items-center gap-2"
+          >
             <Trash width={18} />
             Delete Client
           </Button>
+          <a
+            href={`mailto:${client.email}`}
+            className="bg-blue-500 hover:bg-blue-600 text-md transition-colors text-white px-4 py-3 rounded-xl cursor-pointer flex items-center gap-2"
+          >
+            <Send width={18} />
+            Contact Client
+          </a>
         </footer>
       </AlertDialogContent>
     </AlertDialog>

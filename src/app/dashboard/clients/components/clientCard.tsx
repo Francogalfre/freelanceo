@@ -40,9 +40,9 @@ const ClientCard = ({ client, handleOpen }: ClientCardProps) => {
       </div>
       <div>
         <span>Notes:</span>
-        <p>{client.notes ? `${client.notes.slice(0, 100)}...` : "This client doesn't have notes"}</p>
+        <p>{client.notes ? `${client.notes.slice(0, 80)}...` : "This client doesn't have notes"}</p>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-end gap-4">
         <a
           href={`mailto:${client.email}`}
           className="bg-blue-500 hover:bg-blue-600 text-md transition-colors text-white px-4 py-2 rounded-xl cursor-pointer flex items-center gap-2"
