@@ -1,10 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 import type { Client } from "@/utils/types";
 
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
-const ClientCard = ({ client }: { client: Client }) => {
+import ClientAlert from "./clientAlert";
+
+type ClientCardProps = {
+  client: Client;
+  handleOpen: () => void;
+};
+
+const ClientCard = ({ client, handleOpen }: ClientCardProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div key={client.id} className="bg-gray-50 border-1 border-blue-100 p-4 rounded-lg gap-4 flex flex-col">
       <div className="flex gap-3 items-center">
@@ -39,10 +50,15 @@ const ClientCard = ({ client }: { client: Client }) => {
           <Send width={18} />
           Contact Client
         </a>
-        <button className="bg-transparent text-blue-500  px-4 py-2 rounded-xl cursor-pointer border-2 border-blue-500 hover:bg-blue-500 hover:text-white transition-colors">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="bg-transparent text-blue-500  px-4 py-2 rounded-xl cursor-pointer border-2 border-blue-500 hover:bg-blue-500 hover:text-white transition-colors"
+        >
           View Details
         </button>
       </div>
+
+      <ClientAlert isOpen={isOpen} setIsOpen={setIsOpen} client={client} />
     </div>
   );
 };

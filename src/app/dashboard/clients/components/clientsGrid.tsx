@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 import Image from "next/image";
 
@@ -10,12 +12,18 @@ import Illustration from "@/public/resources/IllustrationNoClients.svg";
 type Props = Client[];
 
 const ClientsGrid = ({ clients }: { clients: Props }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
   return (
     <section className="mx-auto">
       {clients.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {clients.map((client) => (
-            <ClientCard key={client.id} client={client} />
+            <ClientCard key={client.id} client={client} handleOpen={handleOpen} />
           ))}
         </div>
       ) : (
