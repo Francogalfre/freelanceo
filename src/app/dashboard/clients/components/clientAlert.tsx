@@ -23,41 +23,49 @@ type Props = {
 
 const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
   return (
-    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-      <AlertDialogContent className="justify-center px-10 flex flex-col gap-12">
-        <AlertDialogCancel className="border-none shadow-none hover:bg-transparent w-full flex justify-end items-center">
-          <X className="cursor-pointer size-5" />
-        </AlertDialogCancel>
-        <AlertDialogHeader>
-          <AlertDialogTitle className="flex flex-col gap-6 justify-center items-center text-center w-full">
-            <p className="bg-blue-500/20 text-blue-500 w-24 h-24 flex items-center justify-center text-3xl font-semibold rounded-full">
-              {client.name.split("")[0].toUpperCase()}
+    <AlertDialog open={isOpen} onOpenChange={setIsOpen} defaultOpen={isOpen}>
+      <AlertDialogContent className="flex flex-col gap-6 justify-between items-end sm:max-w-4xl p-8 bg-white border-none">
+        <header className="w-full flex justify-between items-start border-b-1 border-gray-200 pb-8 mb-4">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="flex gap-6 justify-center items-center text-start w-full">
+              <p className="bg-blue-500/20 text-blue-500 w-18 h-18 flex items-center justify-center text-2xl font-semibold rounded-full">
+                {client.name.split("")[0].toUpperCase()}
+              </p>
+              <div>
+                <p className="text-3xl font-semibold">{client.name}</p>
+                <p className="font-medium text-gray-500">{client.company}</p>
+              </div>
+            </AlertDialogTitle>
+          </AlertDialogHeader>
+          <AlertDialogCancel className="border-none shadow-none hover:bg-transparent flex justify-end items-center">
+            <p className="cursor-pointer">
+              <X className="size-5" />
             </p>
-            <div>
-              <p className="text-3xl font-semibold">{client.name}</p>
-              <p className="font-medium text-gray-600">{client.company}</p>
+          </AlertDialogCancel>
+        </header>
+
+        <div className="grid grid-cols-3 gap-8 border-b-1 border-gray-200 pb-8">
+          <div>
+            <span className="text-lg text-gray-600">Contact Information</span>
+            <div className="flex flex-col gap-4 pt-4">
+              <p className=" flex items-center gap-2 text-lg">
+                <Mail className="size-5" /> {client.email}
+              </p>
+              <p className=" flex items-center gap-2 text-lg">
+                <Phone className="size-5" /> {client.phone ? client.phone : "No phone number provided"}
+              </p>
+              <p className=" flex items-center gap-2 text-lg">
+                <MapPin className="size-5" /> {client.location ? client.location : "No location provided"}
+              </p>
             </div>
-          </AlertDialogTitle>
-        </AlertDialogHeader>
-
-        <div>
-          <span className="text-lg text-gray-600">Notes About the Client:</span>
-          <p className="text-xl pt-2">{client.notes ? client.notes : "This client doesn't have notes"}</p>
+          </div>
+          <div className="col-span-2">
+            <span className="text-lg text-gray-600 b-2">Notes About the Client:</span>
+            <p className="text-xl pt-4">{client.notes ? client.notes : "This client doesn't have notes"}</p>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <p className="text-gray-600 flex items-center gap-2 text-lg">
-            <Mail className="size-5" /> {client.email}
-          </p>
-          <p className="text-gray-600 flex items-center gap-2 text-lg">
-            <Phone className="size-5" /> {client.phone ? client.phone : "No phone number provided"}
-          </p>
-          <p className="text-gray-600 flex items-center gap-2 text-lg">
-            <MapPin className="size-5" /> {client.location ? client.location : "No location provided"}
-          </p>
-        </div>
-
-        <footer className="flex gap-6 items-center justify-end">
+        <footer className="flex gap-4 items-center">
           <Button
             onClick={() => deleteClient(client.id)}
             className="bg-red-500 hover:bg-red-600 text-md transition-colors text-white px-4 py-6 rounded-xl cursor-pointer flex items-center gap-2"

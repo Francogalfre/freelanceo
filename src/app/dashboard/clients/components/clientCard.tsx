@@ -17,7 +17,10 @@ const ClientCard = ({ client, handleOpen }: ClientCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div key={client.id} className="bg-gray-50 border-1 border-blue-100 p-4 rounded-lg gap-4 flex flex-col">
+    <div
+      key={client.id}
+      className="bg-gray-50 border-1 border-blue-100 p-4 rounded-lg gap-4 flex flex-col justify-between"
+    >
       <div className="flex gap-3 items-center">
         <p className="bg-blue-500/20 text-blue-500 w-12 h-12 flex items-center justify-center text-xl font-semibold rounded-full">
           {client.name.split("")[0].toUpperCase()}
@@ -40,7 +43,7 @@ const ClientCard = ({ client, handleOpen }: ClientCardProps) => {
       </div>
       <div>
         <span>Notes:</span>
-        <p>{client.notes ? `${client.notes.slice(0, 80)}...` : "This client doesn't have notes"}</p>
+        <p>{client.notes ? `${client.notes.slice(0, 85)}...` : "This client doesn't have notes"}</p>
       </div>
       <div className="flex items-end gap-4">
         <a

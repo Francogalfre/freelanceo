@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { getClients } from "./action";
 
 import ClientsGrid from "./components/clientsGrid";
-import ClientDrawer from "./components/clientDrawer";
+import ClientDrawer from "./components/clientsDrawer";
 
 const ClientsDashboardPage = async () => {
   const clients = await getClients();

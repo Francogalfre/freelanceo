@@ -61,6 +61,8 @@ const Sidebar = ({ session }: { session: Session | null }) => {
           <Users className="w-5 h-5" />
           <span>Clients</span>
         </Link>
+        <p className="border-t-1 border-blue-100 text-gray-500 font-light pt-4 mt-3">Projects</p>
+        List of projects
       </nav>
 
       <button

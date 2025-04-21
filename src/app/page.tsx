@@ -1,5 +1,5 @@
 // Components
-import Navbar from "@/components/Navbar";
+import Navbar from "./components/navbar";
 import Link from "next/link";
 
 import HeroSection from "./components/heroSection";
