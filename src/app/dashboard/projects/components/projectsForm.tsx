@@ -33,32 +33,69 @@ const ProjectsForm = () => {
       });
   };
 
+  /* 
+  
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  title: varchar({ length: 255 }).notNull(),
+  description: text().notNull(),
+  deadline: timestamp().notNull(),
+  status: varchar({ length: 50 }).notNull().default("open"),
+  clientId: integer().notNull(),
+  createdAt: timestamp().notNull().defaultNow(),
+  updatedAt: timestamp().notNull().defaultNow(),
+  userId: text("userId"),
+  earnings: numeric("earnings", { precision: 10, scale: 2 }),
+  */
+
   return (
-    <form className="w-[750px] flex flex-col gap-6 px-4" onSubmit={handleSubmit}>
+    <form className="max-w-full flex flex-col gap-6 pt-4" onSubmit={handleSubmit}>
       <div className="grid gap-3 text-start">
-        <Label>Project Title</Label>
-        <Input id="title" type="text" name="title" placeholder="UI/UX Landing Page Design" required className="h-12" />
-      </div>
-      <div className="grid gap-3 text-start">
-        <Label>Project Description</Label>
-        <Textarea
-          id="description"
-          placeholder="Details about your project"
-          name="description"
-          required
-          className="h-12 resize-none"
-        />
-      </div>
-      <div className="flex w-full justify-between gap-2 items-center">
-        <div className="w-full">
-          <Label className="pb-3">Project Deadline</Label>
-        </div>
-        <div className="w-full">
-          <Label className="pb-3">Project Earnings</Label>
-          <Input id="earnings" type="number" name="earnings" placeholder="$1.000" required className="h-12" />
+        <Label className="text-md">
+          Title <span className="text-red-500">*</span>
+        </Label>
+        <div className="relative">
+          <Input id="title" type="text" name="title" placeholder="UI/UX Design Website Project" className="h-12" />
         </div>
       </div>
-      <Button className="h-12">Create Project</Button>
+
+      <div className="grid gap-3 text-start">
+        <Label className="text-md">
+          Description<span className="text-red-500">*</span>
+        </Label>
+        <div className="relative">
+          <Textarea
+            id="description"
+            name="description"
+            placeholder="All the information you have about the project..."
+            className={`w-full h-24 resize-none break-words whitespace-pre-wrap`}
+          />
+        </div>
+      </div>
+
+      <div className="grid gap-3 text-start">
+        <Label className="text-md">Deadline</Label>
+        <div className="relative">
+          <Input id="deadline" type="date" name="deadline" className="h-12" />
+        </div>
+      </div>
+
+      <div className="grid gap-3 text-start">
+        <Label className="text-md">Client</Label>
+        <div className="relative">
+          <Input id="client" type="text" name="client" placeholder="Argentina, Buenos Aires" className="h-12" />
+        </div>
+      </div>
+
+      <div className="grid gap-3 text-start">
+        <Label className="text-md">Earnings</Label>
+        <div className="relative">
+          <Input id="earnings" type="number" name="earnings" placeholder="USD $1.000" className="h-12" />
+        </div>
+      </div>
+
+      <Button type="submit" className="h-14 text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer">
+        Send
+      </Button>
     </form>
   );
 };

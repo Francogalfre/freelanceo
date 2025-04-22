@@ -28,7 +28,7 @@ const ClientsGrid = ({ clients }: { clients: Props }) => {
         </div>
       ) : (
         <div className="bg-white rounded-xl p-8 border border-gray-200 text-center justify-center items-center flex flex-col gap-4">
-          <Image src={Illustration.src} width={300} height={300} alt="Illustration" />
+          <Image src={Illustration.src} width={300} height={300} alt="Illustration of a sad boy sitting on a bench" />
           <p className="text-gray-900 text-lg">
             No Clients found. Click <span className="text-blue-500">"Add a New Client"</span> to get started.
           </p>
