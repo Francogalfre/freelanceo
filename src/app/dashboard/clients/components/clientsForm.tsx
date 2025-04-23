@@ -12,7 +12,6 @@ import { CheckCircle2, XCircle } from "lucide-react";
 import { z } from "zod";
 
 import { createClient } from "../../clients/action";
-import { useRouter } from "next/navigation";
 
 const clientFormSchema = z.object({
   name: z.string().min(3, "Full Name is required").max(60, "Name must be less than 60 characters"),
@@ -30,7 +29,6 @@ type FormErrors = {
 const ClientsForm = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

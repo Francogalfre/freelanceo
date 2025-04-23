@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Mail, Phone, MapPin, Trash, X, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Trash, X, Send, CheckCircle2 } from "lucide-react";
 
 import {
   AlertDialog,
@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import type { Client } from "@/utils/types";
 
 import { deleteClient } from "../action";
+import { toast } from "sonner";
 
 type Props = {
   isOpen: boolean;
@@ -22,6 +23,26 @@ type Props = {
 };
 
 const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+
+  const handleDelete = async (id: number) => {
+    try {
+      setIsDeleting(true);
+      await deleteClient(id);
+      setIsOpen(false);
+    } catch (error) {
+      console.error("Error deleting client:", error);
+    } finally {
+      setIsDeleting(false);
+      toast.success("Client deleted successfully", {
+        description: "The client has been deleted successfully.",
+        icon: <CheckCircle2 className="h-5 w-5" />,
+        duration: 4000,
+        style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+      });
+    }
+  };
+
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen} defaultOpen={isOpen}>
       <AlertDialogContent className="flex flex-col gap-6 justify-between items-end sm:max-w-4xl p-8 bg-white border-none">
@@ -33,7 +54,7 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
               </p>
               <div>
                 <p className="text-3xl font-semibold">{client.name}</p>
-                <p className="font-medium text-gray-500">{client.company}</p>
+                <p className="font-medium text-gray-500">{client.company ? client.company : "No Company provided"}</p>
               </div>
             </AlertDialogTitle>
           </AlertDialogHeader>
@@ -44,7 +65,7 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
           </AlertDialogCancel>
         </header>
 
-        <div className="grid grid-cols-3 gap-8 border-b-1 border-gray-200 pb-8">
+        <div className="grid grid-cols-3 gap-8 border-b-1 border-gray-200 pb-8 w-full">
           <div>
             <span className="text-lg text-gray-600">Contact Information</span>
             <div className="flex flex-col gap-4 pt-4">
@@ -67,11 +88,12 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
 
         <footer className="flex gap-4 items-center">
           <Button
-            onClick={() => deleteClient(client.id)}
+            disabled={isDeleting}
+            onClick={() => handleDelete(client.id)}
             className="bg-red-500 hover:bg-red-600 text-md transition-colors text-white px-4 py-6 rounded-xl cursor-pointer flex items-center gap-2"
           >
             <Trash width={18} />
-            Delete Client
+            {isDeleting ? "Deleting..." : "Delete Client"}
           </Button>
           <a
             href={`mailto:${client.email}`}
