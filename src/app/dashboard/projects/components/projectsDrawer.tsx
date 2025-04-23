@@ -12,7 +12,11 @@ import { MoveLeft, Plus } from "lucide-react";
 
 import ProjectsForm from "./projectsForm";
 
-const ProjectsDrawer = () => {
+import { getClients } from "../../clients/action";
+
+const ProjectsDrawer = async () => {
+  const clients = await getClients();
+
   return (
     <Drawer direction="left">
       <DrawerTrigger className="text-md py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg">
@@ -27,10 +31,10 @@ const ProjectsDrawer = () => {
             </DrawerClose>
             <DrawerTitle className="text-3xl font-semibold pt-4">Let's Create a new Client</DrawerTitle>
             <DrawerDescription className="text-lg">
-              Enter the details of your new Project. Click save when you're done.
+              Enter the details of your new Project. Click create project when you're done.
             </DrawerDescription>
           </DrawerHeader>
-          <ProjectsForm />
+          <ProjectsForm clients={clients} />
         </div>
       </DrawerContent>
     </Drawer>
