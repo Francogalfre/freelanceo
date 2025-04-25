@@ -1,3 +1,5 @@
 [ ] - Subscriptions Roles
 [ ] - Create Projects
 [ ] - Create Projects Dynamic Pages
+[ ] - Login/Register Errors
+[ ] - Efecto Navbar Scroll

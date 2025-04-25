@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const PlanSection = () => {
   return (
-    <section className="relative py-32 px-6 w-full overflow-hidden" id="features">
+    <section className="relative py-32 px-6 w-full overflow-hidden" id="pricing">
       <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl" />
       <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400/15 rounded-full blur-3xl" />
 

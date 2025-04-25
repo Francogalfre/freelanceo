@@ -62,7 +62,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                 <Input
                   id="email"
                   type="email"
-                  className="h-10"
+                  className="h-12"
                   placeholder="example@gmail.com"
                   onChange={(e) =>
                     setCredentials({
@@ -83,7 +83,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                   type="password"
                   placeholder="********"
                   required
-                  className="h-10"
+                  className="h-12"
                   onChange={(e) =>
                     setCredentials({
                       ...credentials,

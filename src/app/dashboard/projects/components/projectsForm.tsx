@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,9 +21,14 @@ import { DatePicker } from "./DatePicker";
 import { createProject } from "../../projects/actions";
 
 import type { Client } from "@/utils/types";
+import Link from "next/link";
 
 const ProjectsForm = ({ clients }: { clients: Client[] }) => {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
+    setIsSubmitting(true);
+
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
 
@@ -35,18 +40,20 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
 
     console.log(title, description, deadline, client, earnings);
 
-    await createProject({
-      title,
-      description,
-      deadline: new Date(deadline as string),
-      earnings: Number(earnings),
-    })
-      .then(() => {
+    /* try {
+      await createProject({
+        title,
+        description,
+        deadline: new Date(deadline as string),
+        earnings: Number(earnings),
+      }).then(() => {
         // Handle success (e.g., show a success message, redirect, etc.)
-      })
-      .catch((error) => {
-        console.error("Error creating project:", error);
       });
+    } catch (error) {
+      console.error("Error creating project:", error);
+    } finally {
+      setIsSubmitting(false);
+    } */
   };
 
   return (
@@ -56,7 +63,14 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
           Title <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
-          <Input id="title" type="text" name="title" placeholder="UI/UX Design Website Project" className="h-12" />
+          <Input
+            id="title"
+            type="text"
+            name="title"
+            placeholder="UI/UX Design Website Project"
+            className="h-12"
+            required
+          />
         </div>
       </div>
 
@@ -70,6 +84,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
             name="description"
             placeholder="All the information you have about the project..."
             className={`w-full h-24 resize-none break-words whitespace-pre-wrap`}
+            required
           />
         </div>
       </div>
@@ -82,9 +97,11 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">Client</Label>
+        <Label className="text-md">
+          Client <span className="text-red-500">*</span>
+        </Label>
         <div className="relative">
-          <Select>
+          <Select required name="client">
             <SelectTrigger className="w-full h-12 py-6">
               <SelectValue placeholder="Select a client" />
             </SelectTrigger>
@@ -93,14 +110,27 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
                 <SelectLabel>Your Clients</SelectLabel>
                 {clients.length > 0 ? (
                   clients.map((client: Client) => (
-                    <SelectItem key={client.id} id="client" value={client.name}>
+                    <SelectItem
+                      className="hover:bg-gray-100 transition-colors"
+                      key={client.id}
+                      id="client"
+                      value={client.name}
+                    >
                       {client.name}
                     </SelectItem>
                   ))
                 ) : (
-                  <SelectItem value="null" disabled>
-                    No clients available
-                  </SelectItem>
+                  <>
+                    <SelectItem value="null" disabled>
+                      No Clients Found
+                    </SelectItem>
+                    <Link
+                      href="/dashboard/clients"
+                      className="w-full text-sm text-blue-600 rounded-lg pl-2 font-medium hover:underline hover:text-blue-700 transition-all"
+                    >
+                      Add a new Client
+                    </Link>
+                  </>
                 )}
               </SelectGroup>
             </SelectContent>
@@ -115,8 +145,12 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
         </div>
       </div>
 
-      <Button type="submit" className="h-14 text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer">
-        Create Project
+      <Button
+        type="submit"
+        className="h-14 text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Adding Project..." : "Add New Project"}
       </Button>
     </form>
   );

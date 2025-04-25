@@ -129,5 +129,10 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
+}
+
+@view-transition {
+  navigation: auto;
 }
