@@ -9,23 +9,27 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-export function DatePicker() {
+export function DatePicker({ name }: { name: string }) {
   const [date, setDate] = useState<Date>();
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={cn("w-full h-12 justify-start text-left font-normal", !date && "text-muted-foreground")}
-        >
-          <CalendarIcon className="mr-1 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} initialFocus id="deadline" />
-      </PopoverContent>
-    </Popover>
+    <>
+      <input type="hidden" name={name} value={date ? date.toISOString() : ""} />
+
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant={"outline"}
+            className={cn("w-full h-12 justify-start text-left font-normal", !date && "text-muted-foreground")}
+          >
+            <CalendarIcon className="mr-1 h-4 w-4" />
+            {date ? format(date, "PPP") : <span>Pick a date</span>}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0">
+          <Calendar mode="single" selected={date} onSelect={setDate} initialFocus id="deadline" />
+        </PopoverContent>
+      </Popover>
+    </>
   );
 }

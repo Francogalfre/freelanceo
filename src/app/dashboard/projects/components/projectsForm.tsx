@@ -2,6 +2,10 @@
 
 import React, { useState } from "react";
 
+import z from "zod";
+
+import Link from "next/link";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -21,39 +25,46 @@ import { DatePicker } from "./DatePicker";
 import { createProject } from "../../projects/actions";
 
 import type { Client } from "@/utils/types";
-import Link from "next/link";
+
+import { toast } from "sonner";
+
+const projectFormSchema = z.object({
+  title: z.string().min(3, "Title is required").max(60, "Title must be less than 60 characters"),
+  description: z.string().min(10, "Description is required").max(3000, "Description must be less than 3000 characters"),
+  deadline: z.date().optional(),
+  client: z.string().min(1, "Client is required"),
+  earnings: z.string().optional(),
+});
+
+type FormErrors = {
+  [key: string]: string;
+};
 
 const ProjectsForm = ({ clients }: { clients: Client[] }) => {
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsSubmitting(true);
 
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget as HTMLFormElement);
+    const formData = new FormData(event.currentTarget);
 
-    const title = formData.get("title");
-    const description = formData.get("description");
-    const deadline = formData.get("deadline");
-    const client = formData.get("client");
-    const earnings = formData.get("earnings");
+    const rawData = {
+      title: formData.get("title") as string,
+      description: formData.get("description") as string,
+      deadline: formData.get("deadline") as string,
+      client: formData.get("client") as string,
+      earnings: formData.get("earnings") as string,
+    };
 
-    console.log(title, description, deadline, client, earnings);
+    const parsedData = projectFormSchema.safeParse(rawData);
 
-    /* try {
-      await createProject({
-        title,
-        description,
-        deadline: new Date(deadline as string),
-        earnings: Number(earnings),
-      }).then(() => {
-        // Handle success (e.g., show a success message, redirect, etc.)
-      });
+    try {
+      createProject(parsedData.data);
     } catch (error) {
       console.error("Error creating project:", error);
-    } finally {
-      setIsSubmitting(false);
-    } */
+    }
   };
 
   return (
@@ -92,7 +103,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       <div className="grid gap-3 text-start">
         <Label className="text-md">Deadline</Label>
         <div className="relative">
-          <DatePicker />
+          <DatePicker name="deadline" />
         </div>
       </div>
 
@@ -114,7 +125,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
                       className="hover:bg-gray-100 transition-colors"
                       key={client.id}
                       id="client"
-                      value={client.name}
+                      value={client.id.toString()}
                     >
                       {client.name}
                     </SelectItem>

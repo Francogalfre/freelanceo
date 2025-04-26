@@ -7,7 +7,7 @@ import Image from "next/image";
 import type { Client } from "@/utils/types";
 import ClientCard from "../../clients/components/clientCard";
 
-import Illustration from "@/public/resources/IllustrationNoClients.svg";
+import Illustration from "@/public/resources/IllustrationNoClients.jpg";
 
 type Props = Client[];
 

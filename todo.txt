@@ -3,3 +3,4 @@
 [ ] - Create Projects Dynamic Pages
 [ ] - Login/Register Errors
 [ ] - Efecto Navbar Scroll
+[ ] - Pagina 404

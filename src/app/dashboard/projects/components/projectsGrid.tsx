@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Illustration from "@/public/resources/IllustrationNoProjects.svg";
+import Illustration from "@/public/resources/IllustrationNoProjects.jpg";
 
 const ProjectsGrid = () => {
   return (

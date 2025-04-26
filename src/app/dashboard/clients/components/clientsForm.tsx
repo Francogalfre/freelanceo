@@ -63,7 +63,6 @@ const ClientsForm = () => {
     }
 
     try {
-      console.log("Valid data to send:", parsedData.data);
       const result = await createClient(parsedData.data);
 
       if (result.success) {

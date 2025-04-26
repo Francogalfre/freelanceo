@@ -15,13 +15,10 @@ const projectSchema = z.object({
 export const createProject = async (props: any) => {
   const data = props;
 
-  // Validate the data against the schema
   const parsedData = projectSchema.safeParse(data);
   if (!parsedData.success) {
     throw new Error(parsedData.error.message);
   }
-
-  // Destructure the parsed data
 
   const result = await database
     .insert(projectsTable)
