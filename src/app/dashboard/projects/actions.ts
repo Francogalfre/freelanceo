@@ -3,25 +3,51 @@
 import { database } from "@/lib/database";
 import { projectsTable } from "@/lib/database/schemas/projects";
 
-import { z } from "zod";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { revalidatePath } from "next/cache";
 
-const projectSchema = z.object({
-  title: z.string().min(1, "Project name is required"),
-  description: z.string().min(1, "Project description is required"),
-  deadline: z.date(),
-  earnings: z.number(),
-});
+interface ProjectProps {
+  title: string;
+  description: string;
+  deadline?: string;
+  earnings?: string;
+  clientId: string;
+}
 
-export const createProject = async (props: any) => {
-  const data = props;
+export const createProject = async (props: ProjectProps) => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  const parsedData = projectSchema.safeParse(data);
-  if (!parsedData.success) {
-    throw new Error(parsedData.error.message);
+  if (!session) {
+    throw new Error("User not authenticated");
   }
 
-  const result = await database
-    .insert(projectsTable)
-    .values(parsedData.data as any)
-    .execute();
+  const data = {
+    title: props.title,
+    description: props.description,
+    deadline: props.deadline ? new Date(props.deadline) : null,
+    earnings: props.earnings ? parseFloat(props.earnings) : null,
+    clientId: props.clientId ? parseInt(props.clientId) : null,
+    userId: session.user.id,
+  };
+
+  if (!data.title || !data.description || !data.clientId) {
+    throw new Error("Title, description, and clientId are required");
+  }
+
+  try {
+    await database
+      .insert(projectsTable)
+      .values(data as any)
+      .execute();
+
+    revalidatePath("/dashboard/projects");
+
+    return { success: true, message: "Project created successfully" };
+  } catch (error) {
+    console.error("Error creating project:", error);
+    return { success: false, message: "Failed to create project" };
+  }
 };

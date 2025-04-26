@@ -4,21 +4,11 @@ import React, { useState } from "react";
 
 import z from "zod";
 
-import Link from "next/link";
-
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectLabel,
-  SelectGroup,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import SelectClient from "./SelectClient";
 
 import { DatePicker } from "./DatePicker";
 
@@ -26,14 +16,12 @@ import { createProject } from "../../projects/actions";
 
 import type { Client } from "@/utils/types";
 
-import { toast } from "sonner";
-
 const projectFormSchema = z.object({
   title: z.string().min(3, "Title is required").max(60, "Title must be less than 60 characters"),
   description: z.string().min(10, "Description is required").max(3000, "Description must be less than 3000 characters"),
-  deadline: z.date().optional(),
-  client: z.string().min(1, "Client is required"),
+  deadline: z.string().optional(),
   earnings: z.string().optional(),
+  clientId: z.string().min(1, "Client is required"),
 });
 
 type FormErrors = {
@@ -47,6 +35,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setErrors({});
 
     const formData = new FormData(event.currentTarget);
 
@@ -54,16 +43,30 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       title: formData.get("title") as string,
       description: formData.get("description") as string,
       deadline: formData.get("deadline") as string,
-      client: formData.get("client") as string,
+      clientId: formData.get("client") as string,
       earnings: formData.get("earnings") as string,
     };
 
     const parsedData = projectFormSchema.safeParse(rawData);
 
+    if (!parsedData.success) {
+      const formErrors: FormErrors = {};
+      parsedData.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          formErrors[err.path[0]] = err.message;
+        }
+      });
+      setErrors(formErrors);
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      createProject(parsedData.data);
+      await createProject(parsedData.data);
     } catch (error) {
       console.error("Error creating project:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -112,40 +115,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
           Client <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
-          <Select required name="client">
-            <SelectTrigger className="w-full h-12 py-6">
-              <SelectValue placeholder="Select a client" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                <SelectLabel>Your Clients</SelectLabel>
-                {clients.length > 0 ? (
-                  clients.map((client: Client) => (
-                    <SelectItem
-                      className="hover:bg-gray-100 transition-colors"
-                      key={client.id}
-                      id="client"
-                      value={client.id.toString()}
-                    >
-                      {client.name}
-                    </SelectItem>
-                  ))
-                ) : (
-                  <>
-                    <SelectItem value="null" disabled>
-                      No Clients Found
-                    </SelectItem>
-                    <Link
-                      href="/dashboard/clients"
-                      className="w-full text-sm text-blue-600 rounded-lg pl-2 font-medium hover:underline hover:text-blue-700 transition-all"
-                    >
-                      Add a new Client
-                    </Link>
-                  </>
-                )}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+          <SelectClient clients={clients} />
         </div>
       </div>
 
