@@ -1,1 +1,0 @@
-ALTER TABLE "projects" RENAME COLUMN "reanings" TO "earnings";

@@ -1,1 +1,0 @@
-ALTER TABLE "projects" ADD COLUMN "reanings" numeric(10, 2);

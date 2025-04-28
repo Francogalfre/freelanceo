@@ -82,7 +82,9 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
           </div>
           <div className="col-span-2">
             <span className="text-lg text-gray-600 b-2">Notes About the Client:</span>
-            <p className="text-xl pt-4">{client.notes ? client.notes : "This client doesn't have notes"}</p>
+            <p className="text-xl pt-4 break-words whitespace-pre-wrap prose">
+              {client.notes ? client.notes : "This client doesn't have notes"}
+            </p>
           </div>
         </div>
 

@@ -5,3 +5,6 @@
 [ ] - Login/Register Errors
 [ ] - Efecto Navbar Scroll
 [ ] - Pagina 404
+[ ] - Sort projects and clients for createdAt, etc.
+[ ] - Errores Projects Form
+[ ] - Change Toast Alert

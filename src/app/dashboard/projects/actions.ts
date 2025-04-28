@@ -6,6 +6,7 @@ import { projectsTable } from "@/lib/database/schemas/projects";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { eq } from "drizzle-orm";
 
 interface ProjectProps {
   title: string;
@@ -49,5 +50,28 @@ export const createProject = async (props: ProjectProps) => {
   } catch (error) {
     console.error("Error creating project:", error);
     return { success: false, message: "Failed to create project" };
+  }
+};
+
+export const getProjects = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    const clients = await database
+      .select()
+      .from(projectsTable)
+      .where(eq(projectsTable.userId, session.user.id))
+      .execute();
+
+    return clients;
+  } catch (error) {
+    console.error("Error fetching clients:", error);
+    throw new Error("Failed to fetch clients");
   }
 };

@@ -1,7 +1,10 @@
+import { getProjects } from "./actions";
 import ProjectsDrawer from "./components/projectsDrawer";
 import ProjectsGrid from "./components/projectsGrid";
 
-const ProjectsDashboardPage = () => {
+const ProjectsDashboardPage = async () => {
+  const projects = await getProjects();
+
   return (
     <div className="w-full">
       <section className="w-full flex justify-between items-center mb-12">
@@ -12,7 +15,7 @@ const ProjectsDashboardPage = () => {
         <ProjectsDrawer />
       </section>
 
-      <ProjectsGrid />
+      <ProjectsGrid projects={projects} />
 
       {/* <Toaster /> */}
     </div>

@@ -5,57 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1743026923366,
-      "tag": "0000_clammy_lilandra",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1743605806086,
-      "tag": "0001_confused_bullseye",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1743857057949,
-      "tag": "0002_abnormal_ronan",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1743857119475,
-      "tag": "0003_bent_klaw",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1744159629503,
-      "tag": "0004_supreme_toro",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1744226237138,
-      "tag": "0005_yellow_prowler",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1744226295264,
-      "tag": "0006_solid_vanisher",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "7",
-      "when": 1745681793498,
-      "tag": "0007_great_hellion",
+      "when": 1745803251934,
+      "tag": "0000_spooky_leper_queen",
       "breakpoints": true
     }
   ]

@@ -10,10 +10,9 @@ import ClientAlert from "./clientAlert";
 
 type ClientCardProps = {
   client: Client;
-  handleOpen: () => void;
 };
 
-const ClientCard = ({ client, handleOpen }: ClientCardProps) => {
+const ClientCard = ({ client }: ClientCardProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -42,8 +41,10 @@ const ClientCard = ({ client, handleOpen }: ClientCardProps) => {
         </p>
       </div>
       <div>
-        <span>Notes:</span>
-        <p>{client.notes ? `${client.notes.slice(0, 85)}...` : "This client doesn't have notes"}</p>
+        <span className="font-medium">Notes:</span>
+        <p className="text-gray-600 mt-2 line-clamp-2 break-words whitespace-pre-wrap prose">
+          {client.notes ? `${client.notes.slice(0, 85)}...` : "This client doesn't have notes"}
+        </p>
       </div>
       <div className="flex items-end gap-4">
         <a

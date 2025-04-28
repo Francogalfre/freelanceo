@@ -1,15 +1,15 @@
-import { integer, numeric, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, numeric, pgEnum, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 
 import { clientsTable } from "./clients";
 
-import { relations } from "drizzle-orm";
+export const projectStatus = pgEnum("project_status", ["progress", "finished", "delayed"]);
 
 export const projectsTable = pgTable("projects", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
   title: varchar({ length: 255 }).notNull(),
   description: text().notNull(),
   deadline: timestamp().notNull(),
-  status: varchar({ length: 50 }).notNull().default("open"),
+  status: projectStatus().notNull().default("progress"),
   createdAt: timestamp().notNull().defaultNow(),
   updatedAt: timestamp().notNull().defaultNow(),
   userId: text("userId"),
