@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 const FeaturesSection = () => {
   return (
-    <section className="relative py-32 px-6 w-full overflow-hidden" id="features">
+    <section className="relative pb-32 px-6 w-full overflow-hidden" id="features">
       <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-300/15 rounded-full blur-3xl" />
       <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-blue-300/15 rounded-full blur-3xl" />
 
@@ -41,13 +41,13 @@ const FeaturesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className={`flex flex-col items-center gap-4 p-6 border-2 rounded-lg hover:-translate-y-1 transition-transform ${
+              className={`flex flex-col items-center gap-4 p-6 border-2 rounded-lg hover:-translate-y-1 hover:shadow-sm transition-transform group  ${
                 feature.premiun
                   ? "bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-300"
                   : "bg-white/50 border-gray-200"
               }`}
             >
-              <div className="p-3 size-14 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+              <div className="p-3 size-14 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600 group-hover:text-white group-hover:bg-blue-600 transition-colors ease-in-out duration-300">
                 {feature.icon}
               </div>
               <h3 className="text-2xl font-semibold">{feature.title}</h3>

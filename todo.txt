@@ -8,3 +8,4 @@
 [ ] - Sort projects and clients for createdAt, etc.
 [ ] - Errores Projects Form
 [ ] - Change Toast Alert
+[ ] - Responsive Design

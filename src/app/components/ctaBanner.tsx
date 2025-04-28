@@ -1,30 +1,34 @@
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
-const CTABanner = () => {
+const CallToAction = () => {
   return (
-    <section className="pt-20 w-full bg-gradient-to-r from-indigo-500 to-blue-600">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="xl:p-24 gap-32 p-12 rounded-2xl  flex  justify-between flex-col-reverse lg:flex-row">
-          <div className="w-full lg:w-2/6 relative">
-            <img
-              src="https://pagedone.io/asset/uploads/1696241449.png"
-              alt="CTA tailwind section"
-              className="xl:absolute xl:bottom-0 rounded-t-3xl -mb-12 mx-auto lg:-mb-12 xl:-mb-24 lg:mx-0 object-cover"
-            />
-          </div>
-          <div className="w-full lg:w-2/3">
-            <h2 className="font-manrope text-5xl text-white font-semibold mb-7 text-center lg:text-left">
-              Get ready to join pagedone{" "}
-            </h2>
-            <p className="text-lg text-white leading-8 mb-12 text-center lg:text-left">
-              Download our app now from app stores & play store and experience the ease of financing on your finger
-              tips.
-            </p>
-          </div>
+    <section className="max-w-7xl mx-auto py-20 px-4 md:px-6">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-10 text-center shadow-2xl md:p-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-blue-500 opacity-20 blur-3xl" />
+          <div className="absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-blue-700 opacity-20 blur-3xl" />
+        </div>
+        <div className="relative z-10">
+          <h2 className="mb-6 text-3xl font-bold tracking-tight text-white md:text-5xl">
+            Ready to streamline your freelance business?
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-blue-100 md:text-xl">
+            Join thousands of freelancers saving time, getting paid faster, and growing their business with Freelanceo.
+          </p>
+          <Link
+            href="/signup"
+            className="bg-white flex items-center gap-2 justify-center text-center text-blue-600 hover:bg-blue-50 transition-colors duration-300 ease-in-out mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-base"
+          >
+            Get Started Now
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </div>
     </section>
   );
 };
 
-export default CTABanner;
+export default CallToAction;

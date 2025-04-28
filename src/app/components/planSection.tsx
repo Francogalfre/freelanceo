@@ -18,7 +18,7 @@ const PlanSection = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400"
         >
-          Choose your Plan
+          Simple, Transparent Pricing
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 30 }}
