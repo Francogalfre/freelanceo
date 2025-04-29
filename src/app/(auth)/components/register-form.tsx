@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Link from "next/link";
 
@@ -11,20 +12,43 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
+
+import { AlertOctagon, Eye, EyeOff } from "lucide-react";
 
 export function RegisterForm({ className, ...props }: React.ComponentProps<"div">) {
+  const router = useRouter();
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
     name: "",
   });
-
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });
+  const [error, setError] = useState<string>("");
 
   const handleRegister = async (e: any) => {
     e.preventDefault();
+
+    if (credentials.password !== credentials.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    if (credentials.password.length < 8) {
+      setError("Password must be at least 8 characters long");
+      return;
+    }
+
+    if (!/[A-Z]/.test(credentials.password)) {
+      setError("Password needs one uppercase letter.");
+      return;
+    }
+
     await authClient.signUp.email(
       {
         email: credentials.email,
@@ -35,7 +59,7 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
         onSuccess: () => router.push("/dashboard"),
         onRequest: () => setIsLoading(true),
         onError: (ctx) => {
-          alert(ctx.error.message);
+          setError(ctx.error.message);
           setIsLoading(false);
         },
       }
@@ -70,6 +94,7 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                   required
                 />
               </div>
+
               <div className="grid gap-3">
                 <Label htmlFor="name" className="text-md">
                   Full Name
@@ -88,25 +113,52 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                   required
                 />
               </div>
-              <div className="grid gap-3">
-                <Label htmlFor="password" className="text-md">
-                  Password
-                </Label>
 
+              <div className="grid gap-3 relative">
+                <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
-                  type="password"
+                  type={showPassword.password ? "text" : "password"}
                   placeholder="********"
                   required
-                  className="h-12"
-                  onChange={(e) =>
-                    setCredentials({
-                      ...credentials,
-                      password: e.target.value,
-                    })
-                  }
+                  value={credentials.password}
+                  onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                  className={`h-12 pr-10 ${error ? "border-red-500" : ""}`}
                 />
+                <button
+                  type="button"
+                  className="absolute right-3 top-13 transform -translate-y-1/2 text-gray-500"
+                  onClick={() =>
+                    setShowPassword({ password: !showPassword.password, confirmPassword: showPassword.confirmPassword })
+                  }
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
               </div>
+
+              <div className="grid gap-3 relative">
+                <Label htmlFor="confirm-password">Confirm Password</Label>
+                <Input
+                  id="confirm-password"
+                  type={showPassword.confirmPassword ? "text" : "password"}
+                  placeholder="********"
+                  required
+                  value={credentials.confirmPassword}
+                  onChange={(e) => setCredentials({ ...credentials, confirmPassword: e.target.value })}
+                  className={`h-12 pr-10 ${error ? "border-red-500" : ""}`}
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-13 transform -translate-y-1/2 text-gray-500"
+                  onClick={() =>
+                    setShowPassword({ password: showPassword.password, confirmPassword: !showPassword.confirmPassword })
+                  }
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+
               <div className="flex flex-col gap-3">
                 <Button
                   type="submit"
@@ -115,6 +167,15 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                 >
                   Register
                 </Button>
+                {error && (
+                  <div
+                    className="flex items-center gap-2 text-center justify-center bg-red-100 border border-red-200 text-red-500 px-4 py-3 rounded-lg"
+                    role="alert"
+                  >
+                    <AlertOctagon size={20} />
+                    <p>{error}</p>
+                  </div>
+                )}
               </div>
             </div>
             <div className="mt-4 text-center text-md pt-1">
