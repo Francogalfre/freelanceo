@@ -1,11 +1,12 @@
 [ ] - Subscriptions Roles
 [ ✅ ] - Create Projects
-[ ] - Add Status for Projects
-[ ] - Create Projects Dynamic Pages
-[ ] - Login/Register Errors
-[ ] - Efecto Navbar Scroll
+[ ✅ ] - Add Status for Projects
+[ ✅ ] - Create Projects Dynamic Pages
+[ ✅ ] - Login/Register Errors
 [ ] - Pagina 404
 [ ] - Sort projects and clients for createdAt, etc.
 [ ] - Errores Projects Form
 [ ] - Change Toast Alert
 [ ] - Responsive Design
+[ ] - Separe Components
+[ ] - Efecto Navbar Scroll
