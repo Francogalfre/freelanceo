@@ -1,7 +1,7 @@
 "use server";
 
 import { database } from "@/lib/database";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 import { clientsTable } from "@/lib/database/schemas/clients";
 
@@ -72,6 +72,31 @@ export const getClients = async () => {
   } catch (error) {
     console.error("Error fetching clients:", error);
     throw new Error("Failed to fetch clients");
+  }
+};
+
+export const getClientById = async (id: number) => {
+  const clientId = id;
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    const client = await database
+      .select()
+      .from(clientsTable)
+      .where(and(eq(clientsTable.id, clientId), eq(clientsTable.userId, session.user.id)))
+      .execute();
+
+    return client;
+  } catch (error) {
+    console.error(`Error fetching project id ${clientId}:`, error);
+    throw new Error("Failed to fetch project");
   }
 };
 

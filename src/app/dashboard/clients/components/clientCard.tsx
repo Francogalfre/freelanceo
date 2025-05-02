@@ -18,7 +18,7 @@ const ClientCard = ({ client }: ClientCardProps) => {
   return (
     <div
       key={client.id}
-      className="bg-gray-50 border-1 border-blue-100 p-4 rounded-lg gap-4 flex flex-col justify-between"
+      className="bg-white border-1 border-blue-100/50 p-4 rounded-lg gap-4 flex flex-col justify-between"
     >
       <div className="flex gap-3 items-center">
         <p className="bg-blue-500/20 text-blue-500 w-12 h-12 flex items-center justify-center text-xl font-semibold rounded-full">

@@ -6,7 +6,7 @@ import { projectsTable } from "@/lib/database/schemas/projects";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 interface ProjectProps {
   title: string;
@@ -63,15 +63,40 @@ export const getProjects = async () => {
   }
 
   try {
-    const clients = await database
+    const projects = await database
       .select()
       .from(projectsTable)
       .where(eq(projectsTable.userId, session.user.id))
       .execute();
 
-    return clients;
+    return projects;
   } catch (error) {
-    console.error("Error fetching clients:", error);
-    throw new Error("Failed to fetch clients");
+    console.error("Error fetching projects:", error);
+    throw new Error("Failed to fetch projects");
+  }
+};
+
+export const getProjectById = async (id: string) => {
+  const projectId = parseInt(id);
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    const project = await database
+      .select()
+      .from(projectsTable)
+      .where(and(eq(projectsTable.id, projectId), eq(projectsTable.userId, session.user.id)))
+      .execute();
+
+    return project;
+  } catch (error) {
+    console.error(`Error fetching project id ${projectId}:`, error);
+    throw new Error("Failed to fetch project");
   }
 };

@@ -19,7 +19,7 @@ export default async function RootLayout({
   return (
     <main className="flex">
       <Sidebar session={session} projects={projects} />
-      <div className="p-6 w-full">{children}</div>
+      <div className="p-6 w-full bg-gray-50/70">{children}</div>
     </main>
   );
 }

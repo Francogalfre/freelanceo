@@ -92,12 +92,12 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
         <Label className="text-md">
           Description<span className="text-red-500">*</span>
         </Label>
-        <div className="relative">
+        <div className="w-full max-w-full overflow-hidden relative">
           <Textarea
             id="description"
             name="description"
             placeholder="All the information you have about the project..."
-            className={`w-full h-24 resize-none break-words whitespace-pre-wrap`}
+            className="w-full h-24 resize-none break-words whitespace-pre-wrap"
             required
           />
         </div>

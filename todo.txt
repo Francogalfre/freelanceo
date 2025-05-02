@@ -1,12 +1,18 @@
-[ ] - Subscriptions Roles
-[ ✅ ] - Create Projects
-[ ✅ ] - Add Status for Projects
-[ ✅ ] - Create Projects Dynamic Pages
-[ ✅ ] - Login/Register Errors
-[ ] - Pagina 404
-[ ] - Sort projects and clients for createdAt, etc.
-[ ] - Errores Projects Form
-[ ] - Change Toast Alert
-[ ] - Responsive Design
-[ ] - Separe Components
-[ ] - Efecto Navbar Scroll
+--------------- Projects & Clients Page
+[ ] Finish the "Project Details" screen
+[ ] Implement "Edit Project" functionality
+[ ] Fix form validation errors in project creation
+[ ] Add To-do list for projects
+
+[ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
+
+--------------- Landing Page
+[ ] Design and implement "Pricing" section
+[ ] Create the footer
+[ ] Design and add a custom 404 error page
+[ ] Add scroll-based navbar effect (shrink/fade/sticky)
+
+--------------- General Project Tasks
+[ ] Make the app fully responsive (mobile/tablet/desktop)
+[ ] Refactor and separate components for better organization
+[ ] Rename components with clear and consistent naming conventions

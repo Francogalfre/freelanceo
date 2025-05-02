@@ -16,10 +16,10 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
   const router = useRouter();
   const pathname = usePathname();
 
-  const colors = ["blue", "purple", "red", "green", "yellow"];
+  const colors = ["bg-blue-500", "bg-emerald-500", "bg-red-500", "bg-green-500", "bg-yellow-500"];
 
   return (
-    <div className="h-screen w-72 bg-white border-r border-blue-100 p-6 flex flex-col">
+    <div className="h-screen w-72 bg-white border-r border-blue-100 p-6 flex flex-col sticky">
       <div className="flex items-center gap-3 pb-6 border-b border-blue-100">
         <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
           <span className="text-blue-600 font-medium">{session?.user?.name?.[0] || "U"}</span>
@@ -73,7 +73,7 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
                 href={`/dashboard/projects/${project.id}`}
                 className="text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-3 line-clamp-2 break-words whitespace-pre-wrap"
               >
-                <div className={`size-3 bg-${colors[index % colors.length]}-500 rounded`} />
+                <div className={`size-3 rounded ${colors[index]}`} />
                 {project.title.length > 18 ? `${project.title.slice(0, 18)}...` : project.title}
               </Link>
             </li>
