@@ -16,7 +16,7 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
   const router = useRouter();
   const pathname = usePathname();
 
-  const colors = ["bg-blue-500", "bg-emerald-500", "bg-red-500", "bg-green-500", "bg-yellow-500"];
+  const colors = ["bg-blue-500", "bg-emerald-500", "bg-red-500", "bg-purple-500", "bg-yellow-500"];
 
   return (
     <div className="h-screen w-72 bg-white border-r border-blue-100 p-6 flex flex-col sticky">

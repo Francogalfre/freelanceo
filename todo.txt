@@ -5,6 +5,7 @@
 [ ] Add To-do list for projects
 
 [ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
+[ ] Confirmation when Delete User and Project
 
 --------------- Landing Page
 [ ] Design and implement "Pricing" section

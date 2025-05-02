@@ -100,3 +100,29 @@ export const getProjectById = async (id: string) => {
     throw new Error("Failed to fetch project");
   }
 };
+
+export const deleteProject = async (id: number) => {
+  const projectId = id;
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    try {
+      await database.delete(projectsTable).where(eq(projectsTable.id, projectId)).execute();
+
+      revalidatePath("/dashboard/projects");
+    } catch (error) {
+      console.error("Error trynd to delete Client:", error);
+      throw new Error("Failed to delete client");
+    }
+  } catch (error) {
+    console.error(`Error deleting project id ${projectId}:`, error);
+    throw new Error("Failed to delete project");
+  }
+};
