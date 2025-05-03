@@ -100,7 +100,9 @@ export const getClientById = async (id: number) => {
   }
 };
 
-export const deleteClient = async (clientId: number) => {
+export const deleteClient = async (id: number) => {
+  const clientId = id;
+
   const session = await auth.api.getSession({
     headers: await headers(),
   });

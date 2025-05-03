@@ -31,7 +31,7 @@ const FeaturesSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-6 place-items-center"
         >
           {features.map((feature: Feature, index) => (
@@ -40,7 +40,7 @@ const FeaturesSection = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
+              transition={{ duration: 0.2, delay: 0.05 * index }}
               className={`flex flex-col items-center gap-4 p-6 border-2 rounded-lg hover:-translate-y-1 hover:shadow-sm transition-transform group  ${
                 feature.premiun
                   ? "bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-300"

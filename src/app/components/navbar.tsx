@@ -37,8 +37,8 @@ const Navbar = ({ session }: { session: Session | null }) => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full flex items-center transition-[border] justify-between px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
-        hasScrolled ? "border-b bg-white/10" : "border-b-0"
+      className={`fixed top-0 left-0 right-0 w-full flex items-center transition-all justify-between px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
+        hasScrolled ? "border-b bg-white/90" : "border-b-0"
       }`}
     >
       <Link href="/" className="flex items-center gap-2 ">

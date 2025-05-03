@@ -5,12 +5,13 @@
 [ ] Add To-do list for projects
 
 [ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
-[ ] Confirmation when Delete User and Project
+[ ] Confirmation when Delete a Project
+[ ] Error Delete Client with Projects
 
 --------------- Landing Page
 [ ] Design and implement "Pricing" section
-[ ] Create the footer
-[ ] Design and add a custom 404 error page
+[ ✅ ] Create the footer
+[ ✅ ] Design and add a custom 404 error page
 [ ] Add scroll-based navbar effect (shrink/fade/sticky)
 
 --------------- General Project Tasks

@@ -13,6 +13,7 @@ const CallToAction = () => {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5, delay: 0.2 }}
         className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-blue-700 p-10 text-center shadow-2xl md:p-20"
       >
