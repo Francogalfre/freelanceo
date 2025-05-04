@@ -33,8 +33,10 @@ const ClientsForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setErrors({});
 
     const formData = new FormData(event.currentTarget);
+
     const rawData = {
       name: formData.get("name") as string,
       email: formData.get("email") as string,

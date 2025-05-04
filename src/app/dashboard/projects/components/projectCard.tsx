@@ -56,7 +56,7 @@ const ProjectCard = async ({ project }: { project: Project }) => {
         </span>
         <span className="flex items-center gap-2">
           <Wallet size={20} />
-          Earnings: ${project.earnings}
+          Earnings: ${project.earnings ? project.earnings : "0"}
         </span>
       </div>
       <a

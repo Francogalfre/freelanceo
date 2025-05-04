@@ -21,7 +21,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.1,
               ease: "easeOut",
             }}
@@ -40,7 +40,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.2,
             }}
             className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tight px-2"
@@ -55,7 +55,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.3,
             }}
             className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-600 px-4"

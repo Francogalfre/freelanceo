@@ -96,7 +96,7 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
                   <Wallet className="text-gray-500" />
                   <p className="flex flex-col">
                     <span className="text-gray-500">Earnings</span>
-                    <span className="text-lg font-medium">${project.earnings}</span>
+                    <span className="text-lg font-medium">${project.earnings ? project.earnings : "0"}</span>
                   </p>
                 </div>
                 <div className="flex items-center gap-4">

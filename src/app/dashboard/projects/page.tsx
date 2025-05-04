@@ -1,6 +1,8 @@
-import { getProjects } from "./actions";
 import ProjectsDrawer from "./components/projectsDrawer";
 import ProjectsGrid from "./components/projectsGrid";
+
+import { Toaster } from "@/components/ui/sonner";
+import { getProjects } from "./actions";
 
 const ProjectsDashboardPage = async () => {
   const projects = await getProjects();
@@ -17,7 +19,7 @@ const ProjectsDashboardPage = async () => {
 
       <ProjectsGrid projects={projects} />
 
-      {/* <Toaster /> */}
+      <Toaster />
     </div>
   );
 };

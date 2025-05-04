@@ -1,7 +1,7 @@
 --------------- Projects & Clients Page
 [ ] Finish the "Project Details" screen
 [ ] Implement "Edit Project" functionality
-[ ] Fix form validation errors in project creation
+[ ✅ ] Fix form validation errors in project creation
 [ ] Add To-do list for projects
 
 [ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
@@ -15,6 +15,7 @@
 [ ] Add scroll-based navbar effect (shrink/fade/sticky)
 
 --------------- General Project Tasks
+[ ] Dashboard Home Page
 [ ] Make the app fully responsive (mobile/tablet/desktop)
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions

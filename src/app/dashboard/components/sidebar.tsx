@@ -71,7 +71,7 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
             <li key={project.id}>
               <Link
                 href={`/dashboard/projects/${project.id}`}
-                className="text-gray-600 hover:text-gray-900 transition-colors flex items-center gap-3 line-clamp-2 break-words whitespace-pre-wrap"
+                className="text-gray-600 hover:text-gray-900 hover:translate-x-1 transition-all flex items-center gap-3 line-clamp-2 break-words whitespace-pre-wrap"
               >
                 <div className={`size-3 rounded ${colors[index]}`} />
                 {project.title.length > 18 ? `${project.title.slice(0, 18)}...` : project.title}

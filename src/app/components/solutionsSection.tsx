@@ -37,7 +37,7 @@ const SolutionsSection = () => {
             className="w-full"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <h3 className="text-3xl font-semibold mb-10 text-white">Common Challenges</h3>
@@ -48,13 +48,18 @@ const SolutionsSection = () => {
                   key={challenge.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  whileHover={{ x: 5 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                 >
                   <div key={index} className="flex items-center rounded-lg bg-white/10 p-4 backdrop-blur-sm">
-                    <div className="mr-4 flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-white/20 text-white">
+                    <motion.div
+                      whileHover={{ rotate: 15 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="mr-4 flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-white/20 text-white"
+                    >
                       {challenge.icon}
-                    </div>
+                    </motion.div>
                     <div>
                       <h4 className="font-semibold text-xl text-white">{challenge.title}</h4>
                       <p className="text-blue-100">{challenge.text}</p>
@@ -79,13 +84,18 @@ const SolutionsSection = () => {
                   key={solution.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ x: 5 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                 >
                   <div key={index} className="flex items-center rounded-lg bg-white/10 p-4 backdrop-blur-sm">
-                    <div className="mr-4 flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-white/20 text-white">
+                    <motion.div
+                      whileHover={{ rotate: 15 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="mr-4 flex size-12 flex-shrink-0 items-center justify-center rounded-full bg-white/20 text-white"
+                    >
                       {solution.icon}
-                    </div>
+                    </motion.div>
                     <div>
                       <h4 className="font-semibold text-xl text-white">{solution.title}</h4>
                       <p className="text-blue-100">{solution.text}</p>

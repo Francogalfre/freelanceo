@@ -16,10 +16,16 @@ import { createProject } from "../../projects/actions";
 
 import type { Client } from "@/utils/types";
 
+import { toast } from "sonner";
+import { CheckCircle2, XCircle } from "lucide-react";
+
 const projectFormSchema = z.object({
-  title: z.string().min(3, "Title is required").max(60, "Title must be less than 60 characters"),
-  description: z.string().min(10, "Description is required").max(3000, "Description must be less than 3000 characters"),
-  deadline: z.string().optional(),
+  title: z.string().min(5, "Title must be at least 5 characters").max(60, "Title must be less than 60 characters"),
+  description: z
+    .string()
+    .min(50, "Description must be at least 50 characters")
+    .max(3000, "Description must be less than 3000 characters"),
+  deadline: z.string().min(1, "Deadline is required"),
   earnings: z.string().optional(),
   clientId: z.string().min(1, "Client is required"),
 });
@@ -50,21 +56,53 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
     const parsedData = projectFormSchema.safeParse(rawData);
 
     if (!parsedData.success) {
-      const formErrors: FormErrors = {};
-      parsedData.error.errors.forEach((err) => {
-        if (err.path[0]) {
-          formErrors[err.path[0]] = err.message;
+      const formattedErrors: FormErrors = {};
+      const errorMap = parsedData.error.flatten().fieldErrors;
+
+      Object.entries(errorMap).forEach(([key, value]) => {
+        if (value && value[0]) {
+          formattedErrors[key] = value[0];
         }
       });
-      setErrors(formErrors);
+
+      setErrors(formattedErrors);
       setIsSubmitting(false);
+
       return;
     }
 
     try {
-      await createProject(parsedData.data);
+      const result = await createProject(parsedData.data);
+
+      if (result.success) {
+        setErrors({});
+
+        toast.success("Project added successfully", {
+          description: "The project information has been saved to the database",
+          icon: <CheckCircle2 className="h-5 w-5" />,
+          duration: 4000,
+          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+        });
+      } else {
+        setErrors({ submit: result.message || "Failed to add Project. Please try again." });
+
+        toast.error("Failed to add Project", {
+          description: result.message || "There was an error saving the project information",
+          icon: <XCircle className="h-5 w-5" />,
+          duration: 4000,
+          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+        });
+      }
     } catch (error) {
       console.error("Error creating project:", error);
+      setErrors({ submit: "Failed to add Project. Please try again." });
+
+      toast.error("Failed to add Project", {
+        description: "There was an error saving the project information",
+        icon: <XCircle className="h-5 w-5" />,
+        duration: 4000,
+        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -82,9 +120,14 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
             type="text"
             name="title"
             placeholder="UI/UX Design Website Project"
-            className="h-12"
+            className={`h-12 ${errors.title ? "border-red-500" : ""}`}
             required
           />
+          {errors.title && (
+            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[300px]">
+              {errors.title}
+            </div>
+          )}
         </div>
       </div>
 
@@ -92,14 +135,21 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
         <Label className="text-md">
           Description<span className="text-red-500">*</span>
         </Label>
-        <div className="w-full max-w-full overflow-hidden relative">
+        <div className="w-full max-w-lg relative">
           <Textarea
             id="description"
             name="description"
             placeholder="All the information you have about the project..."
-            className="w-full h-24 resize-none break-words whitespace-pre-wrap"
+            className={`w-full h-24 resize-none break-words whitespace-pre-wrap ${
+              errors.description ? "border-red-500" : ""
+            }`}
             required
           />
+          {errors.description && (
+            <div className="absolute -top-4 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[300px]">
+              {errors.description}
+            </div>
+          )}
         </div>
       </div>
 
@@ -107,6 +157,11 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
         <Label className="text-md">Deadline</Label>
         <div className="relative">
           <DatePicker name="deadline" />
+          {errors.deadline && (
+            <div className="absolute -top-4 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[300px]">
+              {errors.deadline}
+            </div>
+          )}
         </div>
       </div>
 
@@ -123,8 +178,15 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
         <Label className="text-md">Earnings</Label>
         <div className="relative">
           <Input id="earnings" type="number" name="earnings" placeholder="USD $1.000" className="h-12" min={1} />
+          {errors.earnings && (
+            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[200px]">
+              {errors.earnings}
+            </div>
+          )}
         </div>
       </div>
+
+      {errors.submit && <p className="text-sm text-red-500">{errors.submit}</p>}
 
       <Button
         type="submit"
