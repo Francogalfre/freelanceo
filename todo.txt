@@ -1,12 +1,14 @@
 --------------- Projects & Clients Page
 [ ] Finish the "Project Details" screen
 [ ] Implement "Edit Project" functionality
+[ ✅ ] Add To-do list for projects
+
 [ ✅ ] Fix form validation errors in project creation
-[ ] Add To-do list for projects
 
 [ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
 [ ] Confirmation when Delete a Project
 [ ] Error Delete Client with Projects
+[ ] Show projects in the Client Card
 
 --------------- Landing Page
 [ ] Design and implement "Pricing" section

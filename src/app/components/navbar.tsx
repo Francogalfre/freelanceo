@@ -16,6 +16,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { motion } from "framer-motion";
+
 // Auth
 import { authClient } from "@/lib/auth-client";
 import type { Session } from "@/lib/auth";
@@ -36,7 +38,10 @@ const Navbar = ({ session }: { session: Session | null }) => {
   }, []);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 w-full flex items-center transition-all justify-between px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
         hasScrolled ? "border-b bg-white/90" : "border-b-0"
       }`}
@@ -47,16 +52,16 @@ const Navbar = ({ session }: { session: Session | null }) => {
       </Link>
 
       <div className="flex items-center gap-6">
-        <a href="#hero" className="transition-colors hover:text-gray-600 cursor-pointer">
+        <a href="#hero" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
           Home
         </a>
-        <a href="#features" className="transition-colors hover:text-gray-600 cursor-pointer">
+        <a href="#features" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
           Features
         </a>
-        <a href="#solutions" className="transition-colors hover:text-gray-600 cursor-pointer">
+        <a href="#solutions" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
           Solutions
         </a>
-        <a href="#pricing" className="transition-colors hover:text-gray-600 cursor-pointer">
+        <a href="#pricing" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
           Pricing
         </a>
       </div>
@@ -120,7 +125,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
           </>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

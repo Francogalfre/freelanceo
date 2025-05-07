@@ -40,6 +40,7 @@ const ClientCard = ({ client }: ClientCardProps) => {
           <MapPin className="size-4" /> {client.location ? client.location : "No location provided"}
         </p>
       </div>
+      <hr />
       <div>
         <span className="font-medium">Notes:</span>
         <p className="text-gray-600 mt-2 line-clamp-2 break-words whitespace-pre-wrap prose">

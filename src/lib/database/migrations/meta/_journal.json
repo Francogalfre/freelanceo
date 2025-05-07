@@ -8,6 +8,27 @@
       "when": 1745803251934,
       "tag": "0000_spooky_leper_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1746405209263,
+      "tag": "0001_purple_puck",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1746554977392,
+      "tag": "0002_absent_ken_ellis",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1746559154693,
+      "tag": "0003_complete_kate_bishop",
+      "breakpoints": true
     }
   ]
 }

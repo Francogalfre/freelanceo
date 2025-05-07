@@ -30,3 +30,12 @@ export type Project = {
   earnings: string | null;
   clientId: number;
 };
+
+export type Task = {
+  id: number;
+  title: string;
+  isDone: boolean;
+  createdAt: Date;
+  updateAt: Date;
+  projectId: number;
+};

@@ -19,7 +19,7 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
   const colors = ["bg-blue-500", "bg-emerald-500", "bg-red-500", "bg-purple-500", "bg-yellow-500"];
 
   return (
-    <div className="h-screen w-72 bg-white border-r border-blue-100 p-6 flex flex-col sticky">
+    <div className="h-screen w-72 bg-white border-r border-blue-100 p-6 flex flex-col fixed left-0">
       <div className="flex items-center gap-3 pb-6 border-b border-blue-100">
         <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
           <span className="text-blue-600 font-medium">{session?.user?.name?.[0] || "U"}</span>
@@ -36,7 +36,7 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
           className={`flex items-center gap-3 px-4 py-2 rounded-xl transition-all ${
             pathname === "/dashboard"
               ? "bg-blue-50 text-blue-600"
-              : "hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+              : "hover:bg-blue-50 text-gray-700 hover:text-blue-600 hover:translate-x-1"
           }`}
         >
           <Home className="w-5 h-5" />
@@ -45,9 +45,9 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
         <Link
           href="/dashboard/projects"
           className={`flex items-center gap-3 px-4 py-2 rounded-xl transition-all ${
-            pathname === "/dashboard/projects"
+            pathname.startsWith("/dashboard/projects")
               ? "bg-blue-50 text-blue-600"
-              : "hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+              : "hover:bg-blue-50 text-gray-700 hover:text-blue-600 hover:translate-x-1"
           }`}
         >
           <FolderOpen className="w-5 h-5" />
@@ -58,7 +58,7 @@ const Sidebar = ({ session, projects }: { session: Session | null; projects: Pro
           className={`flex items-center gap-3 px-4 py-2 rounded-xl transition-all ${
             pathname === "/dashboard/clients"
               ? "bg-blue-50 text-blue-600"
-              : "hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+              : "hover:bg-blue-50 text-gray-700 hover:text-blue-600 hover:translate-x-1"
           }`}
         >
           <Users className="w-5 h-5" />
