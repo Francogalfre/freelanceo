@@ -3,11 +3,15 @@ import React from "react";
 import { getProjectById } from "../actions";
 import { getClientById } from "../../clients/action";
 
-import { ChartNoAxesGantt } from "lucide-react";
+import { ChartNoAxesGantt, ArrowLeft } from "lucide-react";
 
 import ProjectDetailsCard from "./components/project-details";
 import ClientDetailsCard from "./components/client-details";
-import ProjectTasksCard from "./components/project-tasks";
+import ProjectTasksCard from "./components/tasks/project-tasks";
+import ProjectProgress from "./components/progress/project-progress";
+
+import { Toaster } from "sonner";
+import Link from "next/link";
 
 const ProjectDetails = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
@@ -30,15 +34,23 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <main className="">
+    <main>
       <header className="relative w-full mb-5 from-blue-400 to-blue-600 bg-gradient-to-br h-48 rounded-xl flex justify-between items-end p-6">
-        <div className="flex items-center gap-4">
-          <div className="flex size-12 items-center justify-center rounded-full bg-white/30">
-            <ChartNoAxesGantt className="size-6 text-white" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-white/80">Project Details</span>
-            <h2 className="text-white text-2xl font-semibold">{project.title}</h2>
+        <div className="h-full flex flex-col justify-between align-baseline">
+          <Link
+            href={"/dashboard/projects"}
+            className="flex size-10 items-center justify-center rounded-full bg-white/30"
+          >
+            <ArrowLeft className="size-4 text-white" />
+          </Link>
+          <div className="flex items-center gap-4">
+            <div className="flex size-12 items-center justify-center rounded-full bg-white/30">
+              <ChartNoAxesGantt className="size-6 text-white" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-white/80">Project Details</span>
+              <h2 className="text-white text-2xl font-semibold">{project.title}</h2>
+            </div>
           </div>
         </div>
         <div className="flex items-center gap-8">
@@ -61,8 +73,11 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
 
         <div className="col-span-1 space-y-6">
           <ClientDetailsCard client={client} />
+          <ProjectProgress project={project} />
         </div>
       </section>
+
+      <Toaster />
     </main>
   );
 };

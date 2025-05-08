@@ -34,11 +34,7 @@ const ProjectCard = async ({ project }: { project: Project }) => {
         </div>
         <span
           className={`capitalize ${
-            project.status == "progress"
-              ? "bg-yellow-400"
-              : project.status === "delivered"
-              ? "bg-blue-400"
-              : "bg-red-400"
+            project.status == "progress" ? "bg-yellow-400" : project.status === "delayed" ? "bg-red-400" : "bg-blue-400"
           }  text-white text-sm font-medium px-3 py-1 rounded-full`}
         >
           {project.status}

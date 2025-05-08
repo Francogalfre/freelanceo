@@ -4,6 +4,7 @@ import { BoxIcon, CircleUser, ClockAlert, Edit2, FileClock, Trash, Wallet } from
 import { Button } from "@/components/ui/button";
 
 import { Client, Project } from "@/utils/types";
+import ProjectDetailsButtons from "./project-details-buttons";
 
 type Props = {
   project: Project;
@@ -13,7 +14,7 @@ type Props = {
 
 const ProjectDetails = async ({ project, client, formattedDate }: Props) => {
   return (
-    <div className=" bg-white p-6 rounded-xl border-1 border-blue-100/50">
+    <div className="bg-white p-6 rounded-xl border-1 border-blue-100/50">
       <div className="pb-8">
         <h3 className="text-md text-gray-500 pb-4">Project Details:</h3>
         <div className="flex flex-col gap-4">
@@ -37,7 +38,7 @@ const ProjectDetails = async ({ project, client, formattedDate }: Props) => {
               <p className="flex flex-col">
                 <span className="text-gray-500">Status:</span>
                 <span className="text-lg font-medium">
-                  {project.status === "progress" ? "In Progress" : project.status}
+                  {{ progress: "In Progress", finished: "Finished", delayed: "You are delayed" }[project.status]}
                 </span>
               </p>
             </div>
@@ -66,16 +67,7 @@ const ProjectDetails = async ({ project, client, formattedDate }: Props) => {
         <p className="text-lg w-full break-words whitespace-pre-wrap pr-2">{project.description}</p>
       </div>
       <hr />
-      <div className="flex items-center justify-end gap-4 pt-6">
-        <Button className="bg-blue-500 hover:bg-blue-600 text-md transition-colors text-white px-4 py-6 rounded-xl cursor-pointer flex items-center gap-2">
-          <Edit2 width={18} />
-          Edit Project
-        </Button>
-        <Button className="bg-red-500 hover:bg-red-600 text-md transition-colors text-white px-4 py-6 rounded-xl cursor-pointer flex items-center gap-2">
-          <Trash width={18} />
-          Delete Project
-        </Button>
-      </div>
+      <ProjectDetailsButtons project={project} />
     </div>
   );
 };

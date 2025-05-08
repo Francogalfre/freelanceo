@@ -126,3 +126,28 @@ export const deleteProject = async (id: number) => {
     throw new Error("Failed to delete project");
   }
 };
+
+export const completeProject = async (id: number) => {
+  const projectId = id;
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  try {
+    await database
+      .update(projectsTable)
+      .set({ status: "finished" })
+      .where(and(eq(projectsTable.id, projectId), eq(projectsTable.userId, session.user.id)))
+      .execute();
+
+    revalidatePath("/dashboard/projects");
+  } catch (error) {
+    console.error("Error completing project:", error);
+    throw new Error("Failed to complete project");
+  }
+};

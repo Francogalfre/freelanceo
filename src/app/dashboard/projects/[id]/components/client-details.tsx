@@ -8,7 +8,7 @@ type Props = {
 
 const ClientDetailsCard = ({ client }: Props) => {
   return (
-    <div className="flex-1/3 bg-white p-6 rounded-xl border-1 border-blue-100/50">
+    <div className="flex-1/3 bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[640px]">
       <div className="pb-6">
         <h3 className="text-md text-gray-500 pb-4">Client Information:</h3>
         <div className="flex items-center gap-4 pb-6">

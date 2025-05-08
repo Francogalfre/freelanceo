@@ -29,6 +29,7 @@ const TasksForm = ({ projectId }: { projectId: number }) => {
 
     if (!newTask || newTask.toString().trim() === "") {
       setErrors({ task: "Task is required" });
+      setIsLoading(false);
       return;
     }
 
