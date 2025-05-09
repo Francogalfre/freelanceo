@@ -1,9 +1,9 @@
 import React from "react";
 
-import { BoxIcon, CircleUser, ClockAlert, Edit2, FileClock, Trash, Wallet } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { BoxIcon, CircleUser, ClockAlert, FileClock, Wallet } from "lucide-react";
 
 import { Client, Project } from "@/utils/types";
+
 import ProjectDetailsButtons from "./project-details-buttons";
 
 type Props = {

@@ -13,7 +13,7 @@ const ProjectProgress = async ({ project }: Props) => {
   const { tasks } = await getTasks(project.id.toString());
 
   return (
-    <div className="bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[450px]">
+    <div className="bg-white rounded-xl h-full">
       <h3 className="text-md text-gray-500 pb-2">Project Progress:</h3>
       <ProgressChart tasks={tasks} />
       <div className="flex justify-center gap-6 items-center mt-4">

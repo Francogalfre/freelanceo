@@ -16,6 +16,12 @@ interface ProjectProps {
   clientId: string;
 }
 
+interface EditProjectProps {
+  title?: string;
+  description?: string;
+  earnings?: string;
+}
+
 export const createProject = async (props: ProjectProps) => {
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -124,6 +130,37 @@ export const deleteProject = async (id: number) => {
   } catch (error) {
     console.error(`Error deleting project id ${projectId}:`, error);
     throw new Error("Failed to delete project");
+  }
+};
+
+export const editProject = async (props: EditProjectProps, id: number) => {
+  const projectId = id;
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    throw new Error("User not authenticated");
+  }
+
+  const data = {
+    title: props.title,
+    description: props.description,
+    earnings: props.earnings ? parseFloat(props.earnings) : null,
+  };
+
+  try {
+    await database
+      .update(projectsTable)
+      .set(data as any)
+      .where(eq(projectsTable.id, projectId));
+
+    revalidatePath("/dashboard/projects/" + projectId);
+    return { success: true, message: "Project created successfully" };
+  } catch (error) {
+    console.error("Error updating project:", error);
+    throw new Error("Failed to update project");
   }
 };
 

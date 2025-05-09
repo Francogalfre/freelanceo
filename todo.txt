@@ -1,6 +1,7 @@
 --------------- Projects & Clients Page
 [ ] Finish the "Project Details" screen
-[ ] Implement "Edit Project" functionality
+[ ] Redirect to /projects when delete a project
+[ ✅ ] Implement "Edit Project" functionality
 [ ✅ ] Add To-do list for projects
 
 [ ✅ ] Fix form validation errors in project creation
@@ -11,7 +12,7 @@
 [ ] Show projects in the Client Card
 
 --------------- Landing Page
-[ ] Design and implement "Pricing" section
+[ ✅ ] Design and implement "Pricing" section
 [ ✅ ] Create the footer
 [ ✅ ] Design and add a custom 404 error page
 [ ] Add scroll-based navbar effect (shrink/fade/sticky)

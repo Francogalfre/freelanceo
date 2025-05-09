@@ -8,7 +8,7 @@ type Props = {
 
 const ClientDetailsCard = ({ client }: Props) => {
   return (
-    <div className="flex-1/3 bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[640px]">
+    <div className="flex-1 bg-white rounded-xl h-full max-h-[900px]">
       <div className="pb-6">
         <h3 className="text-md text-gray-500 pb-4">Client Information:</h3>
         <div className="flex items-center gap-4 pb-6">
@@ -52,7 +52,13 @@ const ClientDetailsCard = ({ client }: Props) => {
         <div className="flex items-center gap-4 pt-6">
           <div className="w-full">
             <span className="text-md text-gray-500">About Client:</span>
-            <p className="w-full prose pt-4 text-lg">{client[0].notes}</p>
+            <p className="w-full pt-4 text-lg overflow-hidden">
+              {client?.[0]?.notes
+                ? client[0].notes.length > 300
+                  ? client[0].notes.substring(0, 300) + "..."
+                  : client[0].notes
+                : "No notes available"}
+            </p>
           </div>
         </div>
         <a

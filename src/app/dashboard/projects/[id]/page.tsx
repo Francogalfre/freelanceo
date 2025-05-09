@@ -29,6 +29,12 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
     });
   };
 
+  const now = new Date();
+  const updatedProject = {
+    ...project,
+    status: project.status === "finished" ? "finished" : new Date(project.deadline) < now ? "delayed" : project.status,
+  };
+
   if (!project) {
     return <div>Project not found</div>;
   }
@@ -39,7 +45,7 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
         <div className="h-full flex flex-col justify-between align-baseline">
           <Link
             href={"/dashboard/projects"}
-            className="flex size-10 items-center justify-center rounded-full bg-white/30"
+            className="flex size-10 items-center justify-center rounded-full bg-white/30 hover:bg-white/20 hover:scale-105 transition-all"
           >
             <ArrowLeft className="size-4 text-white" />
           </Link>
@@ -65,15 +71,20 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
         </div>
       </header>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="col-span-1 md:col-span-2">
-          <ProjectDetailsCard project={project} client={client} formattedDate={formattedDate} />
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
+        <div className="col-span-1 md:col-span-2 grid grid-rows-1 gap-6 h-full">
+          <ProjectDetailsCard project={updatedProject} client={client} formattedDate={formattedDate} />
           <ProjectTasksCard projectId={project.id} />
         </div>
 
-        <div className="col-span-1 space-y-6">
-          <ClientDetailsCard client={client} />
-          <ProjectProgress project={project} />
+        <div className="col-span-1 flex flex-col gap-6 h-full">
+          <div className="flex-1 bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[900px]">
+            <ClientDetailsCard client={client} />
+          </div>
+
+          <div className="flex-1 bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[600px]">
+            <ProjectProgress project={project} />
+          </div>
         </div>
       </section>
 

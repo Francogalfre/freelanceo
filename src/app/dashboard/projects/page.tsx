@@ -7,6 +7,16 @@ import { getProjects } from "./actions";
 const ProjectsDashboardPage = async () => {
   const projects = await getProjects();
 
+  const updatedProjects = projects.map((project) => {
+    const deadline = new Date(project.deadline);
+    const now = new Date();
+
+    return {
+      ...project,
+      status: project.status === "finished" ? "finished" : deadline < now ? "delayed" : project.status,
+    };
+  });
+
   return (
     <div className="w-full">
       <section className="w-full flex justify-between items-center mb-12">
@@ -17,7 +27,7 @@ const ProjectsDashboardPage = async () => {
         <ProjectsDrawer />
       </section>
 
-      <ProjectsGrid projects={projects} />
+      <ProjectsGrid projects={updatedProjects} />
 
       <Toaster />
     </div>
