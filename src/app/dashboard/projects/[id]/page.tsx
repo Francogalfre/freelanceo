@@ -72,7 +72,7 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
       </header>
 
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
-        <div className="col-span-1 md:col-span-2 grid grid-rows-1 gap-6 h-full">
+        <div className="col-span-1 md:col-span-2 grid grid-rows-1 h-full">
           <ProjectDetailsCard project={updatedProject} client={client} formattedDate={formattedDate} />
           <ProjectTasksCard projectId={project.id} />
         </div>

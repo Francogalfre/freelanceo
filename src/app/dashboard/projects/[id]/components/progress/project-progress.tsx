@@ -5,12 +5,22 @@ import ProgressChart from "./progress-chart";
 import type { Project } from "@/utils/types";
 import { getTasks } from "../../action";
 
+import { productivityTips } from "@/utils/tips";
+
 type Props = {
   project: Project;
 };
 
+const getRandomTip = () => {
+  const randomIndex = Math.floor(Math.random() * productivityTips.length);
+  return productivityTips[randomIndex];
+};
+
 const ProjectProgress = async ({ project }: Props) => {
   const { tasks } = await getTasks(project.id.toString());
+
+  const tip = getRandomTip();
+  const Icon = tip.icon;
 
   return (
     <div className="bg-white rounded-xl h-full">
@@ -26,6 +36,18 @@ const ProjectProgress = async ({ project }: Props) => {
           <p>Pending</p>
         </div>
       </div>
+      <hr className="my-6" />
+      {
+        <div className="flex gap-4 items-center border-1 border-gray-300 rounded-xl p-4">
+          <div>
+            <Icon className="text-blue-600" />
+          </div>
+          <div>
+            <h2 className="texte-md font-medium">{tip.title}</h2>
+            <p className="text-md font-normal text-gray-500">{tip.description}</p>
+          </div>
+        </div>
+      }
     </div>
   );
 };
