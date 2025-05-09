@@ -119,14 +119,9 @@ export const deleteProject = async (id: number) => {
   }
 
   try {
-    try {
-      await database.delete(projectsTable).where(eq(projectsTable.id, projectId)).execute();
+    await database.delete(projectsTable).where(eq(projectsTable.id, projectId)).execute();
 
-      revalidatePath("/dashboard/projects");
-    } catch (error) {
-      console.error("Error trynd to delete Client:", error);
-      throw new Error("Failed to delete client");
-    }
+    revalidatePath("/dashboard/projects/" + projectId);
   } catch (error) {
     console.error(`Error deleting project id ${projectId}:`, error);
     throw new Error("Failed to delete project");

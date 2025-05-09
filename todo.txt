@@ -1,6 +1,6 @@
 --------------- Projects & Clients Page
 [ ] Finish the "Project Details" screen
-[ ] Redirect to /projects when delete a project
+[ ✅ ] Redirect to /projects when delete a project
 [ ✅ ] Implement "Edit Project" functionality
 [ ✅ ] Add To-do list for projects
 
