@@ -1,6 +1,6 @@
 "use client";
 
-import { Label, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
+import { Pie, PieChart, Label, Cell } from "recharts";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 import { Task } from "@/utils/types";
@@ -9,33 +9,35 @@ const ProgressChart = ({ tasks }: { tasks: Task[] }) => {
   const doneCount = tasks.filter((t) => t.isDone).length;
   const percentage = tasks.length === 0 ? 0 : Math.round((doneCount / tasks.length) * 100);
 
-  const chartData = [{ status: "Completed", value: doneCount }];
+  const chartData = [
+    { status: "completed", value: doneCount },
+    { status: "pending", value: tasks.length - doneCount },
+  ];
 
   const chartConfig = {
-    Completed: {
+    completed: {
       label: "Completed Tasks",
-      color: "#3b82f6",
+      color: "#2b7fff",
+    },
+    pending: {
+      label: "Pending Tasks",
+      color: "#e5e7eb",
     },
   } satisfies ChartConfig;
 
   return (
-    <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
-      <RadialBarChart data={chartData} startAngle={0} endAngle={250} innerRadius={80} outerRadius={110}>
-        <PolarGrid
-          gridType="circle"
-          radialLines={false}
-          stroke="none"
-          className="first:fill-muted last:fill-background"
-          polarRadius={[86, 74]}
-        />
-        <RadialBar dataKey="value" background cornerRadius={10} fill="#2563eb" />
-        <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
+    <ChartContainer config={chartConfig} className="mx-auto aspect-square h-full w-full max-h-[250px]">
+      <PieChart>
+        <Pie data={chartData} dataKey="value" nameKey="status" innerRadius={60} outerRadius={80} paddingAngle={2}>
+          {chartData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={chartConfig[entry.status as keyof typeof chartConfig].color} />
+          ))}
           <Label
             content={({ viewBox }) => {
               if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                 return (
                   <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
-                    <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-4xl font-bold">
+                    <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-3xl font-bold">
                       {percentage}%
                     </tspan>
                     <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground">
@@ -46,8 +48,8 @@ const ProgressChart = ({ tasks }: { tasks: Task[] }) => {
               }
             }}
           />
-        </PolarRadiusAxis>
-      </RadialBarChart>
+        </Pie>
+      </PieChart>
     </ChartContainer>
   );
 };

@@ -39,3 +39,9 @@ export type Task = {
   updateAt: Date;
   projectId: number;
 };
+
+export type Tips = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};

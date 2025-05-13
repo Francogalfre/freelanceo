@@ -8,7 +8,7 @@ import { pricingPlans } from "@/utils/plans";
 
 const PlanSection = () => {
   return (
-    <div className="max-w-7xl mx-auto text-center relative px-4">
+    <div className="max-w-7xl mx-auto text-center relative px-4" id="pricing">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

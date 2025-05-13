@@ -132,7 +132,7 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                     setShowPassword({ password: !showPassword.password, confirmPassword: showPassword.confirmPassword })
                   }
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword.password ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
 
@@ -155,7 +155,7 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
                   }
                   tabIndex={-1}
                 >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                  {showPassword.confirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
               </div>
 

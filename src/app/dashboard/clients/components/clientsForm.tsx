@@ -16,7 +16,7 @@ import { createClient } from "../../clients/action";
 const clientFormSchema = z.object({
   name: z.string().min(3, "Full Name is required").max(60, "Name must be less than 60 characters"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().max(15, "Phone number must be less than 15 characters").optional(),
+  phone: z.string().max(20, "Phone number must be less than 20 characters").optional(),
   location: z.string().max(100, "Location must be less than 100 characters").optional(),
   company: z.string().max(30, "Company name must be less than 30 characters").optional(),
   notes: z.string().max(3000, "Notes must be less than 3000 characters").optional(),
@@ -61,6 +61,12 @@ const ClientsForm = () => {
       setErrors(formattedErrors);
       setIsSubmitting(false);
 
+      return;
+    }
+
+    if (parsedData.data.name.startsWith(" ")) {
+      setErrors({ name: "Name cannot start with a space" });
+      setIsSubmitting(false);
       return;
     }
 
@@ -116,7 +122,7 @@ const ClientsForm = () => {
             className={`h-12 ${errors.name ? "border-red-500" : ""}`}
           />
           {errors.name && (
-            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[200px]">
+            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[250px]">
               {errors.name}
             </div>
           )}

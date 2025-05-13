@@ -29,7 +29,7 @@ const SelectClient = ({ clients }: { clients: Client[] }) => {
                 id="client"
                 value={client.id.toString()}
               >
-                {client.name}
+                {client.name} <span className="text-gray-500">({client.company})</span>
               </SelectItem>
             ))
           ) : (

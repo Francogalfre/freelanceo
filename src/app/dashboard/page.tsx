@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 
 import React from "react";
 
-import WelcomeBar from "./components/welcomeBar";
+import WelcomeBar from "./components/welcomebar";
 
 const DashboardPage = async () => {
   const session = await auth.api.getSession({
