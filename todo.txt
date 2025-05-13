@@ -22,3 +22,4 @@
 [ ] Make the app fully responsive (mobile/tablet/desktop)
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
+[ ] Optimize the project Images

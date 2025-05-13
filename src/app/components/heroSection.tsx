@@ -21,11 +21,14 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 10,
               duration: 0.4,
               delay: 0.1,
               ease: "easeOut",
             }}
-            className="rounded-full border border-black/5 bg-blue-200 text-sm sm:text-md transition-all ease-in mb-6 sm:mb-8 p-1 hover:translate-y-[-1px] max-w-[90%] sm:max-w-full flex flex-wrap sm:flex-nowrap items-center justify-center"
+            className="rounded-full hover:scale-101 border border-black/5 bg-blue-200 text-sm sm:text-md transition-all ease-in mb-6 sm:mb-8 p-1 hover:translate-y-[-1px] max-w-[90%] sm:max-w-full flex flex-wrap sm:flex-nowrap items-center justify-center"
           >
             <span className="bg-white text-blue-800 rounded-full z-10 py-1 pl-2 pr-3 text-sm sm:text-base">
               📣 Announcement
@@ -71,8 +74,8 @@ const HeroSection = () => {
               duration: 0.3,
               delay: 0.4,
             }}
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            className="hover:scale-103 transition-all ease-in-out duration-300"
           >
             <Link
               href="/login"

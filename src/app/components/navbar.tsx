@@ -16,7 +16,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { motion } from "framer-motion";
+import { motion, spring } from "framer-motion";
 
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -46,10 +46,12 @@ const Navbar = ({ session }: { session: Session | null }) => {
         hasScrolled ? "border-b bg-white/90" : "border-b-0"
       }`}
     >
-      <Link href="/" className="flex items-center gap-2 ">
-        <Image src={LogoPNG} alt="Freelanceo Logo" width={40} className="bg-blue-500 rounded-lg p-1" />
-        <span>Freelanceo</span>
-      </Link>
+      <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+        <Link href="/" className="flex items-center gap-2 ">
+          <Image src={LogoPNG} alt="Freelanceo Logo" width={40} className="bg-blue-500 rounded-lg p-1" />
+          <span>Freelanceo</span>
+        </Link>
+      </motion.div>
 
       <div className="flex items-center gap-6">
         <a href="#hero" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
@@ -70,7 +72,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
         {session ? (
           <>
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex cursor-pointer items-center gap-2 px-3 py-1.5 rounded-lg border-1 border-transparent hover:border-1 hover:border-gray-300 transition-all">
+              <DropdownMenuTrigger className="flex cursor-pointer items-center gap-2 px-3 py-1.5 rounded-lg border-1 border-transparent hover:border-1 hover:border-gray-200 transition-all">
                 <span className="font-medium">{session.user.name}</span>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-56">

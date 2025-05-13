@@ -44,13 +44,15 @@ const SolutionsSection = () => {
             <div className="flex flex-col gap-12">
               {challenges.map((challenge, index) => (
                 <motion.div
-                  className="space-y-6"
+                  className="space-y-6 hover:scale-102 hover:translate-x-2 transition-transform ease-in-out duration-200"
                   key={challenge.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ x: 5 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.15 * index,
+                  }}
                 >
                   <div key={index} className="flex items-center rounded-lg bg-white/10 p-4 backdrop-blur-sm">
                     <motion.div
@@ -80,13 +82,15 @@ const SolutionsSection = () => {
             <div className="flex flex-col gap-12">
               {solutions.map((solution, index) => (
                 <motion.div
-                  className="space-y-6"
+                  className="space-y-6 hover:scale-102 hover:translate-x-2 transition-transform ease-in-out duration-200"
                   key={solution.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ x: 5 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.15 * index,
+                  }}
                 >
                   <div key={index} className="flex items-center rounded-lg bg-white/10 p-4 backdrop-blur-sm">
                     <motion.div
