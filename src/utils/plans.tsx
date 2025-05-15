@@ -13,7 +13,7 @@ export const pricingPlans = [
     price: "10",
     description:
       "Built for professionals who need unlimited access, powerful tools, and more control over their workflow.",
-    features: ["Unlimited projects", "Unlimited clients", "Priority support", "Invoices section (coming soon)"],
+    features: ["Unlimited projects", "Unlimited clients", "Priority support", "Invoices section (Coming soon)"],
     popular: true,
     active: false,
   },

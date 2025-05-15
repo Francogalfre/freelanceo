@@ -1,9 +1,13 @@
+import React from "react";
+
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import React from "react";
-import WelcomeBar from "./components/home/welcomebar";
+
 import { getProjects } from "./projects/actions";
 import { getClients } from "./clients/action";
+
+import Banner from "./components/home/banner";
+import DataCards from "./components/home/data-cards";
 
 const DashboardPage = async () => {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -38,48 +42,8 @@ const DashboardPage = async () => {
       {/* Main content */}
       <section className="col-span-4 flex flex-col gap-6">
         {/* Banner */}
-        <WelcomeBar session={session} />
-        {/* Cards resumen */}
-        <section className="w-full grid grid-cols-3 gap-6 pt-2">
-          <div className="flex flex-col px-6 py-4 border-1 border-blue-100 gap-2 rounded-xl bg-white shadow">
-            <span className="text-gray-500">Proyectos Totales</span>
-            <h1 className="text-3xl font-bold text-blue-600">{totalProjects}</h1>
-          </div>
-          <div className="flex flex-col px-6 py-4 border-1 border-blue-100 gap-2 rounded-xl bg-white shadow">
-            <span className="text-gray-500">Clientes Totales</span>
-            <h1 className="text-3xl font-bold text-blue-600">{totalClients}</h1>
-          </div>
-          <div className="flex flex-col px-6 py-4 border-1 border-blue-100 gap-2 rounded-xl bg-white shadow">
-            <span className="text-gray-500">Earnings Totales</span>
-            <h1 className="text-3xl font-bold text-blue-600">${totalEarnings.toLocaleString()}</h1>
-          </div>
-        </section>
-        {/* Gráfico de earnings */}
-        <section className="w-full bg-white rounded-xl p-6 shadow flex flex-col gap-2 items-center justify-center min-h-[250px]">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">Earnings por mes</h2>
-        </section>
-        {/* Actividad reciente */}
-        <section className="w-full bg-white rounded-xl p-6 shadow flex flex-col gap-2">
-          <h2 className="text-lg font-semibold text-gray-700 mb-2">Actividad reciente</h2>
-          <div className="flex flex-wrap gap-4">
-            <div>
-              <h3 className="font-bold text-blue-600">Últimos proyectos</h3>
-              <ul className="text-gray-600 text-sm">
-                {projects.slice(0, 3).map((p, i) => (
-                  <li key={i}>{p.title}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-blue-600">Nuevos clientes</h3>
-              <ul className="text-gray-600 text-sm">
-                {clients.slice(0, 3).map((c, i) => (
-                  <li key={i}>{c.name}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
+        <Banner />
+        <DataCards />
       </section>
 
       {/* Sidebar derecho */}

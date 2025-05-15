@@ -97,9 +97,6 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
-                <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline">
-                  Forgot your password?
-                </a>
               </div>
               <div className="flex flex-col gap-3">
                 <Button

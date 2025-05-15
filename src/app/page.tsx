@@ -1,11 +1,11 @@
 // Components
 import Navbar from "./components/navbar";
 
-import HeroSection from "./components/heroSection";
-import FeaturesSection from "./components/featuresSection";
-import SolutionsSection from "./components/solutionsSection";
-import PlanSection from "./components/planSection";
-import CallToAction from "./components/ctaBanner";
+import HeroSection from "./components/hero-section";
+import FeaturesSection from "./components/features-section";
+import SolutionsSection from "./components/solutions-section";
+import PlanSection from "./components/pricing-section";
+import CallToAction from "./components/call-to-action";
 import Footer from "./components/footer";
 
 // Auth
