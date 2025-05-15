@@ -6,13 +6,19 @@ import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { Task } from "@/utils/types";
 
 const ProgressChart = ({ tasks }: { tasks: Task[] }) => {
-  const doneCount = tasks.filter((t) => t.isDone).length;
+  const doneCount = tasks.length === 0 ? 0 : tasks.filter((t) => t.isDone).length;
   const percentage = tasks.length === 0 ? 0 : Math.round((doneCount / tasks.length) * 100);
 
-  const chartData = [
-    { status: "completed", value: doneCount },
-    { status: "pending", value: tasks.length - doneCount },
-  ];
+  const chartData =
+    tasks.length === 0
+      ? [
+          { status: "completed", value: 0 },
+          { status: "pending", value: 1 },
+        ]
+      : [
+          { status: "completed", value: doneCount },
+          { status: "pending", value: tasks.length - doneCount },
+        ];
 
   const chartConfig = {
     completed: {

@@ -39,9 +39,7 @@ const DashboardPage = async () => {
 
   return (
     <main className="grid grid-cols-6 gap-6">
-      {/* Main content */}
       <section className="col-span-4 flex flex-col gap-6">
-        {/* Banner */}
         <Banner />
         <DataCards />
       </section>

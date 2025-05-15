@@ -19,7 +19,9 @@ const EditProjectModal = ({ isLoading, project }: { isLoading: boolean; project:
     <AlertDialog>
       <AlertDialogTrigger
         disabled={isLoading}
-        className="bg-blue-500 hover:bg-blue-600 text-md transition-colors text-white px-4 py-3 rounded-xl cursor-pointer flex items-center gap-2"
+        className={`${
+          isLoading ? "cursor-none bg-blue-300 hover:bg-blue-300" : "bg-blue-500 hover:bg-blue-600"
+        }   text-md transition-colors text-white px-4 py-3 rounded-xl cursor-pointer flex items-center gap-2`}
       >
         <Edit2 width={18} />
         Edit Project
