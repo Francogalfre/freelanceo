@@ -68,14 +68,12 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
+            initial={{ opacity: 0, y: 160 }}
             animate={{ opacity: 1, y: 40 }}
             transition={{
-              duration: 0.3,
+              duration: 0.4,
               delay: 0.4,
             }}
-            whileTap={{ scale: 0.95 }}
-            className="hover:scale-103 transition-all ease-in-out duration-300"
           >
             <Link
               href="/login"

@@ -26,7 +26,6 @@ export default async function Home() {
         <FeaturesSection />
         <SolutionsSection />
         <PlanSection />
-
         <CallToAction />
         <Footer />
       </main>

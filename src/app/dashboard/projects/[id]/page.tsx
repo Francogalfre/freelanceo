@@ -11,7 +11,11 @@ import ProjectTasksCard from "./components/tasks/project-tasks";
 import ProjectProgress from "./components/progress/project-progress";
 
 import { Toaster } from "sonner";
+
+import Image from "next/image";
 import Link from "next/link";
+
+import topographic from "@/public/resources/topographic-background.png";
 
 const ProjectDetails = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
@@ -41,7 +45,7 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
 
   return (
     <main>
-      <header className="relative w-full mb-5 from-blue-400 to-blue-600 bg-gradient-to-br h-48 rounded-xl flex justify-between items-end p-6">
+      <header className="relative w-full mb-5 from-blue-400 to-blue-600 bg-gradient-to-br h-48 rounded-xl flex justify-between items-end p-6 ">
         <div className="h-full flex flex-col justify-between align-baseline">
           <Link
             href={"/dashboard/projects"}
