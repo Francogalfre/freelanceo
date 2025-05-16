@@ -5,8 +5,8 @@ import { eq, and } from "drizzle-orm";
 
 import { clientsTable } from "@/lib/database/schemas/clients";
 
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
+import { getSessionOrThrow } from "@/utils/authSession";
+
 import { revalidatePath } from "next/cache";
 
 interface ClientProps {
@@ -19,13 +19,7 @@ interface ClientProps {
 }
 
 export const createClient = async (props: ClientProps) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
+  const session = await getSessionOrThrow();
 
   const data = {
     name: props.name,
@@ -53,13 +47,7 @@ export const createClient = async (props: ClientProps) => {
 };
 
 export const getClients = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
+  const session = await getSessionOrThrow();
 
   try {
     const clients = await database
@@ -76,15 +64,8 @@ export const getClients = async () => {
 };
 
 export const getClientById = async (id: number) => {
+  const session = await getSessionOrThrow();
   const clientId = id;
-
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
 
   try {
     const client = await database
@@ -102,14 +83,6 @@ export const getClientById = async (id: number) => {
 
 export const deleteClient = async (id: number) => {
   const clientId = id;
-
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
 
   try {
     await database.delete(clientsTable).where(eq(clientsTable.id, clientId)).execute();

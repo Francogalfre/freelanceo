@@ -154,7 +154,9 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">Deadline</Label>
+        <Label className="text-md">
+          Deadline <span className="text-red-500">*</span>
+        </Label>
         <div className="relative">
           <DatePicker name="deadline" />
           {errors.deadline && (

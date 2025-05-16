@@ -1,7 +1,10 @@
 "use server";
 
 import { database } from "@/lib/database";
+
 import { projectsTable } from "@/lib/database/schemas/projects";
+
+import { getSessionOrThrow } from "@/utils/authSession";
 
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
@@ -23,13 +26,7 @@ interface EditProjectProps {
 }
 
 export const createProject = async (props: ProjectProps) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
+  const session = await getSessionOrThrow();
 
   const data = {
     title: props.title,
@@ -60,13 +57,7 @@ export const createProject = async (props: ProjectProps) => {
 };
 
 export const getProjects = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
+  const session = await getSessionOrThrow();
 
   try {
     const projects = await database
@@ -83,15 +74,8 @@ export const getProjects = async () => {
 };
 
 export const getProjectById = async (id: string) => {
+  const session = await getSessionOrThrow();
   const projectId = parseInt(id);
-
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
 
   try {
     const project = await database
@@ -110,14 +94,6 @@ export const getProjectById = async (id: string) => {
 export const deleteProject = async (id: number) => {
   const projectId = id;
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
-
   try {
     await database.delete(projectsTable).where(eq(projectsTable.id, projectId)).execute();
 
@@ -130,14 +106,6 @@ export const deleteProject = async (id: number) => {
 
 export const editProject = async (props: EditProjectProps, id: number) => {
   const projectId = id;
-
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
 
   const data = {
     title: props.title,
@@ -160,15 +128,8 @@ export const editProject = async (props: EditProjectProps, id: number) => {
 };
 
 export const completeProject = async (id: number) => {
+  const session = await getSessionOrThrow();
   const projectId = id;
-
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
 
   try {
     await database

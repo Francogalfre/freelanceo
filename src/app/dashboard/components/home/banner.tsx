@@ -15,7 +15,7 @@ const Banner = () => {
         alt="Topographic effect for background"
         width={100}
         height={100}
-        className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 opacity-7s0 brightness-150"
+        className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 opacity-70 brightness-150"
       />
 
       <div className="relative flex flex-col items-start justify-center gap-2 z-10">

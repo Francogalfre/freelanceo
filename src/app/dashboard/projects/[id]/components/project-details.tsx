@@ -48,7 +48,7 @@ const ProjectDetails = async ({ project, client, formattedDate }: Props) => {
               <Wallet className="text-gray-500" />
               <p className="flex flex-col">
                 <span className="text-gray-500">Earnings</span>
-                <span className="text-lg font-medium">${project.earnings ? project.earnings : "0"}</span>
+                <span className="text-lg font-medium">{project.earnings ? `$ ${project.earnings}` : "Free"}</span>
               </p>
             </div>
             <div className="flex items-center gap-4">

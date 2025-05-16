@@ -1,23 +1,15 @@
 "use server";
 
 import { database } from "@/lib/database";
-import { eq, and } from "drizzle-orm";
+import { eq, and, inArray } from "drizzle-orm";
 
 import { projectTaskTable } from "@/lib/database/schemas/projects";
 
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 
+import { getProjects } from "../actions";
+
 export const createTask = async (task: string, projectId: string) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
-
   try {
     await database.insert(projectTaskTable).values({
       title: task,
@@ -33,14 +25,6 @@ export const createTask = async (task: string, projectId: string) => {
 };
 
 export const getTasks = async (projectId: string) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
-
   try {
     const tasks = await database
       .select()
@@ -54,15 +38,29 @@ export const getTasks = async (projectId: string) => {
   }
 };
 
-export const updateTask = async (taskId: string, projectId: string, isDone: boolean) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+export const getAllTasks = async () => {
+  try {
+    const projects = await getProjects();
 
-  if (!session) {
-    throw new Error("User not authenticated");
+    const projectsIds = projects.map((project) => project.id);
+
+    if (projectsIds.length === 0) {
+      return { success: true, tasks: [] };
+    }
+
+    const tasks = await database
+      .select()
+      .from(projectTaskTable)
+      .where(inArray(projectTaskTable.projectId, projectsIds));
+
+    return { succes: true, tasks };
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    return { success: false, message: "Failed to fetch tasks", tasks: [] };
   }
+};
 
+export const updateTask = async (taskId: string, projectId: string, isDone: boolean) => {
   try {
     await database
       .update(projectTaskTable)
@@ -78,14 +76,6 @@ export const updateTask = async (taskId: string, projectId: string, isDone: bool
 };
 
 export const deleteTask = async (projectId: string, taskId: string) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    throw new Error("User not authenticated");
-  }
-
   try {
     await database
       .delete(projectTaskTable)
