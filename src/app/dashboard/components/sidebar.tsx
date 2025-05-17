@@ -18,7 +18,7 @@ const Sidebar = ({ projects }: { projects: Project[] }) => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const colors = ["bg-blue-500", "bg-emerald-500", "bg-red-500", "bg-purple-500", "bg-yellow-500"];
+  const colors = ["bg-blue-400", "bg-blue-500", "bg-blue-600"];
 
   return (
     <div className="h-screen w-72 bg-white border-r border-blue-100/50 p-6 flex flex-col fixed left-0">
@@ -70,7 +70,7 @@ const Sidebar = ({ projects }: { projects: Project[] }) => {
         <p className="border-t-1 text-sm border-blue-100 text-gray-500 font-light pt-4 mt-3">Projects</p>
         <h2 className="text-gray-600 text-md"> List of projects</h2>
         <ul className="flex flex-col gap-2 mt-1">
-          {projects.slice(0, 5).map((project, index) => (
+          {projects.slice(0, 3).map((project, index) => (
             <li key={project.id}>
               <Link
                 href={`/dashboard/projects/${project.id}`}

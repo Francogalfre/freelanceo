@@ -4,7 +4,7 @@ import { getAllTasks } from "@/app/dashboard/projects/[id]/action";
 
 import { Progress } from "@/components/ui/progress";
 
-import { Smile, FrownIcon, MehIcon } from "lucide-react";
+import { Smile, FrownIcon, MehIcon, Check } from "lucide-react";
 
 const Tasks = async () => {
   const { tasks } = await getAllTasks();
@@ -54,19 +54,31 @@ const Tasks = async () => {
         </div>
       </div>
 
-      <ul className="flex flex-col gap-5 pt-6 max-h-[320px] h-full overflow-y-auto">
+      <ul className="flex flex-col gap-3 pt-6 max-h-[300px] h-full">
         {tasks.length > 0 ? (
-          tasks.slice(0, 4).map((task) => (
-            <li key={task.id} className="flex items-center gap-4">
-              <input
-                type="checkbox"
-                checked={task.isDone}
-                disabled={true}
-                className="peer h-6 w-6 appearance-none disabled:cursor-default rounded-full border border-slate-300 bg-white shadow transition-all duration-300 ease-in-out checked:bg-blue-600 checked:border-blue-600 checked:ring-2 checked:ring-offset-1 checked:ring-blue-400 hover:shadow-md disabled:opacity-60"
-              />
-              <div>
-                <p className={`text-md ${task.isDone ? "text-gray-600" : ""}`}>{task.title}</p>
-                <p className="text-sm text-gray-500">{task.createdAt.toDateString()}</p>
+          tasks.slice(0, 3).map((task) => (
+            <li
+              key={task.id}
+              className={`flex items-center gap-4 p-3 rounded-lg transition-all duration-300 ${
+                task.isDone ? "bg-gray-50/50 opacity-75" : "hover:bg-gray-50"
+              }`}
+            >
+              <div
+                className={`flex items-center justify-center h-6 w-6 rounded-full border transition-all duration-300 ease-in-out ${
+                  task.isDone
+                    ? "bg-blue-600 border-blue-600"
+                    : "border-slate-300 bg-white hover:border-blue-400 hover:bg-blue-50"
+                }`}
+              >
+                {task.isDone && <Check className="h-4 w-4 text-white" />}
+              </div>
+              <div className="flex-1">
+                <p className={`text-md font-medium ${task.isDone ? "text-gray-500 line-through" : "text-gray-700"}`}>
+                  {task.title}
+                </p>
+                <p className={`text-sm ${task.isDone ? "text-gray-400" : "text-gray-500"}`}>
+                  {task.createdAt.toDateString()}
+                </p>
               </div>
             </li>
           ))
@@ -75,7 +87,6 @@ const Tasks = async () => {
             You don’t have tasks yet. <br /> Go to your projects and create one!
           </li>
         )}
-        {tasks.length > 4 ? <span className="text-gray-500 relative bottom-2">More tasks available...</span> : ""}
       </ul>
     </main>
   );
