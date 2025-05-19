@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 import Link from "next/link";
 
-import dashboardscreenshoot from "@/public/resources/DashboardScreenshoot.jpg";
+import dashboardscreenshoot from "@/public/resources/dashboard-screenshot.jpg";
 import { Safari } from "@/components/magicui/safari";
 
 const HeroSection = () => {
@@ -95,9 +95,9 @@ const HeroSection = () => {
         }}
       >
         <Safari
-          mode="simple"
-          className="relative bottom-60 max-w-7xl mx-auto w-full shadow-xm"
-          url="www.freelanceo.com"
+          mode="default"
+          className="relative bottom-60 mx-auto w-full shadow-xm rounded-xl overflow-hidden bg-cover"
+          url="www.freelanceo/dashboard.com"
           imageSrc={dashboardscreenshoot.src}
         />
       </motion.div>

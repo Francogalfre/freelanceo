@@ -13,7 +13,7 @@ const DashboardPage = async () => {
   const clients = await getClients();
 
   return (
-    <main className="grid grid-cols-6 gap-6 h-full">
+    <main className="grid grid-cols-6 gap-6 h-full overflow-y-hidden">
       <section className="col-span-4 flex flex-col gap-6">
         <Banner />
         <DataCards projects={projects} clients={clients} />

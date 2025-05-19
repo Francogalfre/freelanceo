@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { motion } from "framer-motion";
 
-import { pricingPlans } from "@/utils/plans";
+import { pricingPlans } from "@/utils/landing-page/plans";
 
 const PlanSection = () => {
   return (

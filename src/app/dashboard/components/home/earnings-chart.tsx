@@ -63,7 +63,7 @@ export function EarningsChart({ projects, clients }: Props) {
   }, [projects, clients]);
 
   return (
-    <ChartContainer className=" h-full w-full max-h-[450px] max-w[400px]" config={chartConfig}>
+    <ChartContainer className=" h-full w-full max-h-[440px] max-w[400px]" config={chartConfig}>
       <AreaChart
         data={chartData}
         margin={{

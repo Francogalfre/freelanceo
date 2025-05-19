@@ -3,7 +3,7 @@
 import React from "react";
 
 import type { Feature } from "@/utils/types";
-import { features } from "@/utils/features";
+import { features } from "@/utils/landing-page/features";
 
 import { motion } from "framer-motion";
 

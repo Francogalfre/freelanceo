@@ -9,7 +9,7 @@ const NotFoundPage = () => {
       <main className="flex flex-col text-center justify-center items-center h-screen w-full">
         <section className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-8">
           <div>
-            <Image src={notFoundImage} alt="" height={300} />
+            <Image priority src={notFoundImage} alt="Illustration of a UFO with 404 error" height={300} />
             <h3 className="text-2xl font-normal text-white bg-blue-600 py-3 rounded-full">404 Not Found</h3>
           </div>
           <div>

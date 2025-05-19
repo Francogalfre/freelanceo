@@ -97,7 +97,14 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                 </button>
+                <Link
+                  href="/forgot-password"
+                  className="w-full text-right transition-all hover:underline hover:text-gray-800 text-gray-600"
+                >
+                  Forgot your password?
+                </Link>
               </div>
+
               <div className="flex flex-col gap-3">
                 <Button
                   type="submit"

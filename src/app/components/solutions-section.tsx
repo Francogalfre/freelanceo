@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 
-import { challenges, solutions } from "@/utils/solutions";
+import { challenges, solutions } from "@/utils/landing-page/solutions";
 
 const SolutionsSection = () => {
   return (
