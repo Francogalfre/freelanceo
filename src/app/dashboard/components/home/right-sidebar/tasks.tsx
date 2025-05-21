@@ -33,7 +33,7 @@ const Tasks = async () => {
   };
 
   return (
-    <main className="min-h-[380px]">
+    <main className="min-h-[400px]">
       <h2 className="text-2xl font-semibold">
         Your Tasks <span className="text-lg font-medium text-gray-600">({tasks.length})</span>
       </h2>

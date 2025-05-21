@@ -24,7 +24,7 @@ export function EmailTemplate({ url }: { url: string }) {
             </tr>
             <tr>
               <td align="center" style="padding-bottom: 30px;">
-                <a href="${url}" target="_blank" style="background-color: #2563eb; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">
+                <a href="${url}" target="_blank" style="background-color:rgb(1, 1, 2); color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">
                   Reset Password
                 </a>
               </td>
@@ -36,6 +36,12 @@ export function EmailTemplate({ url }: { url: string }) {
                 <a href="${url}" target="_blank" style="color: #2563eb; word-break: break-all;">
                   ${url}
                 </a>
+              </td>
+            </tr>
+            <!-- Aquí agrego tu URL personalizada -->
+            <tr>
+              <td style="padding-top: 20px; font-size: 14px; color: #2563eb; text-align: center;">
+                Visit our website: <a href="https://tu-url.com" target="_blank" style="color: #2563eb; text-decoration: underline;">https://tu-url.com</a>
               </td>
             </tr>
             <tr>

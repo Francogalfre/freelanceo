@@ -10,9 +10,9 @@ export default async function RootLayout({
   const projects = await getProjects();
 
   return (
-    <main className="flex">
+    <main className="flex h-screen overflow-hidden">
       <Sidebar projects={projects} />
-      <div className="p-6 w-full min-h-screen bg-gray-100/60 ml-72">{children}</div>
+      <div className="p-6 w-full overflow-y-hidden bg-gray-100/60 ml-72">{children}</div>
     </main>
   );
 }
