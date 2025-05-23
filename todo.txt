@@ -7,7 +7,6 @@
 [ ✅ ] Fix form validation errors in project creation
 
 [ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
-[ ] Confirmation when Delete a Project
 [ ] Error Delete Client with Projects
 
 --------------- Landing Page

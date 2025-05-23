@@ -27,8 +27,8 @@ const Welcome = async () => {
       </div>
       <div className="text-center z-10">
         <div className="font-bold text-white text-2xl">{session?.user.name}</div>
-        <div className="text-gray-300 text-lg mb-4">{session?.user.email}</div>
-        <div className="text-gray-200 text-md mt-2">
+        <div className="text-gray-300 text-md lg:text-md 2xl:text-lg mb-4">{session?.user.email}</div>
+        <div className="text-gray-200 text-md mt-2 hidden xl:block">
           {greeting} {session?.user.name}!<br />
           Let's continue with your Freelance career
         </div>

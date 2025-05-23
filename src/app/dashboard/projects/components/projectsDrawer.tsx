@@ -23,17 +23,19 @@ const ProjectsDrawer = async () => {
         Create a New Project
         <Plus className="size-5" />
       </DrawerTrigger>
-      <DrawerContent className="justify-start items-start text-start h-screen max-w-full">
-        <div className="w-full py-6 px-8">
-          <DrawerHeader className="pb-2">
-            <DrawerClose>
-              <MoveLeft className="cursor-pointer" />
-            </DrawerClose>
-            <DrawerTitle className="text-3xl font-semibold pt-4">Let's Create a new Client</DrawerTitle>
-            <DrawerDescription className="text-lg">
-              Enter the details of your new Project. Click create project when you're done.
-            </DrawerDescription>
-          </DrawerHeader>
+
+      <DrawerContent className="w-full h-full sm:max-w-lg sm:h-full sm:rounded-none p-6 flex flex-col justify-start items-start text-start overflow-y-auto">
+        <DrawerHeader className="pb-2 w-full">
+          <DrawerClose>
+            <MoveLeft className="cursor-pointer" />
+          </DrawerClose>
+          <DrawerTitle className="text-xl md:text-3xl font-semibold pt-4 w-full">Let's Create a new Client</DrawerTitle>
+          <DrawerDescription className="text-md md:text-lg w-full">
+            Enter the details of your new Project. Click create project when you're done.
+          </DrawerDescription>
+        </DrawerHeader>
+
+        <div className="w-full flex-1">
           <ProjectsForm clients={clients} />
         </div>
       </DrawerContent>

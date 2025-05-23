@@ -33,7 +33,7 @@ const Tasks = async () => {
   };
 
   return (
-    <main className="min-h-[400px]">
+    <main className="min-h-[350px] w-full">
       <h2 className="text-2xl font-semibold">
         Your Tasks <span className="text-lg font-medium text-gray-600">({tasks.length})</span>
       </h2>
@@ -83,7 +83,7 @@ const Tasks = async () => {
             </li>
           ))
         ) : (
-          <li className="flex items-center justify-center w-full h-full border-1 border-gray-400 rounded-xl text-center text-gray-500 text-md px-6">
+          <li className="flex items-center justify-center w-full h-[240px] border-1 border-gray-400 rounded-xl text-center text-gray-500 text-md px-6">
             You don’t have tasks yet. <br /> Go to your projects and create one!
           </li>
         )}

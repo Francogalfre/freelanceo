@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { months } from "@/utils/months";
 import { Client, Project } from "@/utils/types";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { ChartConfig, ChartContainer, ChartTooltip } from "@/components/ui/chart";
 
 const chartConfig = {
   earnings: {
@@ -63,14 +63,13 @@ export function EarningsChart({ projects, clients }: Props) {
   }, [projects, clients]);
 
   return (
-    <ChartContainer className=" h-full w-full max-h-[440px] max-w[400px]" config={chartConfig}>
+    <ChartContainer className="max-h-[350px] w-full" config={chartConfig}>
       <AreaChart
         data={chartData}
         margin={{
           top: 10,
-          right: 30,
+          right: 20,
           left: 0,
-          bottom: 60,
         }}
       >
         <defs>
@@ -95,8 +94,8 @@ export function EarningsChart({ projects, clients }: Props) {
           tickLine={false}
           axisLine={false}
           tickMargin={10}
-          tickFormatter={(value) => value}
           tick={{ fill: "#666", fontSize: 14 }}
+          textAnchor="end"
         />
 
         <ChartTooltip

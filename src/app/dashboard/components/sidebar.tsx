@@ -21,7 +21,7 @@ const Sidebar = ({ projects }: { projects: Project[] }) => {
   const colors = ["bg-blue-400", "bg-blue-500", "bg-blue-600"];
 
   return (
-    <div className="h-screen w-72 bg-white border-r border-blue-100/50 p-6 flex flex-col fixed left-0">
+    <div className="hidden lg:flex h-screen w-72 bg-white border-r border-blue-100/50 p-6 flex-col fixed left-0">
       <div className="flex items-center gap-3 pb-6 border-b border-blue-100">
         <Image src={Logo.src} alt="Freelanceo Logo" width={42} height={42} className="bg-blue-600 rounded-xl p-1" />
         <h2 className="text-xl font-medium">

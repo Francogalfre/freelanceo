@@ -17,7 +17,7 @@ const DataCards = async ({ projects, clients }: Props) => {
   }, 0);
 
   return (
-    <section className="w--full flex justify-between gap-4">
+    <section className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-4">
       <Card text="Total Projects" value={projects.length} icon={Package} />
       <Card text="Done Projects" value={completedProjects.length} icon={PackageCheck} />
       <Card text="Total Clients" value={clients.length} icon={Users2} />

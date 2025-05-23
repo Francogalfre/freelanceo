@@ -109,8 +109,8 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
   };
 
   return (
-    <form className="max-w-full flex flex-col gap-6 pt-4" onSubmit={handleSubmit}>
-      <div className="grid gap-3 text-start">
+    <form className="w-full max-w-3xl mx-auto flex flex-col gap-6 pt-4" onSubmit={handleSubmit}>
+      <div className="grid gap-2 text-start">
         <Label className="text-md">
           Title <span className="text-red-500">*</span>
         </Label>
@@ -120,68 +120,64 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
             type="text"
             name="title"
             placeholder="UI/UX Design Website Project"
-            className={`h-12 ${errors.title ? "border-red-500" : ""}`}
+            className={`h-12 w-full ${errors.title ? "border-red-500" : ""}`}
             required
           />
           {errors.title && (
-            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[300px]">
+            <div className="absolute -bottom-6 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-md max-w-[90%] sm:max-w-[300px]">
               {errors.title}
             </div>
           )}
         </div>
       </div>
 
-      <div className="grid gap-3 text-start">
+      <div className="grid gap-2 text-start">
         <Label className="text-md">
-          Description<span className="text-red-500">*</span>
+          Description <span className="text-red-500">*</span>
         </Label>
-        <div className="w-full max-w-lg relative">
+        <div className="relative">
           <Textarea
             id="description"
             name="description"
             placeholder="All the information you have about the project..."
-            className={`w-full h-24 resize-none break-words whitespace-pre-wrap ${
-              errors.description ? "border-red-500" : ""
-            }`}
+            className={`w-full h-24 resize-none whitespace-pre-wrap ${errors.description ? "border-red-500" : ""}`}
             required
           />
           {errors.description && (
-            <div className="absolute -top-4 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[300px]">
+            <div className="absolute -bottom-6 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-md max-w-[90%] sm:max-w-[300px]">
               {errors.description}
             </div>
           )}
         </div>
       </div>
 
-      <div className="grid gap-3 text-start">
+      <div className="grid gap-2 text-start">
         <Label className="text-md">
           Deadline <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
           <DatePicker name="deadline" />
           {errors.deadline && (
-            <div className="absolute -top-4 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[300px]">
+            <div className="absolute -bottom-6 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-md max-w-[90%] sm:max-w-[300px]">
               {errors.deadline}
             </div>
           )}
         </div>
       </div>
 
-      <div className="grid gap-3 text-start">
+      <div className="grid gap-2 text-start">
         <Label className="text-md">
           Client <span className="text-red-500">*</span>
         </Label>
-        <div className="relative">
-          <SelectClient clients={clients} />
-        </div>
+        <SelectClient clients={clients} />
       </div>
 
-      <div className="grid gap-3 text-start">
+      <div className="grid gap-2 text-start">
         <Label className="text-md">Earnings</Label>
         <div className="relative">
-          <Input id="earnings" type="number" name="earnings" placeholder="USD $1.000" className="h-12" min={1} />
+          <Input id="earnings" type="number" name="earnings" placeholder="USD $1.000" className="h-12 w-full" min={1} />
           {errors.earnings && (
-            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[200px]">
+            <div className="absolute -bottom-6 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-md max-w-[90%] sm:max-w-[200px]">
               {errors.earnings}
             </div>
           )}
