@@ -12,7 +12,7 @@ const ProjectTasksCard = async ({ projectId }: { projectId: number }) => {
   const { tasks } = await getTasks(projectId.toString());
 
   return (
-    <section className="pt-6">
+    <section className="pt-6 w-full max-w-fuill overflow-x-hidden">
       <div className="flex-2/3 bg-white p-6 rounded-xl border-1 border-blue-100/50">
         <div className="pb-6">
           <h3 className="text-md text-gray-500 pb-4">Project Tasks</h3>

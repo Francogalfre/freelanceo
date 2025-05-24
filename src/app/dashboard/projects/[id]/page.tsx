@@ -44,8 +44,8 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <main>
-      <header className="relative w-full mb-5 from-blue-400 to-blue-600 bg-gradient-to-br h-48 rounded-xl flex justify-between items-end p-6 ">
+    <main className="w-full">
+      <header className="relative w-full mb-5 from-blue-400 to-blue-600 bg-gradient-to-br h-64 lg:h-48 rounded-xl flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-end p-6 ">
         <Image
           src={Topographic.src}
           alt="Topographic effect for background"
@@ -53,6 +53,7 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
           height={100}
           className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 opacity-70 brightness-150"
         />
+
         <div className="h-full flex flex-col justify-between align-baseline">
           <Link
             href={"/dashboard/projects"}
@@ -61,39 +62,40 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
             <ArrowLeft className="size-4 text-white" />
           </Link>
           <div className="flex items-center gap-4">
-            <div className="flex size-12 items-center justify-center rounded-full bg-white/30">
-              <ChartNoAxesGantt className="size-6 text-white" />
+            <div className="flex size-10 sm:size-12 items-center justify-center rounded-full bg-white/30">
+              <ChartNoAxesGantt className="size-5 sm:size-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-white/80">Project Details</span>
-              <h2 className="text-white text-2xl font-semibold">{project.title}</h2>
+              <span className="text-white/80 text-sm sm:text-base">Project Details</span>
+              <h2 className="text-white text-xl sm:text-2xl font-semibold">{project.title}</h2>
             </div>
           </div>
         </div>
+
         <div className="flex items-center gap-8">
           <div className="flex flex-col">
-            <span className="text-white/80">Created At</span>
-            <h2 className="text-white text-2xl font-semibold">{formattedDate(project.createdAt)}</h2>
+            <span className="text-white/80 text-sm sm:text-base">Created At</span>
+            <h2 className="text-white text-gl sm:text-2xl font-semibold">{formattedDate(project.createdAt)}</h2>
           </div>
           <div className="flex flex-col">
-            <span className="text-white/80">Deadline</span>
-            <h2 className="text-white text-2xl font-semibold">{formattedDate(project.deadline)}</h2>
+            <span className="text-white/80 text-sm sm:text-base">Deadline</span>
+            <h2 className="text-white text-lg sm:text-2xl font-semibold">{formattedDate(project.deadline)}</h2>
           </div>
         </div>
       </header>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 h-full">
-        <div className="col-span-1 md:col-span-2 grid grid-rows-1 h-full">
+      <section className="grid grid-cols-1 2xl:grid-cols-3 gap-6 h-full w-full overflow-x-hidden">
+        <div className="col-span-1 md:col-span-2 grid md:grid-rows-1 h-full">
           <ProjectDetailsCard project={updatedProject} client={client} formattedDate={formattedDate} />
           <ProjectTasksCard projectId={project.id} />
         </div>
 
-        <div className="col-span-1 flex flex-col gap-6 h-full">
-          <div className="flex-1 bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[900px]">
+        <div className="col-span-1 flex flex-col lg:flex-row 2xl:flex-col gap-6 h-full">
+          <div className="w-full lg:w-1/2 2xl:w-full bg-white p-6 rounded-xl border border-blue-100/50 h-full max-h-[900px]">
             <ClientDetailsCard client={client} />
           </div>
 
-          <div className="flex-1 bg-white p-6 rounded-xl border-1 border-blue-100/50 h-full max-h-[600px]">
+          <div className="w-full lg:w-1/2 2xl:w-full bg-white p-6 rounded-xl border border-blue-100/50 h-full max-h-[600px]">
             <ProjectProgress project={project} />
           </div>
         </div>

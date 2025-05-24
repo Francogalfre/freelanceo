@@ -57,7 +57,7 @@ const TasksForm = ({ projectId }: { projectId: number }) => {
           type="text"
           name="task"
           placeholder="Add a New Task..."
-          className={`h-12 px-4 rounded-md border ${errors.task ? "border-red-500" : "border-gray-300"}`}
+          className={`h-12 px-4 text-sm sm:text-md rounded-md border ${errors.task ? "border-red-500" : "border-gray-300"}`}
         />
         {errors.task && (
           <p className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-3 py-1 rounded-md break-words max-w-[200px]">
@@ -68,9 +68,9 @@ const TasksForm = ({ projectId }: { projectId: number }) => {
       <Button
         type="submit"
         disabled={isLoading}
-        className="flex items-center gap-3 bg-blue-500 text-white rounded-md text-md px-6 py-2 cursor-pointer h-12 hover:bg-blue-600 transition-colors"
+        className="flex items-center gap-3 bg-blue-500 text-white rounded-md text-sm sm:text-md px-6 py-2 cursor-pointer h-12 hover:bg-blue-600 transition-colors"
       >
-        <Plus size={14} className="size-6" />
+        <Plus size={14} className="size-5 sm:size-6" />
         Add
       </Button>
     </form>

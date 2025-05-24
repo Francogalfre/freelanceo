@@ -6,7 +6,6 @@ import z from "zod";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import SelectClient from "./SelectClient";
 
@@ -136,11 +135,13 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
           Description <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
-          <Textarea
+          <textarea
             id="description"
             name="description"
             placeholder="All the information you have about the project..."
-            className={`w-full h-24 text-sm md:text-md resize-none whitespace-pre-wrap ${errors.description ? "border-red-500" : ""}`}
+            className={`w-full min-h-[6rem] text-sm md:text-md resize-y overflow-auto border rounded-md px-3 py-2 ${
+              errors.description ? "border-red-500" : "border-gray-300"
+            }`}
             required
           />
           {errors.description && (
