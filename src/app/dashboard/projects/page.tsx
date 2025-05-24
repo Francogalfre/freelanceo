@@ -4,18 +4,15 @@ import ProjectsGrid from "./components/projectsGrid";
 import { Toaster } from "@/components/ui/sonner";
 import { getProjects } from "./actions";
 
-const ProjectsDashboardPage = async () => {
-  const projects = await getProjects();
+import Filters from "./components/filters";
 
-  const updatedProjects = projects.map((project) => {
-    const deadline = new Date(project.deadline);
-    const now = new Date();
+type Props = {
+  searchParams?: { status?: string };
+};
 
-    return {
-      ...project,
-      status: project.status === "finished" ? "finished" : deadline < now ? "delayed" : project.status,
-    };
-  });
+const ProjectsDashboardPage = async ({ searchParams }: Props) => {
+  const status = await searchParams;
+  const projects = await getProjects(status?.status);
 
   return (
     <div className="w-full">
@@ -23,11 +20,12 @@ const ProjectsDashboardPage = async () => {
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl md:text-4xl font-bold text-gray-900">Projects Dashboard</h1>
           <p className="text-gray-500 text-md md:text-lg">Manage and track all your ongoing and completed projects</p>
+          <Filters />
         </div>
         <ProjectsDrawer />
       </section>
 
-      <ProjectsGrid projects={updatedProjects} />
+      <ProjectsGrid projects={projects} />
 
       <Toaster />
     </div>

@@ -56,7 +56,7 @@ export const createProject = async (props: ProjectProps) => {
   }
 };
 
-export const getProjects = async () => {
+export const getProjects = async (status?: string) => {
   const session = await getSessionOrThrow();
 
   try {
@@ -66,7 +66,21 @@ export const getProjects = async () => {
       .where(eq(projectsTable.userId, session.user.id))
       .execute();
 
-    return projects;
+    const now = new Date();
+
+    const updatedProjects = projects.map((project) => {
+      const deadline = new Date(project.deadline);
+      return {
+        ...project,
+        status: project.status === "finished" ? "finished" : deadline < now ? "delayed" : project.status,
+      };
+    });
+
+    if (status && status !== "all") {
+      return updatedProjects.filter((project) => project.status === status);
+    }
+
+    return updatedProjects;
   } catch (error) {
     console.error("Error fetching projects:", error);
     throw new Error("Failed to fetch projects");

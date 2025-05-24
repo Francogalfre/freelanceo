@@ -8,12 +8,12 @@
 [ ✅ ] Create the footer
 [ ✅ ] Design and add a custom 404 error page
 [ ✅ ] Dashboard Home Page
+[ ✅ ] Make the app fully responsive (mobile/tablet/desktop)
 
 --------------- To Complete
 [ ] Fix Home chart
 [ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
 [ ] Error Delete Client with Projects
-[ ] Make the app fully responsive (mobile/tablet/desktop)
 [ ] Make Free and Pro version
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
