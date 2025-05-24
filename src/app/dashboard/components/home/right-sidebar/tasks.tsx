@@ -64,7 +64,7 @@ const Tasks = async () => {
               }`}
             >
               <div
-                className={`flex items-center justify-center h-6 w-6 rounded-full border transition-all duration-300 ease-in-out ${
+                className={`flex items-center justify-center peer h-5 w-5 sm:h-6 sm:w-6 rounded-full border transition-all duration-300 ease-in-out ${
                   task.isDone
                     ? "bg-blue-600 border-blue-600"
                     : "border-slate-300 bg-white hover:border-blue-400 hover:bg-blue-50"
@@ -72,8 +72,11 @@ const Tasks = async () => {
               >
                 {task.isDone && <Check className="h-4 w-4 text-white" />}
               </div>
-              <div className="flex-1">
-                <p className={`text-md font-medium ${task.isDone ? "text-gray-500 line-through" : "text-gray-700"}`}>
+
+              <div className="flex-1 min-w-0 max-w-[calc(100vw-100px)]">
+                <p
+                  className={`text-base sm:text-md font-medium break-words ${task.isDone ? "text-gray-500 line-through" : "text-gray-700"}`}
+                >
                   {task.title}
                 </p>
                 <p className={`text-sm ${task.isDone ? "text-gray-400" : "text-gray-500"}`}>

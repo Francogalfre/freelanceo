@@ -20,7 +20,7 @@ export default async function RootLayout({
 
   return (
     <main>
-      <section className="flex flex-col min-h-svh justify-center items-center h-auto">
+      <section className="flex flex-col pt-10 md:p-0 md:min-h-svh justify-center items-center h-auto">
         <Image src={LogoPNG} alt="Freelanceo Logo" className="size-16 bg-blue-500 rounded-full p-2" />
 
         {children}

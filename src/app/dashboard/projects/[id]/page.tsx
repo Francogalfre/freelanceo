@@ -44,20 +44,20 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <main className="w-full">
+    <main className="w-full pb-6">
       <header className="relative w-full mb-5 from-blue-400 to-blue-600 bg-gradient-to-br h-64 lg:h-48 rounded-xl flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-end p-6 ">
         <Image
           src={Topographic.src}
           alt="Topographic effect for background"
           width={100}
           height={100}
-          className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 opacity-70 brightness-150"
+          className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 brightness-150"
         />
 
         <div className="h-full flex flex-col justify-between align-baseline">
           <Link
             href={"/dashboard/projects"}
-            className="flex size-10 items-center justify-center rounded-full bg-white/30 hover:bg-white/20 hover:scale-105 transition-all"
+            className="flex size-10 items-center justify-center rounded-full bg-white/30 hover:bg-white/20 hover:scale-105 transition-all z-20"
           >
             <ArrowLeft className="size-4 text-white" />
           </Link>

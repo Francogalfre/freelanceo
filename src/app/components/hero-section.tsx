@@ -96,7 +96,7 @@ const HeroSection = () => {
       >
         <Safari
           mode="default"
-          className="relative bottom-60 mx-auto w-full shadow-xm rounded-xl overflow-hidden bg-cover"
+          className="relative bottom-60 max-w-screen-sm mx-auto shadow-xm rounded-xl overflow-hidden bg-cover"
           url="www.freelanceo/dashboard.com"
           imageSrc={dashboardscreenshoot.src}
         />

@@ -4,7 +4,7 @@ export const pricingPlans = [
     price: "0",
     description:
       "Perfect for freelancers who are just getting started and need a simple way to manage a few projects and clients.",
-    features: ["Up to 3 active projects", "Up to 5 clients", "Basic dashboard access"],
+    features: ["Up to 5 active projects", "Up to 6 clients", "Basic dashboard access"],
     popular: false,
     active: true,
   },

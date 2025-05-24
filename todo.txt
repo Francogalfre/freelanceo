@@ -1,25 +1,20 @@
---------------- Projects & Clients Page
+--------------- Completes
 [ ✅ ] Finish the "Project Details" screen
 [ ✅ ] Redirect to /projects when delete a project
 [ ✅ ] Implement "Edit Project" functionality
 [ ✅ ] Add To-do list for projects
-
 [ ✅ ] Fix form validation errors in project creation
-
-[ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
-[ ] Error Delete Client with Projects
-
---------------- Landing Page
 [ ✅ ] Design and implement "Pricing" section
 [ ✅ ] Create the footer
 [ ✅ ] Design and add a custom 404 error page
-[ ] Add scroll-based navbar effect (shrink/fade/sticky)
-
---------------- General Project Tasks
 [ ✅ ] Dashboard Home Page
-[ ] Fix Home chart
 
+--------------- To Complete
+[ ] Fix Home chart
+[ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
+[ ] Error Delete Client with Projects
 [ ] Make the app fully responsive (mobile/tablet/desktop)
+[ ] Make Free and Pro version
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
 [ ] Optimize the project Images

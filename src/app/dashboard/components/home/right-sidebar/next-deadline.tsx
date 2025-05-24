@@ -19,7 +19,7 @@ const NextDeadline = async () => {
         <div className="flex gap-2 sm:gap-3 w-full items-center">
           <BoxIcon className="bg-white/80 text-blue-600 p-1.5 sm:p-2 size-8 sm:size-10 rounded-full" />
           <div>
-            <h2 className="text-sm sm:text-md md:text-lg font-semibold">
+            <h2 className="text-md md:text-lg font-medium md:font-semibold">
               {nextProject?.title || "You have no Next Project"}
             </h2>
             <p className="text-sm sm:text-md xl:text-lg hidden sm:block">

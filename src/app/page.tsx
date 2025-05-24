@@ -1,5 +1,5 @@
 // Components
-import Navbar from "./components/navbar";
+import Navbar from "./components/navbar/navbar";
 
 import HeroSection from "./components/hero-section";
 import FeaturesSection from "./components/features-section";
@@ -22,7 +22,7 @@ export default async function Home() {
       <Navbar session={session} />
       <HeroSection />
 
-      <main className="min-h-screen flex flex-col items-center">
+      <main className="min-h-screen w-full overflow-x-hidden flex flex-col items-center">
         <FeaturesSection />
         <SolutionsSection />
         <PlanSection />

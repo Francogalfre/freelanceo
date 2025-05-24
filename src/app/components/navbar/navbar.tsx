@@ -5,6 +5,7 @@ import LogoPNG from "@/public/LogoPNG.png";
 
 import Link from "next/link";
 import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 
 import {
@@ -16,7 +17,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { motion, spring } from "framer-motion";
+import MobileNavbar from "./mobile-nav";
+
+import { motion } from "framer-motion";
 
 // Auth
 import { authClient } from "@/lib/auth-client";
@@ -42,18 +45,23 @@ const Navbar = ({ session }: { session: Session | null }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 right-0 w-full flex items-center transition-all justify-between px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
+      className={`fixed top-0 left-0 right-0 w-screen flex items-center transition-all justify-between px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
         hasScrolled ? "border-b bg-white/90" : "border-b-0"
       }`}
     >
       <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
         <Link href="/" className="flex items-center gap-2 ">
-          <Image src={LogoPNG} alt="Freelanceo Logo" width={40} className="bg-blue-500 rounded-lg p-1" />
-          <span>Freelanceo</span>
+          <Image
+            src={LogoPNG}
+            alt="Freelanceo Logo"
+            width={40}
+            className="bg-blue-500 size-12 lg:size-10 rounded-lg p-1"
+          />
+          <span className="hidden lg:block">Freelanceo</span>
         </Link>
       </motion.div>
 
-      <div className="flex items-center gap-6">
+      <div className="hidden lg:flex items-center gap-6">
         <a href="#hero" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
           Home
         </a>
@@ -68,7 +76,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
         </a>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="hidden lg:flex items-center gap-4">
         {session ? (
           <>
             <DropdownMenu>
@@ -114,7 +122,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
           <>
             <Link
               href="/login"
-              className="px-4 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-200 rounded-lg transition-all font-medium"
+              className="hidden md:block px-4 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-200 rounded-lg transition-all font-medium"
             >
               Log in
             </Link>
@@ -127,6 +135,8 @@ const Navbar = ({ session }: { session: Session | null }) => {
           </>
         )}
       </div>
+
+      <MobileNavbar session={session} />
     </motion.nav>
   );
 };

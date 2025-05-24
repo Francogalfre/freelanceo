@@ -19,7 +19,7 @@ const Banner = () => {
       />
 
       <div className="relative flex flex-col items-start justify-center gap-1 sm:gap-2 md:gap-3 z-10">
-        <p className="text-xs sm:text-sm md:text-base text-blue-200">Freelance Dashboard</p>
+        <p className="text-base text-blue-200">Freelance Dashboard</p>
         <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold leading-tight">
           Manage Your Projects with <br className="hidden sm:block" /> Professional Freelance Tools
         </h2>
