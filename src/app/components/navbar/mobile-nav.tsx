@@ -4,7 +4,15 @@ import { useRouter } from "next/navigation";
 import type { Session } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
 
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger, DrawerClose } from "@/components/ui/drawer";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+  DrawerClose,
+  DrawerDescription,
+} from "@/components/ui/drawer";
 import { MenuIcon, X } from "lucide-react";
 
 import Link from "next/link";
@@ -37,22 +45,35 @@ const MobileNavbar = ({ session }: { session: Session | null }) => {
               <span className="text-xl font-medium">Freelanceo</span>
             </Link>
           </DrawerTitle>
+          <DrawerDescription hidden></DrawerDescription>
           <DrawerClose>
             <X className="size-10 border-1 border-gray-300 p-2 rounded-xl" />
           </DrawerClose>
         </DrawerHeader>
 
-        <nav className="flex flex-col items-start text-xl font-normal w-full gap-6">
-          <a href="#hero" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
+        <nav className="flex flex-col items-start text-xl font-normal w-full gap-4">
+          <a
+            href="#hero"
+            className="transition-all hover:text-gray-600 hover:bg-gray-100 hover:-translate-y-0.5 cursor-pointer border-1 border-gray-100 w-full rounded-xl py-2 px-3"
+          >
             Home
           </a>
-          <a href="#features" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
+          <a
+            href="#features"
+            className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer border-1 border-gray-50 w-full rounded-xl py-2 px-3"
+          >
             Features
           </a>
-          <a href="#solutions" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
+          <a
+            href="#solutions"
+            className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer border-1 border-gray-50 w-full rounded-xl py-2 px-3"
+          >
             Solutions
           </a>
-          <a href="#pricing" className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer">
+          <a
+            href="#pricing"
+            className="transition-all hover:text-gray-600 hover:-translate-y-0.5 cursor-pointer border-1 border-gray-50 w-full rounded-xl py-2 px-3"
+          >
             Pricing
           </a>
         </nav>

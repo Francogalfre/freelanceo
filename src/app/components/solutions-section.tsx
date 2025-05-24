@@ -18,7 +18,7 @@ const SolutionsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 text-center"
+          className="text-5xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 text-center"
         >
           Better Solutions for Freelancers
         </motion.h2>
@@ -27,12 +27,12 @@ const SolutionsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-xl font-medium mb-24 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 text-center"
+          className="text-lg md:text-xl font-medium mb-24 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-200 text-center"
         >
           We understand the challenges freelancers face and have built solutions to address them
         </motion.p>
 
-        <main className="w-full flex items-center gap-12 mb-12">
+        <main className="w-full flex flex-col lg:flex-row items-center gap-12 mb-12">
           <motion.div
             className="w-full"
             initial={{ opacity: 0, x: -50 }}

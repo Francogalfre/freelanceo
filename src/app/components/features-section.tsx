@@ -22,7 +22,7 @@ const FeaturesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-6xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400"
+          className="text-5xl md:text-6xl font-bold mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400"
         >
           Features
         </motion.h2>

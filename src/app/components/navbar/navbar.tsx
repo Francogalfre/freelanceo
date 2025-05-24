@@ -45,7 +45,7 @@ const Navbar = ({ session }: { session: Session | null }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 right-0 w-screen flex items-center transition-all justify-between px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
+      className={`fixed top-0 left-0 right-0 w-screen flex items-center transition-all justify-between px-6 lg:px-16 py-5 backdrop-blur-sm bg-blue/50 z-50 ${
         hasScrolled ? "border-b bg-white/90" : "border-b-0"
       }`}
     >

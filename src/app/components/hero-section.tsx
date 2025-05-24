@@ -14,8 +14,8 @@ import { Safari } from "@/components/magicui/safari";
 
 const HeroSection = () => {
   return (
-    <>
-      <div className="bg-gradient-to-b from-blue-50 to-transparent" id="hero">
+    <section className="pb-30 sm:pb-0">
+      <div className="bg-gradient-to-b from-blue-50 to-transparent pb-10" id="hero">
         <section className="flex min-h-[calc(100vh-73px)] w-full px-4 sm:px-6 flex-col text-center items-center justify-start pt-45 -z-10 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]">
           <motion.div
             initial={{ opacity: 0 }}
@@ -30,10 +30,10 @@ const HeroSection = () => {
             }}
             className="rounded-full hover:scale-101 border border-black/5 bg-blue-200 text-sm sm:text-md transition-all ease-in mb-6 sm:mb-8 p-1 hover:translate-y-[-1px] max-w-[90%] sm:max-w-full flex flex-wrap sm:flex-nowrap items-center justify-center"
           >
-            <span className="bg-white text-blue-800 rounded-full z-10 py-1 pl-2 pr-3 text-sm sm:text-base">
+            <span className="bg-white text-blue-800 rounded-full z-10 py-1 pl-2 pr-3 text-sm lg:text-base">
               📣 Announcement
             </span>
-            <AnimatedShinyText className="inline-flex items-center justify-center px-2 sm:px-4 py-1 transition ease-out hover:text-blue-800 hover:duration-300 text-sm sm:text-base">
+            <AnimatedShinyText className="inline-flex items-center justify-center px-2 sm:px-4 py-1 transition ease-out hover:text-blue-800 hover:duration-300 text-sm lg:text-base">
               <span>Just Launched</span>
               <ArrowRight className="size-3 sm:size-4 ml-1" />
             </AnimatedShinyText>
@@ -46,7 +46,7 @@ const HeroSection = () => {
               duration: 0.4,
               delay: 0.2,
             }}
-            className="text-4xl sm:text-6xl lg:text-8xl font-bold tracking-tight px-2"
+            className="text-6xl lg:text-8xl font-bold tracking-tight px-2 w-full"
           >
             Manage Your Freelance <br className="hidden sm:block" />
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-5 text-center w-full justify-center">
@@ -61,7 +61,7 @@ const HeroSection = () => {
               duration: 0.4,
               delay: 0.3,
             }}
-            className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg text-gray-600 px-4"
+            className="mt-4 sm:mt-6 max-w-xl lg:max-w-2xl text-base lg:text-lg text-gray-600 px-4"
           >
             A smart dashboard designed to help freelancers track projects, clients, and earnings – all in one place.
             Take control of your freelance business today.
@@ -85,7 +85,6 @@ const HeroSection = () => {
         </section>
       </div>
 
-      {/* Safari Mockup */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -93,15 +92,16 @@ const HeroSection = () => {
           duration: 0.3,
           delay: 0.5,
         }}
+        className="w-full px-4 sm:px-6 lg:px-8 hidden md:block"
       >
         <Safari
           mode="default"
-          className="relative bottom-60 max-w-screen-sm mx-auto shadow-xm rounded-xl overflow-hidden bg-cover"
+          className="relative bottom-90 lg:bottom-40 xl:bottom-40 2xl:bottom-60 w-full md:max-w-3xl lg:max-w-screen-xl mx-auto shadow-xm rounded-xl overflow-hidden bg-cover"
           url="www.freelanceo/dashboard.com"
           imageSrc={dashboardscreenshoot.src}
         />
       </motion.div>
-    </>
+    </section>
   );
 };
 

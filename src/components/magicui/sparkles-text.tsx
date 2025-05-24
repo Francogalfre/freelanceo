@@ -139,7 +139,7 @@ export const SparklesText: React.FC<SparklesTextProps> = ({
         } as CSSProperties
       }
     >
-      <span className="relative bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent text-6xl sm:text-8xl font-bold tracking-tight">
+      <span className="relative bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent text-7xl lg:text-8xl font-bold tracking-tight">
         {sparkles.map((sparkle) => (
           <Sparkle key={sparkle.id} {...sparkle} />
         ))}

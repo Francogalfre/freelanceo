@@ -8,13 +8,13 @@ import { pricingPlans } from "@/utils/landing-page/plans";
 
 const PlanSection = () => {
   return (
-    <div className="w-full mx-auto text-center relative py-20" id="pricing">
+    <div className="w-full mx-auto text-center relative py-20 px-5 md:px-5" id="pricing">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-4xl md:text-6xl font-bold mb-6 text-blue-500"
+        className="text-5xl md:text-6xl font-bold mb-6 text-blue-500"
       >
         Simple, Transparent Pricing
       </motion.h2>
@@ -90,7 +90,7 @@ const PlanSection = () => {
               <button
                 className={`w-full py-3 rounded-md font-medium transition ${
                   plan.active
-                    ? "bg-blue-500 hover:bg-blue-600 focus:bg-blue-700  text-white cursor-pointer"
+                    ? "bg-blue-500 hover:bg-blue-600 focus:bg-blue-700  text-white cursor-pointer mt-3"
                     : "bg-gray-100 text-gray-500 cursor-not-allowed"
                 }`}
                 disabled={!plan.active}
