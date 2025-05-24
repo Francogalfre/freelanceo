@@ -12,18 +12,12 @@ import Illustration from "@/public/resources/IllustrationNoClients.jpg";
 type Props = Client[];
 
 const ClientsGrid = ({ clients }: { clients: Props }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-
   return (
     <section className="mx-auto">
       {clients.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
           {clients.map((client) => (
-            <ClientCard key={client.id} client={client} handleOpen={handleOpen} />
+            <ClientCard key={client.id} client={client} />
           ))}
         </div>
       ) : (

@@ -111,7 +111,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
   return (
     <form className="w-full max-w-3xl mx-auto flex flex-col gap-6 pt-4" onSubmit={handleSubmit}>
       <div className="grid gap-2 text-start">
-        <Label className="text-md">
+        <Label className="text-sm md:text-md">
           Title <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
@@ -120,7 +120,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
             type="text"
             name="title"
             placeholder="UI/UX Design Website Project"
-            className={`h-12 w-full ${errors.title ? "border-red-500" : ""}`}
+            className={`h-12 w-full text-sm md:text-md ${errors.title ? "border-red-500" : ""}`}
             required
           />
           {errors.title && (
@@ -132,7 +132,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       </div>
 
       <div className="grid gap-2 text-start">
-        <Label className="text-md">
+        <Label className="text-sm md:text-md">
           Description <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
@@ -140,7 +140,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
             id="description"
             name="description"
             placeholder="All the information you have about the project..."
-            className={`w-full h-24 resize-none whitespace-pre-wrap ${errors.description ? "border-red-500" : ""}`}
+            className={`w-full h-24 text-sm md:text-md resize-none whitespace-pre-wrap ${errors.description ? "border-red-500" : ""}`}
             required
           />
           {errors.description && (
@@ -152,7 +152,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       </div>
 
       <div className="grid gap-2 text-start">
-        <Label className="text-md">
+        <Label className="text-sm md:text-md">
           Deadline <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
@@ -166,16 +166,23 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
       </div>
 
       <div className="grid gap-2 text-start">
-        <Label className="text-md">
+        <Label className="text-sm md:text-md">
           Client <span className="text-red-500">*</span>
         </Label>
         <SelectClient clients={clients} />
       </div>
 
       <div className="grid gap-2 text-start">
-        <Label className="text-md">Earnings</Label>
+        <Label className="text-sm md:text-md">Earnings</Label>
         <div className="relative">
-          <Input id="earnings" type="number" name="earnings" placeholder="USD $1.000" className="h-12 w-full" min={1} />
+          <Input
+            id="earnings"
+            type="number"
+            name="earnings"
+            placeholder="USD $1.000"
+            className="h-12 w-full text-sm md:text-md"
+            min={1}
+          />
           {errors.earnings && (
             <div className="absolute -bottom-6 right-0 bg-red-500 text-white text-xs px-2 py-1 rounded-md max-w-[90%] sm:max-w-[200px]">
               {errors.earnings}
@@ -188,7 +195,7 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
 
       <Button
         type="submit"
-        className="h-14 text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
+        className="h-12 text-sm md:text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
         disabled={isSubmitting}
       >
         {isSubmitting ? "Adding Project..." : "Add New Project"}

@@ -110,7 +110,7 @@ const ClientsForm = () => {
   return (
     <form className="max-w-full flex flex-col gap-6 pt-4" onSubmit={handleSubmit}>
       <div className="grid gap-3 text-start">
-        <Label className="text-md">
+        <Label className="text-sm md:text-md">
           Full Name <span className="text-red-500">*</span>
         </Label>
         <div className="relative">
@@ -119,7 +119,7 @@ const ClientsForm = () => {
             type="text"
             name="name"
             placeholder="John Doe"
-            className={`h-12 ${errors.name ? "border-red-500" : ""}`}
+            className={`h-12 text-sm md:text-md ${errors.name ? "border-red-500" : ""}`}
           />
           {errors.name && (
             <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[250px]">
@@ -130,7 +130,7 @@ const ClientsForm = () => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">
+        <Label className="text-sm md:text-md">
           Email<span className="text-red-500">*</span>
         </Label>
         <div className="relative">
@@ -139,7 +139,7 @@ const ClientsForm = () => {
             type="email"
             name="email"
             placeholder="johndoe@gmail.com"
-            className={`h-12 ${errors.email ? "border-red-500" : ""}`}
+            className={`h-12 text-sm md:text-md ${errors.email ? "border-red-500" : ""}`}
           />
           {errors.email && (
             <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[200px]">
@@ -150,14 +150,14 @@ const ClientsForm = () => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">Phone Number</Label>
+        <Label className="text-sm md:text-md">Phone Number</Label>
         <div className="relative">
           <Input
             id="phone"
             type="tel"
             name="phone"
             placeholder="(342) 123 4567"
-            className={`h-12 ${errors.phone ? "border-red-500" : ""}`}
+            className={`h-12 text-sm md:text-md ${errors.phone ? "border-red-500" : ""}`}
           />
           {errors.phone && (
             <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[250px]">
@@ -168,14 +168,14 @@ const ClientsForm = () => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">Location</Label>
+        <Label className="text-sm md:text-md">Location</Label>
         <div className="relative">
           <Input
             id="location"
             type="text"
             name="location"
             placeholder="Argentina, Buenos Aires"
-            className={`h-12 ${errors.location ? "border-red-500" : ""}`}
+            className={`h-12 text-sm md:text-md ${errors.location ? "border-red-500" : ""}`}
           />
           {errors.location && (
             <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[200px]">
@@ -186,14 +186,14 @@ const ClientsForm = () => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">Company</Label>
+        <Label className="text-sm md:text-md">Company</Label>
         <div className="relative">
           <Input
             id="company"
             type="text"
             name="company"
             placeholder="Acme Inc."
-            className={`h-12 ${errors.company ? "border-red-500" : ""}`}
+            className={`h-12 text-sm md:text-md ${errors.company ? "border-red-500" : ""}`}
           />
           {errors.company && (
             <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[200px]">
@@ -204,13 +204,13 @@ const ClientsForm = () => {
       </div>
 
       <div className="grid gap-3 text-start">
-        <Label className="text-md">Notes</Label>
+        <Label className="text-sm md:text-md">Notes</Label>
         <div className="w-full max-w-full overflow-hidden relative">
           <Textarea
             id="notes"
             name="notes"
             placeholder="Additional Information about this client..."
-            className={`w-full h-24 resize-none break-words whitespace-pre-wrap ${
+            className={`w-full h-24 resize-none text-sm md:text-md break-words whitespace-pre-wrap ${
               errors.notes ? "border-red-500" : ""
             } break-words`}
           />
@@ -226,7 +226,7 @@ const ClientsForm = () => {
 
       <Button
         type="submit"
-        className="h-14 text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
+        className="h-14 text-sm md:text-md bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer"
         disabled={isSubmitting}
       >
         {isSubmitting ? "Adding Client..." : "Add New Client Information"}
