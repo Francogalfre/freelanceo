@@ -85,12 +85,20 @@ const MobileNavbar = ({ session }: { session: Session | null }) => {
                 <h2 className="text-lg">Hello {session.user.name}</h2>
                 <p className="text-md text-gray-700">{session.user.email}</p>
               </div>
-              <button
-                onClick={handleLogOut}
-                className="bg-red-500 hover:bg-red-600 transition-colors px-6 py-3 text-white rounded-xl font-medium"
-              >
-                Log Out
-              </button>
+              <div className="flex items-center gap-6">
+                <Link
+                  href="/dashboard"
+                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium shadow-sm"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={handleLogOut}
+                  className="bg-red-500 hover:bg-red-600 transition-colors px-6 py-3 text-white rounded-xl font-medium"
+                >
+                  Log Out
+                </button>
+              </div>
             </div>
           ) : (
             <div className="flex items-center">

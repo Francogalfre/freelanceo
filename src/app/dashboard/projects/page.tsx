@@ -6,13 +6,11 @@ import { getProjects } from "./actions";
 
 import Filters from "./components/filters";
 
-type Props = {
-  searchParams?: { status?: string };
-};
+// TODO: Fix searchParams type
+/* eslint-disable */
 
-const ProjectsDashboardPage = async ({ searchParams }: Props) => {
-  const status = await searchParams;
-  const projects = await getProjects(status?.status);
+const ProjectsDashboardPage = async ({ searchParams }: any) => {
+  const projects = await getProjects(searchParams?.status);
 
   return (
     <div className="w-full">

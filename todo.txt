@@ -14,6 +14,7 @@
 
 --------------- To Complete
 [ ] Error Delete Client with Projects
+[ ] Add dashboard button mobiel Navbar
 [ ] Make Free and Pro version
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions

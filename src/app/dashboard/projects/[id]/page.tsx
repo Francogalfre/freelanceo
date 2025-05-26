@@ -17,7 +17,7 @@ import Link from "next/link";
 
 import Topographic from "@/public/resources/topographic-background.png";
 
-const ProjectDetails = async ({ params }: { params: { id: string } }) => {
+const ProjectDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
 
   const projectArray = await getProjectById(id);
