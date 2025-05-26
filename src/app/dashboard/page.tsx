@@ -26,6 +26,7 @@ const DashboardPage = async () => {
               Track your earnings, projects, and client growth over time
             </p>
           </div>
+
           <EarningsChart projects={projects} clients={clients} />
         </section>
       </section>

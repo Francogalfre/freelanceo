@@ -25,7 +25,8 @@ const ProjectsGrid = ({ projects }: { projects: Project[] }) => {
             alt="Illustration of a sad person with an umbrella because it is raining"
           />
           <p className="text-gray-900 text-lg">
-            No Projects found. Click <span className="text-blue-500">"Create a New Project"</span> to get started.
+            No Projects found. Click <span className="text-blue-500">&quot;Create a New Project&quot;</span> to get
+            started.
           </p>
         </div>
       )}

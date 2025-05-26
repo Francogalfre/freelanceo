@@ -42,7 +42,7 @@ const Tasks = async () => {
         {getStatusIcon(percentage)}
         <div className="flex-1">
           <p>
-            <span className="text-2xl font-semibold">{percentage}%</span> Completed
+            <span className="text-2xl font-semibold">{percentage.toFixed(1)}%</span> Completed
           </p>
           <Progress
             className={`mt-2 h-2 rounded-full bg-gray-200 ${getProgressColorClass(

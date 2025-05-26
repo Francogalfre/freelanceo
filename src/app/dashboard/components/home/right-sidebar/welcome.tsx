@@ -30,7 +30,7 @@ const Welcome = async () => {
         <div className="text-gray-300 text-md lg:text-md 2xl:text-lg mb-4">{session?.user.email}</div>
         <div className="text-gray-200 text-md mt-2 hidden xl:block">
           {greeting} {session?.user.name}!<br />
-          Let's continue with your Freelance career
+          Let&apos;s continue with your Freelance career
         </div>
       </div>
 

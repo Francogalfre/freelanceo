@@ -32,10 +32,7 @@ export const createClient = async (props: ClientProps) => {
   };
 
   try {
-    await database
-      .insert(clientsTable)
-      .values(data as any)
-      .execute();
+    await database.insert(clientsTable).values(data).execute();
 
     revalidatePath("/dashboard/clients");
 

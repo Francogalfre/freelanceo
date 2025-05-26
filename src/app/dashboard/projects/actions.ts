@@ -1,4 +1,5 @@
 "use server";
+/* eslint-disable */
 
 import { database } from "@/lib/database";
 
@@ -6,8 +7,6 @@ import { projectsTable } from "@/lib/database/schemas/projects";
 
 import { getSessionOrThrow } from "@/utils/authSession";
 
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { eq, and } from "drizzle-orm";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
 import Image from "next/image";
 
@@ -30,7 +30,7 @@ const ClientsGrid = ({ clients }: { clients: Props }) => {
             alt="Illustration of a sad boy sitting on a bench"
           />
           <p className="text-gray-900 text-lg">
-            No Clients found. Click <span className="text-blue-500">"Add a New Client"</span> to get started.
+            No Clients found. Click <span className="text-blue-500">&quot;Add a New Client&quot;</span> to get started.
           </p>
         </div>
       )}

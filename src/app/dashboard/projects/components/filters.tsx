@@ -19,7 +19,6 @@ const Filters = () => {
     }
 
     router.push(`/dashboard/projects?${params.toString()}`);
-    3;
   };
 
   const statusOptions = [

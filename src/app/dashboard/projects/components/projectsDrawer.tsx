@@ -30,10 +30,10 @@ const ProjectsDrawer = async () => {
             <MoveLeft className="cursor-pointer" />
           </DrawerClose>
           <DrawerTitle className="text-xl md:text-3xl font-semibold pt-4 w-full">
-            Let's Create a new Project
+            Let&apos;s Create a new Project
           </DrawerTitle>
           <DrawerDescription className="text-sm md:text-lg w-full">
-            Enter the details of your new Project. Click create project when you're done.
+            Enter the details of your new Project. Click create project when you&apos;re done.
           </DrawerDescription>
         </DrawerHeader>
 

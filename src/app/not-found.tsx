@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import notFoundImage from "@/public/resources/404Illustration.jpg";
 import LogoPNG from "@/public/LogoPNG.png";
+import Link from "next/link";
 
 const NotFoundPage = () => {
   return (
@@ -21,15 +22,15 @@ const NotFoundPage = () => {
           <div>
             <p className="text-gray-500 text-lg">Here are some helpful links instead:</p>
             <div className="flex items-center justify-center gap-4 pt-2">
-              <a href="/" className="hover:underline hover:text-gray-700 transition-colors">
+              <Link href="/" className="hover:underline hover:text-gray-700 transition-colors">
                 Home
-              </a>
-              <a href="/register" className="hover:underline hover:text-gray-700 transition-colors">
+              </Link>
+              <Link href="/register" className="hover:underline hover:text-gray-700 transition-colors">
                 Register
-              </a>
-              <a href="/dashboard" className="hover:underline hover:text-gray-700 transition-colors">
+              </Link>
+              <Link href="/dashboard" className="hover:underline hover:text-gray-700 transition-colors">
                 Dashboard
-              </a>
+              </Link>
             </div>
           </div>
         </section>

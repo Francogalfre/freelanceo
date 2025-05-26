@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Link from "next/link";
@@ -31,7 +31,7 @@ export function RegisterForm({ className, ...props }: React.ComponentProps<"div"
   });
   const [error, setError] = useState<string>("");
 
-  const handleRegister = async (e: any) => {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
 
     if (credentials.password !== credentials.confirmPassword) {

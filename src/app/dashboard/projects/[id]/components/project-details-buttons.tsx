@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { Check, CheckCircle2, Edit2, Trash } from "lucide-react";
+import { Check, CheckCircle2, Trash } from "lucide-react";
 
 import { completeProject, deleteProject } from "../../actions";
 

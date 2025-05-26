@@ -25,9 +25,11 @@ const ClientDrawer = () => {
             <DrawerClose>
               <MoveLeft className="cursor-pointer" />
             </DrawerClose>
-            <DrawerTitle className="text-xl md:text-3xl font-semibold pt-4 w-full">Let's Add a new Client</DrawerTitle>
+            <DrawerTitle className="text-xl md:text-3xl font-semibold pt-4 w-full">
+              Let&apos;s Add a new Client
+            </DrawerTitle>
             <DrawerDescription className="text-md md:text-lg w-full">
-              Enter the details of your new client. Click save when you're done.
+              Enter the details of your new client. Click save when you&apos;re done.
             </DrawerDescription>
           </DrawerHeader>
           <ClientsForm />
