@@ -4,6 +4,7 @@ import { database } from "@/lib/database";
 import { eq, and } from "drizzle-orm";
 
 import { clientsTable } from "@/lib/database/schemas/clients";
+import { projectsTable } from "@/lib/database/schemas/projects";
 
 import { getSessionOrThrow } from "@/utils/authSession";
 
@@ -88,11 +89,22 @@ export const deleteClient = async (id: number) => {
   const clientId = id;
 
   try {
-    await database.delete(clientsTable).where(eq(clientsTable.id, clientId)).execute();
+    const projects = await database.select().from(projectsTable).where(eq(projectsTable.clientId, clientId)).execute();
 
-    revalidatePath("/dashboard/clients");
+    if (projects.length > 0) {
+      console.error("Cannot delete client with associated projects. Please delete the projects first.");
+      return {
+        success: false,
+        message: "Cannot delete client with associated projects. Please delete the projects first.",
+      };
+    } else {
+      await database.delete(clientsTable).where(eq(clientsTable.id, clientId)).execute();
+
+      revalidatePath("/dashboard/clients");
+      return { success: true, message: "Client deleted successfully" };
+    }
   } catch (error) {
-    console.error("Error trynd to delete Client:", error);
-    throw new Error("Failed to delete client");
+    console.error("Error trying to delete Client:", error);
+    throw error;
   }
 };

@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { Check, CheckCircle2, Trash } from "lucide-react";
+import { Check, Trash } from "lucide-react";
 
 import { completeProject, deleteProject } from "../../actions";
 
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 
 import { Project } from "@/utils/types";
 
@@ -24,21 +24,17 @@ const ProjectDetailsButtons = ({ project }: { project: Project }) => {
 
       await completeProject(project.id);
 
-      toast.success("Project marked as complete", {
-        description: "The project has been marked as complete.",
-        icon: <CheckCircle2 className="h-5 w-5" />,
+      toast.success("The project has been marked as complete.", {
         duration: 4000,
-        style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+        style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
       });
 
       setIsLoading(false);
     } catch (error) {
       console.error("Error marking project as complete:", error);
       toast.error("Failed to mark project as complete", {
-        description: "There was an error marking the project as complete.",
-        icon: <CheckCircle2 className="h-5 w-5" />,
         duration: 4000,
-        style: { backgroundColor: "#ef4444", border: "1px solid #ef4444", color: "white" },
+        style: { backgroundColor: "#ef4444", border: "1px solid #ef4444", color: "white", borderRadius: "12px" },
       });
     }
   };
@@ -49,21 +45,17 @@ const ProjectDetailsButtons = ({ project }: { project: Project }) => {
 
       await deleteProject(project.id);
 
-      toast.success("Project deleted successfully", {
-        description: "The project has been deleted.",
-        icon: <CheckCircle2 className="h-5 w-5" />,
+      toast.success("The project has been deleted successfully", {
         duration: 4000,
-        style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+        style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
       });
 
       router.push("/dashboard/projects");
     } catch (error) {
       console.error("Error deleting project:", error);
       toast.error("Failed to delete project", {
-        description: "There was an error deleting the project.",
-        icon: <CheckCircle2 className="h-5 w-5" />,
         duration: 4000,
-        style: { backgroundColor: "#ef4444", border: "1px solid #ef4444", color: "white" },
+        style: { backgroundColor: "#ef4444", border: "1px solid #ef4444", color: "white", borderRadius: "12px" },
       });
     } finally {
       setIsLoading(false);

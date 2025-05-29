@@ -18,6 +18,7 @@ export const createTask = async (task: string, projectId: string) => {
     });
 
     revalidatePath("/dashboard/projects/" + projectId);
+    return { success: true, message: "Task created succesfully" };
   } catch (error) {
     console.error("Error creating task:", error);
     return { success: false, message: "Failed to create task" };

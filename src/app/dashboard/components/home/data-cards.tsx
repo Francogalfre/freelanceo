@@ -12,7 +12,7 @@ type Props = {
 
 const DataCards = async ({ projects, clients }: Props) => {
   const completedProjects = projects.filter((project) => project.status == "finished");
-  const totalEarnings = projects.reduce((sum, project) => {
+  const totalEarnings = completedProjects.reduce((sum, project) => {
     return sum + (Number(project.earnings) || 0);
   }, 0);
 

@@ -8,9 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Project } from "@/utils/types";
 
 import { z } from "zod";
-import { toast } from "sonner";
+import toast from "react-hot-toast";
 
-import { CheckCircle2, XCircle } from "lucide-react";
 import { editProject } from "../../actions";
 
 const projectFormSchema = z.object({
@@ -68,30 +67,24 @@ const EditProjectForm = ({ project }: { project: Project }) => {
         setErrors({});
 
         toast.success("Project added successfully", {
-          description: "The project information has been saved to the database",
-          icon: <CheckCircle2 className="h-5 w-5" />,
           duration: 4000,
-          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
         });
       } else {
         setErrors({ submit: result.message || "Failed to add Project. Please try again." });
 
-        toast.error("Failed to add Project", {
-          description: result.message || "There was an error saving the project information",
-          icon: <XCircle className="h-5 w-5" />,
+        toast.error(result.message, {
           duration: 4000,
-          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
         });
       }
     } catch (error) {
       console.error("Error creating project:", error);
       setErrors({ submit: "Failed to add Project. Please try again." });
 
-      toast.error("Failed to add Project", {
-        description: "There was an error saving the project information",
-        icon: <XCircle className="h-5 w-5" />,
+      toast.error("There was an error saving the project", {
         duration: 4000,
-        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
       });
     } finally {
       setIsSubmitting(false);

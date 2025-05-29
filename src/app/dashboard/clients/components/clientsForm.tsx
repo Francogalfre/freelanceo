@@ -6,8 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-import { toast } from "sonner";
-import { CheckCircle2, XCircle } from "lucide-react";
+import toast from "react-hot-toast";
 
 import { z } from "zod";
 
@@ -77,30 +76,24 @@ const ClientsForm = () => {
         setErrors({});
 
         toast.success("Client added successfully", {
-          description: "The client information has been saved to the database",
-          icon: <CheckCircle2 className="h-5 w-5" />,
           duration: 4000,
-          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
         });
       } else {
         setErrors({ submit: result.message || "Failed to add client. Please try again." });
 
-        toast.error("Failed to add client", {
-          description: result.message || "There was an error saving the client information",
-          icon: <XCircle className="h-5 w-5" />,
+        toast.error(result.message, {
           duration: 4000,
-          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
         });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       setErrors({ submit: "Failed to add client. Please try again." });
 
-      toast.error("Failed to add client", {
-        description: "There was an error saving the client information",
-        icon: <XCircle className="h-5 w-5" />,
+      toast.error("There was an eror saving the client", {
         duration: 4000,
-        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
       });
     } finally {
       setIsSubmitting(false);

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-import { Mail, Phone, MapPin, Trash, X, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Trash, X, Send } from "lucide-react";
 
 import {
   AlertDialog,
   AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -15,7 +16,8 @@ import { Button } from "@/components/ui/button";
 import type { Client } from "@/utils/types";
 
 import { deleteClient } from "../action";
-import { toast } from "sonner";
+
+import toast from "react-hot-toast";
 
 type Props = {
   isOpen: boolean;
@@ -29,18 +31,28 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
   const handleDelete = async (id: number) => {
     try {
       setIsDeleting(true);
-      await deleteClient(id);
-      setIsOpen(false);
+      const result = await deleteClient(id);
+
+      if (result.success) {
+        setIsOpen(false);
+        toast.success("Client deleted successfully", {
+          duration: 4000,
+          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
+        });
+      } else {
+        toast.error(result.message, {
+          duration: 4000,
+          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
+        });
+      }
     } catch (error) {
       console.error("Error deleting client:", error);
+      toast.error("Error deleting client", {
+        duration: 4000,
+        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
+      });
     } finally {
       setIsDeleting(false);
-      toast.success("Client deleted successfully", {
-        description: "The client has been deleted successfully.",
-        icon: <CheckCircle2 className="h-5 w-5" />,
-        duration: 4000,
-        style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
-      });
     }
   };
 
@@ -60,6 +72,9 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
                 </p>
               </div>
             </AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-500 self-start mt-2 text-base">
+              Here you can view all the information about your client, including contact details and notes.
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogCancel className="border-none shadow-none hover:bg-transparent flex justify-end items-center">
             <p className="cursor-pointer">
@@ -76,10 +91,10 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
                 <Mail className="size-5" /> {client.email}
               </p>
               <p className="flex items-center gap-2 text-base sm:text-lg break-words">
-                <Phone className="size-5" /> {client.phone ?? "No phone number provided"}
+                <Phone className="size-5" /> {client.phone ? client.phone : "No phone number provided"}
               </p>
               <p className="flex items-center gap-2 text-base sm:text-lg break-words">
-                <MapPin className="size-5" /> {client.location ?? "No location provided"}
+                <MapPin className="size-5" /> {client.location ? client.location : "No location provided"}
               </p>
             </div>
           </div>

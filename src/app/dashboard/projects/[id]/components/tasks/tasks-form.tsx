@@ -16,30 +16,28 @@ type FormErrors = {
 const TasksForm = ({ projectId }: { projectId: number }) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [taskInput, setTaskInput] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrors({});
     setIsLoading(true);
 
-    const formData = new FormData(event.currentTarget);
-
-    const newTask = formData.get("task");
-    const taskProjectId = projectId.toString();
-
-    if (!newTask || newTask.toString().trim() === "") {
+    if (!taskInput || taskInput.trim() === "") {
       setErrors({ task: "Task is required" });
       setIsLoading(false);
       return;
     }
 
     try {
-      const result = await createTask(newTask as string, taskProjectId);
+      const result = await createTask(taskInput, projectId.toString());
       setIsLoading(false);
+
+      console.log(result);
 
       if (result?.success) {
         setErrors({});
-        event.currentTarget.reset();
+        setTaskInput("");
       } else {
         setErrors({ submit: result?.message || "Failed to add task. Please try again." });
       }
@@ -56,6 +54,8 @@ const TasksForm = ({ projectId }: { projectId: number }) => {
           id="task"
           type="text"
           name="task"
+          value={taskInput}
+          onChange={(e) => setTaskInput(e.target.value)}
           placeholder="Add a New Task..."
           className={`h-12 px-4 text-sm sm:text-md rounded-md border ${errors.task ? "border-red-500" : "border-gray-300"}`}
         />

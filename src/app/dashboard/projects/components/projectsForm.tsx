@@ -15,8 +15,7 @@ import { createProject } from "../../projects/actions";
 
 import type { Client } from "@/utils/types";
 
-import { toast } from "sonner";
-import { CheckCircle2, XCircle } from "lucide-react";
+import toast from "react-hot-toast";
 
 const projectFormSchema = z.object({
   title: z.string().min(5, "Title must be at least 5 characters").max(60, "Title must be less than 60 characters"),
@@ -77,30 +76,24 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
         setErrors({});
 
         toast.success("Project added successfully", {
-          description: "The project information has been saved to the database",
-          icon: <CheckCircle2 className="h-5 w-5" />,
           duration: 4000,
-          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white" },
+          style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
         });
       } else {
         setErrors({ submit: result.message || "Failed to add Project. Please try again." });
 
-        toast.error("Failed to add Project", {
-          description: result.message || "There was an error saving the project information",
-          icon: <XCircle className="h-5 w-5" />,
+        toast.error("There was an error saving the project", {
           duration: 4000,
-          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+          style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
         });
       }
     } catch (error) {
       console.error("Error creating project:", error);
       setErrors({ submit: "Failed to add Project. Please try again." });
 
-      toast.error("Failed to add Project", {
-        description: "There was an error saving the project information",
-        icon: <XCircle className="h-5 w-5" />,
+      toast.error("There was an error saving the project information", {
         duration: 4000,
-        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white" },
+        style: { backgroundColor: "#ff0301", border: "1px solid red", color: "white", borderRadius: "12px" },
       });
     } finally {
       setIsSubmitting(false);

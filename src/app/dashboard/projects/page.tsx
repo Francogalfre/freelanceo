@@ -1,7 +1,6 @@
 import ProjectsDrawer from "./components/projectsDrawer";
 import ProjectsGrid from "./components/projectsGrid";
 
-import { Toaster } from "@/components/ui/sonner";
 import { getProjects } from "./actions";
 
 import Filters from "./components/filters";
@@ -24,8 +23,6 @@ const ProjectsDashboardPage = async ({ searchParams }: any) => {
       </section>
 
       <ProjectsGrid projects={projects} />
-
-      <Toaster />
     </div>
   );
 };

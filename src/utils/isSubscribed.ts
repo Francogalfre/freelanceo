@@ -16,7 +16,7 @@ export const reachedMaxProjects = async (userId: string) => {
     try {
       const projects = await database.select().from(projectsTable).where(eq(projectsTable.userId, userId)).execute();
 
-      return projects.length == 5;
+      return projects.length === 5;
     } catch (error) {
       console.error("Error checking projects limit:", error);
       throw new Error("Failed to check projects limit");
@@ -32,7 +32,7 @@ export const reachedMaxClients = async (userId: string) => {
     try {
       const clients = await database.select().from(clientsTable).where(eq(clientsTable.userId, userId)).execute();
 
-      return clients.length == 6;
+      return clients.length === 6;
     } catch (error) {
       console.error("Error checking clients limit:", error);
       throw new Error("Failed to check clients limit");

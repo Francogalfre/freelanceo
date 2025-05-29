@@ -10,8 +10,6 @@ import ClientDetailsCard from "./components/client-details";
 import ProjectTasksCard from "./components/tasks/project-tasks";
 import ProjectProgress from "./components/progress/project-progress";
 
-import { Toaster } from "sonner";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -100,8 +98,6 @@ const ProjectDetails = async ({ params }: { params: Promise<{ id: string }> }) =
           </div>
         </div>
       </section>
-
-      <Toaster />
     </main>
   );
 };

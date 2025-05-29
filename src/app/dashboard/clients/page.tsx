@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Toaster } from "@/components/ui/sonner";
-
 import { getClients } from "./action";
 
 import ClientsGrid from "./components/clientsGrid";
@@ -21,8 +19,6 @@ const ClientsDashboardPage = async () => {
       </section>
 
       <ClientsGrid clients={clients} />
-
-      <Toaster />
     </div>
   );
 };
