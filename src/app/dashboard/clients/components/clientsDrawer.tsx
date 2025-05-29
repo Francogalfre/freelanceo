@@ -12,13 +12,31 @@ import ClientsForm from "./clientsForm";
 
 import { MoveLeft, Plus } from "lucide-react";
 
-const ClientDrawer = () => {
+import { getSessionOrThrow } from "@/utils/authSession";
+import { reachedMaxProjects } from "@/utils/isSubscribed";
+
+const ClientDrawer = async () => {
+  const user = await getSessionOrThrow();
+
+  const hasReachedMaxProjects = await reachedMaxProjects(user.user.id);
+
   return (
     <Drawer direction="left">
-      <DrawerTrigger className="text-sm md:text-md py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg">
-        Add a New Client
-        <Plus className="size-5" />
-      </DrawerTrigger>
+      <div className="flex flex-col items-center">
+        <DrawerTrigger
+          disabled={hasReachedMaxProjects}
+          className={`text-sm md:text-md py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg w-fit self-start md:self-end
+            ${hasReachedMaxProjects ? "cursor-not-allowed opacity-50 hover:cursor-not-allowed" : ""}`}
+        >
+          Add a new Client
+          <Plus className="size-5" />
+        </DrawerTrigger>
+        {hasReachedMaxProjects && (
+          <div className="text-red-500 text-sm md:text-md pt-4 transition-colors cursor-not-allowed flex gap-2 items-center rounded-lg self-end">
+            You have reached the maximum number of clients allowed.
+          </div>
+        )}
+      </div>
       <DrawerContent className="w-full h-full sm:max-w-lg sm:h-full sm:rounded-none flex flex-col justify-start items-start text-start overflow-y-auto">
         <div className="w-full py-6 px-6">
           <DrawerHeader className="pb-2">

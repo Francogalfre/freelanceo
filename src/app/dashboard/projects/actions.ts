@@ -10,6 +10,8 @@ import { getSessionOrThrow } from "@/utils/authSession";
 import { revalidatePath } from "next/cache";
 import { eq, and } from "drizzle-orm";
 
+import { reachedMaxProjects } from "@/utils/isSubscribed";
+
 interface ProjectProps {
   title: string;
   description: string;
@@ -26,6 +28,11 @@ interface EditProjectProps {
 
 export const createProject = async (props: ProjectProps) => {
   const session = await getSessionOrThrow();
+  const hasReachedMaxProjects = await reachedMaxProjects(session.user.id);
+
+  if (hasReachedMaxProjects) {
+    throw new Error("You have reached the maximum number of projects allowed.");
+  }
 
   const data = {
     title: props.title,

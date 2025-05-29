@@ -8,6 +8,7 @@ import { clientsTable } from "@/lib/database/schemas/clients";
 import { getSessionOrThrow } from "@/utils/authSession";
 
 import { revalidatePath } from "next/cache";
+import { reachedMaxProjects } from "@/utils/isSubscribed";
 
 interface ClientProps {
   name: string;
@@ -20,6 +21,11 @@ interface ClientProps {
 
 export const createClient = async (props: ClientProps) => {
   const session = await getSessionOrThrow();
+  const hasReachedMaxClients = await reachedMaxProjects(session.user.id);
+
+  if (hasReachedMaxClients) {
+    throw new Error("You have reached the maximum number of clients allowed.");
+  }
 
   const data = {
     name: props.name,

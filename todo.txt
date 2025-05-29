@@ -11,11 +11,14 @@
 [ ✅ ] Make the app fully responsive (mobile/tablet/desktop)
 [ ✅ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
 [ ✅ ] Fix Home chart
+[ ✅ ] Add dashboard button mobile Navbar
 
 --------------- To Complete
-[ ] Error Delete Client with Projects
-[ ] Add dashboard button mobiel Navbar
 [ ] Make Free and Pro version
+[ ] Error Delete Client with Projects
+[ ] Clear input tasks
+[ ] Show earnings when the project is complete
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
 [ ] Optimize the project Images
+[ ] Improve SEO

@@ -23,7 +23,7 @@ const ProjectDetails = async ({ params }: { params: Promise<{ id: string }> }) =
   const projectArray = await getProjectById(id);
 
   const project = projectArray[0];
-  const client = await getClientById(project.clientId);
+  const client = await getClientById(project?.clientId);
 
   const formattedDate = (date: Date) => {
     return new Date(date).toLocaleDateString("en-US", {
