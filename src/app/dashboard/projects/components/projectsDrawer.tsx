@@ -1,3 +1,8 @@
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import {
   Drawer,
   DrawerClose,
@@ -12,19 +17,24 @@ import { MoveLeft, Plus } from "lucide-react";
 
 import ProjectsForm from "./projectsForm";
 
-import { getClients } from "../../clients/action";
+import { Client } from "@/utils/types";
 
-import { reachedMaxProjects } from "@/utils/isSubscribed";
-import { getSessionOrThrow } from "@/utils/authSession";
+type Props = {
+  clients: Client[];
+  hasReachedMaxProjects: boolean;
+};
 
-const ProjectsDrawer = async () => {
-  const clients = await getClients();
-  const user = await getSessionOrThrow();
+const ProjectsDrawer = ({ clients, hasReachedMaxProjects }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
-  const hasReachedMaxProjects = await reachedMaxProjects(user.user.id);
+  const handleDrawerClose = () => {
+    setIsOpen(false);
+    router.refresh();
+  };
 
   return (
-    <Drawer direction="left">
+    <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>
       <div className="flex flex-col items-start justify-end">
         <DrawerTrigger
           disabled={hasReachedMaxProjects}
@@ -55,7 +65,7 @@ const ProjectsDrawer = async () => {
         </DrawerHeader>
 
         <div className="w-full flex-1">
-          <ProjectsForm clients={clients} />
+          <ProjectsForm clients={clients} handleDrawerClose={handleDrawerClose} />
         </div>
       </DrawerContent>
     </Drawer>

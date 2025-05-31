@@ -4,12 +4,19 @@ import ProjectsGrid from "./components/projectsGrid";
 import { getProjects } from "./actions";
 
 import Filters from "./components/filters";
+import { getClients } from "../clients/action";
+import { getSessionOrThrow } from "@/utils/authSession";
+import { reachedMaxProjects } from "@/utils/isSubscribed";
 
 // TODO: Fix searchParams type
 /* eslint-disable */
 
 const ProjectsDashboardPage = async ({ searchParams }: any) => {
   const projects = await getProjects(searchParams?.status);
+  const clients = await getClients();
+
+  const user = await getSessionOrThrow();
+  const hasReachedMaxProjects = (await reachedMaxProjects(user.user.id)) ?? false;
 
   return (
     <div className="w-full">
@@ -19,7 +26,7 @@ const ProjectsDashboardPage = async ({ searchParams }: any) => {
           <p className="text-gray-500 text-md md:text-lg">Manage and track all your ongoing and completed projects</p>
           <Filters />
         </div>
-        <ProjectsDrawer />
+        <ProjectsDrawer clients={clients} hasReachedMaxProjects={hasReachedMaxProjects} />
       </section>
 
       <ProjectsGrid projects={projects} />

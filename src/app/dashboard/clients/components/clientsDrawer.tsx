@@ -1,3 +1,8 @@
+"use client";
+
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import {
   Drawer,
   DrawerClose,
@@ -12,16 +17,17 @@ import ClientsForm from "./clientsForm";
 
 import { MoveLeft, Plus } from "lucide-react";
 
-import { getSessionOrThrow } from "@/utils/authSession";
-import { reachedMaxProjects } from "@/utils/isSubscribed";
+const ClientDrawer = ({ hasReachedMaxProjects }: { hasReachedMaxProjects: boolean }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
 
-const ClientDrawer = async () => {
-  const user = await getSessionOrThrow();
-
-  const hasReachedMaxProjects = await reachedMaxProjects(user.user.id);
+  const handleDrawerClose = () => {
+    setIsOpen(false);
+    router.refresh();
+  };
 
   return (
-    <Drawer direction="left">
+    <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>
       <div className="flex flex-col items-center">
         <DrawerTrigger
           disabled={hasReachedMaxProjects}
@@ -50,7 +56,7 @@ const ClientDrawer = async () => {
               Enter the details of your new client. Click save when you&apos;re done.
             </DrawerDescription>
           </DrawerHeader>
-          <ClientsForm />
+          <ClientsForm handleDrawerClose={handleDrawerClose} />
         </div>
       </DrawerContent>
     </Drawer>

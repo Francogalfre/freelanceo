@@ -12,13 +12,14 @@
 [ ✅ ] Add sorting by "Created At", "In Progress", etc. for projects and clients
 [ ✅ ] Fix Home chart
 [ ✅ ] Add dashboard button mobile Navbar
-[ ✅ ] Make Free and Pro version
 [ ✅ ] Clear input tasks
 [ ✅ ] Error Delete Client with Projects
+[ ✅ ] Change toast alert styles
+[ ✅ ] Show earnings when the project is complete
 
 --------------- To Complete
-[ ] Change toast alert styles
-[ ] Show earnings when the project is complete
+[ ] Make Free and Pro version
+[ ] Close Drawer when create client and project
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
 [ ] Optimize the project Images

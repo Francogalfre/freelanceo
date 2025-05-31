@@ -32,7 +32,12 @@ type FormErrors = {
   [key: string]: string;
 };
 
-const ProjectsForm = ({ clients }: { clients: Client[] }) => {
+type Props = {
+  clients: Client[];
+  handleDrawerClose: () => void;
+};
+
+const ProjectsForm = ({ clients, handleDrawerClose }: Props) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -79,6 +84,8 @@ const ProjectsForm = ({ clients }: { clients: Client[] }) => {
           duration: 4000,
           style: { backgroundColor: "#22c55e", border: "1px solid #22c55e", color: "white", borderRadius: "12px" },
         });
+
+        handleDrawerClose();
       } else {
         setErrors({ submit: result.message || "Failed to add Project. Please try again." });
 

@@ -101,7 +101,11 @@ const ClientAlert = ({ isOpen, setIsOpen, client }: Props) => {
           <div className="md:col-span-2">
             <span className="text-lg text-gray-600 block mb-2">Notes About the Client:</span>
             <p className="text-base sm:text-xl pt-2 break-words whitespace-pre-wrap prose max-w-full">
-              {client.notes ?? "This client doesn't have notes"}
+              {client.notes
+                ? client.notes.length > 85
+                  ? `${client.notes.slice(0, 85)}...`
+                  : client.notes
+                : "This client doesn't have any notes."}
             </p>
           </div>
         </div>

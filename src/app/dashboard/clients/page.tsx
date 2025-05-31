@@ -5,8 +5,14 @@ import { getClients } from "./action";
 import ClientsGrid from "./components/clientsGrid";
 import ClientDrawer from "./components/clientsDrawer";
 
+import { getSessionOrThrow } from "@/utils/authSession";
+import { reachedMaxProjects } from "@/utils/isSubscribed";
+
 const ClientsDashboardPage = async () => {
   const clients = await getClients();
+
+  const user = await getSessionOrThrow();
+  const hasReachedMaxProjects = (await reachedMaxProjects(user.user.id)) ?? false;
 
   return (
     <div className="w-full">
@@ -15,7 +21,7 @@ const ClientsDashboardPage = async () => {
           <h1 className="text-2xl md:text-4xl font-bold text-gray-900">Your Clients</h1>
           <p className="text-gray-500 text-md md:text-lg">Manage all the contact information of your clients</p>
         </div>
-        <ClientDrawer />
+        <ClientDrawer hasReachedMaxProjects={hasReachedMaxProjects} />
       </section>
 
       <ClientsGrid clients={clients} />
