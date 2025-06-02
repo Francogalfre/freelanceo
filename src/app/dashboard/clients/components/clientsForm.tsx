@@ -13,7 +13,7 @@ import { z } from "zod";
 import { createClient } from "../../clients/action";
 
 const clientFormSchema = z.object({
-  name: z.string().min(3, "Full Name is required").max(60, "Name must be less than 60 characters"),
+  name: z.string().min(3, "Full Name is required").max(25, "Name must be less than 25 characters"),
   email: z.string().email("Invalid email address"),
   phone: z.string().max(20, "Phone number must be less than 20 characters").optional(),
   location: z.string().max(100, "Location must be less than 100 characters").optional(),
@@ -117,7 +117,7 @@ const ClientsForm = ({ handleDrawerClose }: { handleDrawerClose: () => void }) =
             className={`h-12 text-sm md:text-md ${errors.name ? "border-red-500" : ""}`}
           />
           {errors.name && (
-            <div className="absolute -top-2 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[250px]">
+            <div className="absolute -top-4 right-0 bg-red-500 text-white text-sm px-2 py-1 rounded-md break-words max-w-[260px]">
               {errors.name}
             </div>
           )}

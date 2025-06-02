@@ -17,7 +17,7 @@ import ClientsForm from "./clientsForm";
 
 import { MoveLeft, Plus } from "lucide-react";
 
-const ClientDrawer = ({ hasReachedMaxProjects }: { hasReachedMaxProjects: boolean }) => {
+const ClientDrawer = ({ hasReachedMaxClients }: { hasReachedMaxClients: boolean }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -30,14 +30,14 @@ const ClientDrawer = ({ hasReachedMaxProjects }: { hasReachedMaxProjects: boolea
     <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>
       <div className="flex flex-col items-center">
         <DrawerTrigger
-          disabled={hasReachedMaxProjects}
+          disabled={hasReachedMaxClients}
           className={`text-sm md:text-md py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-colors cursor-pointer text-white flex gap-2 items-center rounded-lg w-fit self-start md:self-end
-            ${hasReachedMaxProjects ? "cursor-not-allowed opacity-50 hover:cursor-not-allowed" : ""}`}
+            ${hasReachedMaxClients ? "cursor-not-allowed opacity-50 hover:cursor-not-allowed" : ""}`}
         >
           Add a new Client
           <Plus className="size-5" />
         </DrawerTrigger>
-        {hasReachedMaxProjects && (
+        {hasReachedMaxClients && (
           <div className="text-red-500 text-sm md:text-md pt-4 transition-colors cursor-not-allowed flex gap-2 items-center rounded-lg self-end">
             You have reached the maximum number of clients allowed.
           </div>

@@ -24,9 +24,9 @@ const ClientCard = ({ client }: ClientCardProps) => {
         <p className="bg-blue-500/20 text-blue-500 w-12 h-12 flex items-center justify-center text-xl font-semibold rounded-full">
           {client.name.split("")[0].toUpperCase()}
         </p>
-        <div className="flex flex-col items-start">
-          <h2 className="text-2xl font-semibold">{client.name}</h2>
-          <span className="text-gray-400 font-light">{client.company}</span>
+        <div className="flex flex-col items-start max-w-[calc(100%-100px)]">
+          <h2 className="text-xl font-semibold truncate">{client.name}</h2>
+          <span className="text-gray-400 font-light truncate">{client.company}</span>
         </div>
       </div>
 

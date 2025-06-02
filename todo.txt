@@ -19,9 +19,9 @@
 [ ✅ ] Make Free and Pro version
 [ ✅ ] Close Drawer when create client and project
 [ ✅ ] Style problems with Project Card
+[ ✅ ] Problem with projects filters
 
 --------------- To Complete
-[ ] Problem with projects filters
 [ ] Maximun clients/projects allowed
 
 [ ] README
