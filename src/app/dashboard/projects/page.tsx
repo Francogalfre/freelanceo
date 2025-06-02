@@ -9,7 +9,7 @@ import { getSessionOrThrow } from "@/utils/authSession";
 import { reachedMaxProjects } from "@/utils/isSubscribed";
 
 type Props = {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 const ProjectsDashboardPage = async ({ searchParams }: Props) => {
