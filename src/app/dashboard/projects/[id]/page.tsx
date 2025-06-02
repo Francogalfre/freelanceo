@@ -13,7 +13,7 @@ import ProjectProgress from "./components/progress/project-progress";
 import Image from "next/image";
 import Link from "next/link";
 
-import Topographic from "@/public/resources/topographic-background.png";
+import Topographic from "@/public/resources/topographic-background.webp";
 
 const ProjectDetails = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
@@ -47,9 +47,10 @@ const ProjectDetails = async ({ params }: { params: Promise<{ id: string }> }) =
         <Image
           src={Topographic.src}
           alt="Topographic effect for background"
-          width={100}
-          height={100}
-          className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 brightness-150"
+          width={Topographic.width}
+          height={Topographic.height}
+          priority
+          className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 brightness-150 opacity-70"
         />
 
         <div className="h-full flex flex-col justify-between align-baseline">

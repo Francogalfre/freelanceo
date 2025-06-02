@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 
-import Topographic from "@/public/resources/topographic-background.png";
+import Topographic from "@/public/resources/topographic-background.webp";
 
 const Banner = () => {
   return (
@@ -13,8 +13,9 @@ const Banner = () => {
       <Image
         src={Topographic.src}
         alt="Topographic effect for background"
-        width={100}
-        height={100}
+        width={Topographic.width}
+        height={Topographic.height}
+        priority
         className="absolute h-full w-full top-0 right-0 object-cover rotate-180 z-0 opacity-70 brightness-150"
       />
 
