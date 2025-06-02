@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 
+// Vercel Analytics
+import { Analytics } from "@vercel/analytics/next";
+
 // Styles
 import { outfit } from "@/styles/fonts";
 import "@/styles/globals.css";
@@ -19,7 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`overflow-x-hidden w-full  ${outfit.className}`}>{children}</body>
+      <body className={`overflow-x-hidden w-full  ${outfit.className}`}>
+        {children}
+
+        <Analytics />
+      </body>
     </html>
   );
 }

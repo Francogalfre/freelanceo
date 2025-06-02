@@ -1,7 +1,8 @@
 import React from "react";
 
 import Image from "next/image";
-import Topographic from "@/public/resources/topographic-background.png";
+import Topographic from "@/public/resources/topographic-background.webp";
+
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
@@ -37,8 +38,8 @@ const Welcome = async () => {
       <Image
         src={Topographic.src}
         alt="Topographic effect for background"
-        width={100}
-        height={100}
+        width={Topographic.width}
+        height={Topographic.height}
         className="absolute h-full w-full top-0 right-0 object-cover z-0 opacity-40 brightness-150"
       />
     </header>
