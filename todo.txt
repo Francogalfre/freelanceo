@@ -18,10 +18,10 @@
 [ ✅ ] Show earnings when the project is complete
 [ ✅ ] Make Free and Pro version
 [ ✅ ] Close Drawer when create client and project
+[ ✅ ] Style problems with Project Card
 
 --------------- To Complete
 [ ] Problem with projects filters
-[ ] Style problems with Project Card
 [ ] Maximun clients/projects allowed
 
 [ ] README

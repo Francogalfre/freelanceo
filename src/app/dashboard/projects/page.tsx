@@ -11,8 +11,15 @@ import { reachedMaxProjects } from "@/utils/isSubscribed";
 // TODO: Fix searchParams type
 /* eslint-disable */
 
-const ProjectsDashboardPage = async ({ searchParams }: any) => {
-  const projects = await getProjects(searchParams?.status);
+type Props = {
+  searchParams?: { [key: string]: string | string[] | undefined };
+};
+
+const ProjectsDashboardPage = async ({ searchParams }: Props) => {
+  const statusParams = await searchParams;
+  const status = statusParams?.status;
+
+  const projects = await getProjects(status as string);
   const clients = await getClients();
 
   const user = await getSessionOrThrow();
