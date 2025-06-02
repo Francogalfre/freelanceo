@@ -16,10 +16,17 @@
 [ ✅ ] Error Delete Client with Projects
 [ ✅ ] Change toast alert styles
 [ ✅ ] Show earnings when the project is complete
+[ ✅ ] Make Free and Pro version
+[ ✅ ] Close Drawer when create client and project
 
 --------------- To Complete
-[ ] Make Free and Pro version
-[ ] Close Drawer when create client and project
+[ ] Problem with projects filters
+[ ] Style problems with Project Card
+[ ] Maximun clients/projects allowed
+
+[ ] README
+[ ] Linkedin post
+
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
 [ ] Optimize the project Images

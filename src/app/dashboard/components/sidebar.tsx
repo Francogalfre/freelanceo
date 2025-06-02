@@ -50,7 +50,7 @@ const Sidebar = ({ projects }: { projects: Project[] }) => {
         </h2>
       </div>
 
-      <nav className="flex flex-col gap-2 mt-6">
+      <nav className="flex flex-col gap-2 mt-6  border-b-1 border-blue-100 pb-6">
         {navItems.map((item) => (
           <Link
             key={item.href}
@@ -70,21 +70,25 @@ const Sidebar = ({ projects }: { projects: Project[] }) => {
           Invoices (Coming soon)
         </span>
 
-        <p className="border-t-1 text-sm border-blue-100 text-gray-500 font-light pt-4 mt-3">Projects</p>
-        <h2 className="text-gray-600 text-md"> List of projects</h2>
-        <ul className="flex flex-col gap-2 mt-1">
-          {projects.slice(0, 3).map((project, index) => (
-            <li key={project.id}>
-              <Link
-                href={`/dashboard/projects/${project.id}`}
-                className="text-gray-600 hover:text-gray-900 hover:translate-x-1 transition-all flex items-center gap-3 line-clamp-2 break-words whitespace-pre-wrap"
-              >
-                <div className={`size-3 rounded ${colors[index]}`} />
-                {project.title.length > 18 ? `${project.title.slice(0, 18)}...` : project.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {projects.length > 0 && (
+          <>
+            <p className="border-t-1 text-sm border-blue-100 text-gray-500 font-light pt-4 mt-3">Projects</p>
+            <h2 className="text-gray-600 text-md"> List of projects</h2>
+            <ul className="flex flex-col gap-2 mt-1">
+              {projects.slice(0, 3).map((project, index) => (
+                <li key={project.id}>
+                  <Link
+                    href={`/dashboard/projects/${project.id}`}
+                    className="text-gray-600 hover:text-gray-900 hover:translate-x-1 transition-all flex items-center gap-3 line-clamp-2 break-words whitespace-pre-wrap"
+                  >
+                    <div className={`size-3 rounded ${colors[index]}`} />
+                    {project.title.length > 18 ? `${project.title.slice(0, 18)}...` : project.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </nav>
 
       <div className="mt-auto w-full flex flex-col gap-3">

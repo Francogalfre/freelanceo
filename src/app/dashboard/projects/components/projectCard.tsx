@@ -23,19 +23,19 @@ const ProjectCard = async ({ project }: { project: Project }) => {
       className="bg-white border-1 border-blue-100/50 p-4 rounded-lg gap-4 sm:gap-6 flex flex-col justify-between"
     >
       <div className="flex flex-col 2xl:flex-row 2xl:items-center gap-4 justify-between">
-        <div className="flex flex-col gap-1 2xl:gap-2">
-          <h2 className="text-xl font-semibold">{project.title}</h2>
+        <div className="flex flex-col gap-1 2xl:gap-2 max-w-[calc(100%-100px)]">
+          <h2 className="text-xl font-semibold truncate">{project.title}</h2>
           <Link
             href={"/dashboard/clients"}
-            className="cursor-pointer text-gray-500 hover:text-gray-900 transition-colors"
+            className="cursor-pointer text-gray-500 hover:text-gray-900 transition-colors truncate"
           >
             {client?.name}
           </Link>
         </div>
         <span
-          className={`capitalize self-start 2xl:self-center ${
+          className={`capitalize self-start 2xl:self-center whitespace-nowrap ${
             project.status == "progress" ? "bg-yellow-400" : project.status === "delayed" ? "bg-red-400" : "bg-blue-400"
-          }  text-white text-sm font-medium px-3 py-1 rounded-full`}
+          } text-white text-sm font-medium px-3 py-1 rounded-full`}
         >
           {project.status}
         </span>
