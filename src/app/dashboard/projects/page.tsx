@@ -8,9 +8,6 @@ import { getClients } from "../clients/action";
 import { getSessionOrThrow } from "@/utils/authSession";
 import { reachedMaxProjects } from "@/utils/isSubscribed";
 
-// TODO: Fix searchParams type
-/* eslint-disable */
-
 type Props = {
   searchParams?: { [key: string]: string | string[] | undefined };
 };

@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 import Link from "next/link";
 
-import dashboardscreenshoot from "@/public/resources/dashboard-screenshot.jpg";
+import dashboardscreenshoot from "@/public/resources/dashboard-screenshot.webp";
 import Image from "next/image";
 
 const HeroSection = () => {
@@ -95,12 +95,15 @@ const HeroSection = () => {
         className="w-full px-4 sm:px-6 lg:px-8 hidden md:block relative"
       >
         <div className="absolute inset-x-0 bottom-40 w-full h-full flex items-center justify-center">
-          <div className="w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[100px]" />
-          <div className="w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[100px]" />
+          <div className="w-[600px] h-[600px] bg-blue-400/30 rounded-full blur-[100px]" />
+          <div className="w-[600px] h-[600px] bg-blue-400/30 rounded-full blur-[100px]" />
         </div>
         <Image
-          src={dashboardscreenshoot}
-          className="relative md:w-[700px] lg:w-[900px] 2xl:w-[1200px] bottom-70 lg:bottom-40 xl:bottom-40 2xl:bottom-60 md:max-w-3xl lg:max-w-screen-xl mx-auto shadow-sm shadow-blue-400/20 rounded-xl overflow-hidden bg-cover"
+          src={dashboardscreenshoot.src}
+          width={dashboardscreenshoot.width}
+          height={dashboardscreenshoot.height}
+          priority
+          className="relative md:w-[700px] lg:w-[900px] 2xl:w-[1200px] bottom-70 lg:bottom-40 xl:bottom-40 2xl:bottom-60 md:max-w-3xl lg:max-w-screen-xl mx-auto shadow-sm shadow-blue-400/30 rounded-xl overflow-hidden bg-cover"
           alt="Preview of Freelanceo Dashboard in Desktop Version"
         />
       </motion.div>

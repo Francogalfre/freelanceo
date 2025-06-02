@@ -20,11 +20,12 @@
 [ ✅ ] Close Drawer when create client and project
 [ ✅ ] Style problems with Project Card
 [ ✅ ] Problem with projects filters
+[ ✅ ] Maximun clients/projects allowed
 
 --------------- To Complete
-[ ] Maximun clients/projects allowed
-
 [ ] README
+[ ] Mockups
+[ ] Video
 [ ] Linkedin post
 
 [ ] Refactor and separate components for better organization
