@@ -7,7 +7,7 @@ export function EmailTemplate({ url }: { url: string }) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Reset Password</title>
   </head>
-  <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color: #f6f9fc;">
+  <body style="margin:0; padding:0; font-family: system-ui, sans-serif; background-color: #f6f9fc;">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f6f9fc; padding: 20px 0;">
       <tr>
         <td align="center">
@@ -24,7 +24,7 @@ export function EmailTemplate({ url }: { url: string }) {
             </tr>
             <tr>
               <td align="center" style="padding-bottom: 30px;">
-                <a href="${url}" target="_blank" style="background-color:rgb(1, 1, 2); color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">
+                <a href="${url}" target="_blank" style="background-color:#155dfc; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; display: inline-block;">
                   Reset Password
                 </a>
               </td>
@@ -38,10 +38,9 @@ export function EmailTemplate({ url }: { url: string }) {
                 </a>
               </td>
             </tr>
-            <!-- Aquí agrego tu URL personalizada -->
             <tr>
               <td style="padding-top: 20px; font-size: 14px; color: #2563eb; text-align: center;">
-                Visit our website: <a href="https://tu-url.com" target="_blank" style="color: #2563eb; text-decoration: underline;">https://tu-url.com</a>
+                Visit our website: <a href="https://freelanceo.site" target="_blank" style="color: #2563eb; text-decoration: underline;">https://freelanceo.site</a>
               </td>
             </tr>
             <tr>

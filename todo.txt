@@ -21,13 +21,12 @@
 [ ✅ ] Style problems with Project Card
 [ ✅ ] Problem with projects filters
 [ ✅ ] Maximun clients/projects allowed
+[ ✅ ] README
+[ ✅ ] Mockups
+[ ✅ ] Video
+[ ✅ ] Linkedin post
 
 --------------- To Complete
-[ ] README
-[ ] Mockups
-[ ] Video
-[ ] Linkedin post
-
 [ ] Refactor and separate components for better organization
 [ ] Rename components with clear and consistent naming conventions
 [ ] Optimize the project Images

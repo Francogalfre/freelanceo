@@ -101,7 +101,7 @@ const MobileNavbar = ({ session }: { session: Session | null }) => {
               </div>
             </div>
           ) : (
-            <div className="flex items-center">
+            <div className="flex items-center gap-4">
               <Link
                 href="/register"
                 className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium shadow-sm"
