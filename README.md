@@ -4,6 +4,10 @@
   </a>
 </p>
 
+<p align="center">
+  👉 <a href="https://freelanceo.site" target="_blank" rel="noopener noreferrer">Live Demo - Check Freelanceo in action!</a> 👈
+</p>
+
 <p align="start">
   Welcome to Freelanceo! 👋 As a freelancer, I built this intuitive dashboard to simplify managing your projects, clients, and earnings. Streamline your workflow and gain clarity over your finances here! ✨
 </p>
